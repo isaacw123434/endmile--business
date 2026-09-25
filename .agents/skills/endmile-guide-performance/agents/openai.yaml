@@ -1,0 +1,4 @@
+interface:
+  display_name: "EndMile Guide Performance"
+  short_description: "Analyze Guide attribution, GA4, and GSC"
+  default_prompt: "Use $endmile-guide-performance to analyze Guide performance for the last 28 days."

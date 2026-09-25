@@ -1,0 +1,22 @@
+{
+  "name": "@endmile/business",
+  "version": "1.0.0",
+  "description": "EndMile AI Business Operations, Strategy, and Telemetry Hub",
+  "type": "module",
+  "scripts": {
+    "test:analytics": "node --test scripts/analytics/*.test.mjs",
+    "analytics:guide": "node scripts/analytics/guide-performance.mjs",
+    "analytics:app": "node scripts/analytics/app-performance.mjs",
+    "analytics:indexnow": "node scripts/analytics/submit-indexnow.mjs"
+  },
+  "keywords": [
+    "endmile",
+    "business",
+    "analytics",
+    "strategy",
+    "mobility"
+  ],
+  "author": "EndMile",
+  "license": "UNLICENSED",
+  "private": true
+}
