@@ -10,9 +10,8 @@
      - Documented installation procedures across WordPress, Squarespace, Wix, and custom sites (<5 minutes setup).
   2. **App Station & City Car Parking Priorities Added to Roadmap (`.agents/roadmap.md`)**:
      - Flagged station car park operators (Saba, APCOA, Network Rail) and city multi-storey/P&R tariffs as active development items for the routing engine in `../endmile-1`.
-  3. **Venue Intelligence & Julie's Bicycle Scope 3 Reporting CLI (`scripts/analytics/venue-co2-report.mjs`)**:
-     - Built and tested CLI tool (`npm run analytics:venue`) querying venue telemetry for total attendee searches, modal split (% transit vs drive vs active), and DEFRA 2026 certified Scope 3 carbon savings.
-     - Outputs ready-to-submit Julie's Bicycle Creative Climate Tools entries for venue sustainability directors.
+  3. **Venue Reporting Architecture Planned (Direct VPS DB Query)**:
+     - Clarified that search telemetry, origin postcodes, and CO2 data are already recorded in the production PostgreSQL database on the VPS (`telemetry_searches`), with zero client-side recalculation needed. Planned a lightweight reporting CLI for when venues go live to extract attendee engagement and Julie's Bicycle Scope 3 figures directly from the existing DB.
   4. **Self-Serve Venue Webapp Portal Scheduled for Later Phase**:
      - Slated `venues.endmilerouting.co.uk` as a Phase 4 initiative for self-serve live metrics and billing management.
 - **Consequence**:

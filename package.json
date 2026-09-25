@@ -7,7 +7,6 @@
     "test:analytics": "node --test scripts/analytics/*.test.mjs",
     "analytics:guide": "node scripts/analytics/guide-performance.mjs",
     "analytics:app": "node scripts/analytics/app-performance.mjs",
-    "analytics:venue": "node scripts/analytics/venue-co2-report.mjs",
     "analytics:indexnow": "node scripts/analytics/submit-indexnow.mjs"
   },
   "keywords": [

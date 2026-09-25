@@ -28,16 +28,15 @@ Maximize near-term revenue and profitability through the focused three-track str
 
 ## Now (Phase 3: B2B Pro Monetization, Co-Branded Enterprise Customization & Admin Dashboard Linkage)
 
-- **Venue Widget Email Finding & Contact Enrichment**:
-  - Actively mining and verifying operational decision-maker contact emails (Head of Visitor Experience / Operations Director) across the 4,992 unserved UK cultural venues from `data/venues/unserved_prospects.csv`.
-- **App Station & City Car Parking Updates (`packages/app/` & `packages/server/`)**:
-  - **Station Parking**: Audit and update tariffs, operator details (Saba, APCOA, Network Rail), and walking transfer buffers for UK rail station car parks.
-  - **City Parking**: Refresh council multi-storey and surface car parking tariffs, Park & Ride timing, and London outer Tube station parking lots (Saba 60+ TfL network).
-- **Venue Widget Onboarding & Process Approval Testing**:
-  - Test and document the 5-step onboarding, CMS embed, and approval process when a business/venue agrees to install the widget.
-  - Full operational playbook codified in [`sales-and-marketing/venue-widget-onboarding-and-approval.md`](sales-and-marketing/venue-widget-onboarding-and-approval.md).
-- **Venue Engagement & CO2 Reporting CLI (`scripts/analytics/venue-co2-report.mjs`)**:
-  - Built and tested CLI (`npm run analytics:venue`) to query specific venue telemetry, attendee modeshare, and automated Arts Council England Julie's Bicycle Scope 3 carbon declarations.
+- **Active: Venue Widget Email Finding & Contact Enrichment**:
+  - Actively finding and verifying operational decision-maker contact emails (Head of Visitor Experience / Operations Director / General Manager) across the 4,992 unserved UK cultural venues from `data/venues/unserved_prospects.csv`.
+- **TODO: App Station & City Car Parking Updates (`packages/app/` & `packages/server/`)**:
+  - **Station Parking**: Update tariffs, operator details (Saba, APCOA, Network Rail), and walking transfer buffers for UK rail station car parks.
+  - **City Parking**: Update council multi-storey and surface car parking tariffs, Park & Ride timing, and London outer Tube station parking lots (Saba 60+ TfL network).
+- **TODO: Test Venue Widget Setup & Approval Process**:
+  - Test the setup and approval process for when a business/venue agrees to install the widget on their site (CMS embed compatibility, staging preview, stakeholder approval, go-live). Playbook reference: [`sales-and-marketing/venue-widget-onboarding-and-approval.md`](sales-and-marketing/venue-widget-onboarding-and-approval.md).
+- **TODO: Venue Engagement & Julie's Bicycle CO2 Reporting CLI**:
+  - Build a lightweight CLI to query the existing search telemetry and CO2 data already stored in the VPS PostgreSQL database (no recalculation needed, as the backend already stores CO2 and distances per search) to generate monthly attendee engagement and Julie's Bicycle Scope 3 carbon reports for venues.
 - **Stripe Billing & Subscription Engine (`packages/server/`)**:
   - Add `stripe` SDK to Fastify backend (`packages/server/src/interface/routes/billing-routes.ts`).
   - Configure Pro Planner (£19/mo solo coordinator) and Teams (£49/mo up to 3 seats) products.
