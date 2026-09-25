@@ -1,12 +1,13 @@
 # Sales & Marketing Command Center
 
-Playbooks, outbound email sequences, buyer personas, and discovery tools for driving revenue and customer acquisition.
+Playbooks, outbound email sequences, buyer personas, onboarding processes, and discovery tools for driving revenue and customer acquisition.
 
 ## Documents
 
 | Document | Focus & Target Audience |
 |---|---|
 | [`venue-widget-outbound-playbook.md`](venue-widget-outbound-playbook.md) | **B2B 'Plan Your Visit' Venue Widget Playbook:** Targeting 4,992 UK cultural destinations and independent visitor venues. Contains verified prospect discovery, footfall-to-search mathematical conversion models, 3-touch modular cold email copy, objection handling (e.g. "We already use Google Maps", "We have no budget"), and implementation snippets. |
+| [`venue-widget-onboarding-and-approval.md`](venue-widget-onboarding-and-approval.md) | **Venue Widget Onboarding & Approval Process:** The step-by-step process when a venue agrees to install the widget. Covers CMS installation (WordPress, Squarespace, Wix, custom), pre-launch staging verification checklist, stakeholder sign-off, and ongoing Julie's Bicycle Scope 3 reporting. |
 | [`b2b-pretrip-pdf-justification.md`](b2b-pretrip-pdf-justification.md) | **B2B Professional Services & Consultant Dispatch:** Focuses on the "Paul Hardy" persona (Logistics Coordinator / Travel Dispatcher at consulting firms). Solves margin leakage on travel recharges, HMRC 55p AMAP mileage defense, and PPN 06/21 Scope 3 carbon compliance. |
 | [`telemetry-and-discovery.md`](telemetry-and-discovery.md) | **Intent Telemetry & Forensic Discovery:** How to convert live journey searches, route completions, and search failures into actionable sales leads and product improvements. |
 

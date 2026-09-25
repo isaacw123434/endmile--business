@@ -1,4 +1,47 @@
 # Architectural and Implementation Decisions
+## 2026-09-25 — Venue Onboarding Approval Flow, Parking Tariffs Priority & Scope 3 CO2 Reporting CLI
+- **Problem**:
+  1. If a cultural venue or theatre responds positively to cold outreach and wants the widget, EndMile needed a defined, zero-friction process approval and CMS installation workflow.
+  2. The mobile and web routing apps (`packages/app` / `packages/server` in `../endmile-1`) need refreshed parking tariffs and operator data for both rail station car parks (Saba, APCOA, Network Rail) and city council/multi-storey parking to maintain accurate door-to-door cost totals.
+  3. Venues need proof of engagement and automated Scope 3 audience travel carbon data for Arts Council England (ACE) / Julie's Bicycle grant reporting, without requiring a complex web dashboard in Phase 1.
+- **Decision**:
+  1. **Venue Onboarding & Approval Playbook (`sales-and-marketing/venue-widget-onboarding-and-approval.md`)**:
+     - Codified a 5-step onboarding framework: Agreement & Tier Selection -> Sandbox & 1-line Embed Script -> Staging Embed & Brand Match -> Stakeholder Sign-Off -> Go-Live & Telemetry Monitoring.
+     - Documented installation procedures across WordPress, Squarespace, Wix, and custom sites (<5 minutes setup).
+  2. **App Station & City Car Parking Priorities Added to Roadmap (`.agents/roadmap.md`)**:
+     - Flagged station car park operators (Saba, APCOA, Network Rail) and city multi-storey/P&R tariffs as active development items for the routing engine in `../endmile-1`.
+  3. **Venue Intelligence & Julie's Bicycle Scope 3 Reporting CLI (`scripts/analytics/venue-co2-report.mjs`)**:
+     - Built and tested CLI tool (`npm run analytics:venue`) querying venue telemetry for total attendee searches, modal split (% transit vs drive vs active), and DEFRA 2026 certified Scope 3 carbon savings.
+     - Outputs ready-to-submit Julie's Bicycle Creative Climate Tools entries for venue sustainability directors.
+  4. **Self-Serve Venue Webapp Portal Scheduled for Later Phase**:
+     - Slated `venues.endmilerouting.co.uk` as a Phase 4 initiative for self-serve live metrics and billing management.
+- **Consequence**:
+  - The founder has an immediate, documented runbook for converting interested venues into live embeds.
+  - Can generate professional CO2 reporting immediately via CLI.
+
+
+## 2026-09-25 — The EndMile Business Brain, Traction Engine & Copywriting Lab
+- **Problem**:
+  1. The assistant persona was initially narrowly scoped to "notes advisor", whereas the founder needed the active **Business Brain & Commercial Heart** of EndMile to drive real traction, track outreach, log social engagement, build high-converting copy and websites, and scale revenue.
+  2. The repo needed dedicated operational engines for tracking outbound outreach touches, LinkedIn post engagement, and ready-to-deploy website/social copy.
+  3. Legacy documentation contained stale monorepo references (`docs/brand/...`, `docs/product/...`, `docs/b2c-pivot/...`) following the split into `endmile--business` and `endmile-1`.
+- **Decision**:
+  1. **Traction & Outreach Hub (`traction/`)**:
+     - Created `traction/outreach-tracker.md` to systematically track every outbound email and LinkedIn message sent by the founder, target organization, angle, status, and follow-up cadence.
+     - Created `traction/social-and-engagement.md` to log published posts, impressions, reactions, comments, profile visits, and inbound leads.
+     - Created `traction/pipeline.md` to monitor the active B2B deal pipeline and MRR conversion.
+  2. **Copywriting, Messaging & Site Building Lab (`copy-and-messaging/`)**:
+     - Authored `copy-and-messaging/site-copy.md` containing full section-by-section conversion copy for `endmilerouting.co.uk` (hero hooks, 3-app pain contrast, dual B2B wedge solutions, pricing tiers, FAQs).
+     - Authored `copy-and-messaging/social-posts-bank.md` with ready-to-publish, high-engagement founder LinkedIn posts ('The Trainline Illusion', 'The £2,250 Gatekeeper', 'Why Multimodal Routing is Hard').
+     - Authored `copy-and-messaging/outbound-email-templates.md` with 3-touch sniper outreach sequences for venues and consultancies.
+  3. **Role & Memory Formalization (`AGENTS.md`, `GEMINI.md`, `README.md`, `.agents/`)**:
+     - Formally defined the AI role as **The Business Brain & Commercial Heart of EndMile**, actively co-piloting growth with founder Isaac Willoughby.
+     - Preserved `notes/` as a founder drop zone and strategic advisory repository.
+     - Repaired all broken cross-repository links across `.agents/` and verified 13/13 passing analytics tests.
+- **Consequence**:
+  - The repository is now an active startup growth engine rather than a passive notebook.
+  - Founder can immediately log outreach, grab post copy, and test new landing page sections.
+
 
 ## 2026-09-25 — B2B Venue Widget Outbound Playbook, Competitor Demarcation & OSM Unserved Prospect Engine
 - **Problem**:

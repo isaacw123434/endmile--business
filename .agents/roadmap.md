@@ -1,8 +1,8 @@
 # Roadmap
 
-*Last updated: 2026-08-15*
+*Last updated: 2026-09-25*
 
-This is the current AI-readable product and go-to-market roadmap. Durable feature plans live in `docs/new-features/` and B2C pivot strategy in `docs/b2c-pivot/`.
+This is the current AI-readable product and go-to-market roadmap. Sibling technical plans live in `../endmile-1/docs/new-features/` and B2C strategy in [`b2c-strategy/`](b2c-strategy/).
 
 ## Current Position
 
@@ -23,11 +23,21 @@ Maximize near-term revenue and profitability through the focused three-track str
 2. **Track 2 (B2B 'Plan Your Visit' Venue Widget SaaS — £19–£49/mo)**:
    - **Market Demarcation**: Bypassed 5-figure enterprise tenders (leaving TfGM/arenas to YST); attacking the unserved 99% mid-market.
    - **Prospect Pipeline**: Mined 111k OSM dataset and extracted **4,992 qualified unserved UK venues** with verified websites (954 theatres, 2,418 museums/galleries, 1,197 attractions, 423 universities) into `data/venues/unserved_prospects.csv`.
-   - **Active Sales Execution**: Founder is actively working through the structured CSV in Excel, finding named operational decision-makers (Head of Visitor Experience / Operations Director) on LinkedIn and venue staff directories, and executing personalized sniper outreach (10–15/day) using the modular cold email copy in `docs/product/venue-widget-outbound-playbook.md`.
+   - **Active Sales Execution**: Founder is actively working through the structured CSV in Excel, finding named operational decision-makers (Head of Visitor Experience / Operations Director) on LinkedIn and venue staff directories, and executing personalized sniper outreach (10–15/day) using the modular cold email copy in [`sales-and-marketing/venue-widget-outbound-playbook.md`](sales-and-marketing/venue-widget-outbound-playbook.md).
 3. **Track 3 (B2C Compounding Passive Income)**: Expand B2C programmatic SEO venue coverage in batches (350 -> 1,000 -> 3,000) earning parking and rail affiliate commissions.
 
 ## Now (Phase 3: B2B Pro Monetization, Co-Branded Enterprise Customization & Admin Dashboard Linkage)
 
+- **Venue Widget Email Finding & Contact Enrichment**:
+  - Actively mining and verifying operational decision-maker contact emails (Head of Visitor Experience / Operations Director) across the 4,992 unserved UK cultural venues from `data/venues/unserved_prospects.csv`.
+- **App Station & City Car Parking Updates (`packages/app/` & `packages/server/`)**:
+  - **Station Parking**: Audit and update tariffs, operator details (Saba, APCOA, Network Rail), and walking transfer buffers for UK rail station car parks.
+  - **City Parking**: Refresh council multi-storey and surface car parking tariffs, Park & Ride timing, and London outer Tube station parking lots (Saba 60+ TfL network).
+- **Venue Widget Onboarding & Process Approval Testing**:
+  - Test and document the 5-step onboarding, CMS embed, and approval process when a business/venue agrees to install the widget.
+  - Full operational playbook codified in [`sales-and-marketing/venue-widget-onboarding-and-approval.md`](sales-and-marketing/venue-widget-onboarding-and-approval.md).
+- **Venue Engagement & CO2 Reporting CLI (`scripts/analytics/venue-co2-report.mjs`)**:
+  - Built and tested CLI (`npm run analytics:venue`) to query specific venue telemetry, attendee modeshare, and automated Arts Council England Julie's Bicycle Scope 3 carbon declarations.
 - **Stripe Billing & Subscription Engine (`packages/server/`)**:
   - Add `stripe` SDK to Fastify backend (`packages/server/src/interface/routes/billing-routes.ts`).
   - Configure Pro Planner (£19/mo solo coordinator) and Teams (£49/mo up to 3 seats) products.
@@ -58,6 +68,8 @@ Maximize near-term revenue and profitability through the focused three-track str
 
 ## Later
 
+- **Self-Serve Venue Webapp Portal (`venues.endmilerouting.co.uk`):**
+  - Dedicated client webapp portal for venue directors to view real-time attendee traffic, modeshare breakdown, live CO2 counter, embed customizer, and Stripe billing.
 - **Coordinator Dispatch Board (`/dispatches`)**:
   - Dedicated desktop dispatch management screen in the app for managing 20+ active consultant deployments, reverse route duplication, and batch client invoice exports.
 - **Accounting Reconciliation Export**:
@@ -192,7 +204,7 @@ Value proposition:
 - Zero marginal cost per visitor, compounding over time as search engines index 5k–50k pages.
 
 ### 3. Active B2B App Wedge: Team Logistics & Pre-Trip Itinerary Workspace (£19–£49/mo)
-*Master Specification: [`docs/product/b2b-pretrip-pdf-justification-and-dispatch.md`](../docs/product/b2b-pretrip-pdf-justification-and-dispatch.md)*
+*Master Specification: [`sales-and-marketing/b2b-pretrip-pdf-justification.md`](sales-and-marketing/b2b-pretrip-pdf-justification.md)*
 
 Hypothesis: Logistics coordinators, project managers, and consulting/field service firms (e.g. Dorset Software) dispatch consultants across the UK and need to calculate, compare, and justify door-to-door travel costs (HMRC 55p mileage + parking vs rail + taxis) before journeys happen to prevent client billing disputes and margin leakage.
 

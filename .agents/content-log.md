@@ -38,7 +38,7 @@ Recommended future image use: prefer simple journey-breakdown graphics or produc
 Repo LinkedIn assets:
 
 ```text
-docs/brand/linkedin/
+../endmile-1/docs/brand/linkedin/
 ```
 
 ## LinkedIn Messaging Rules

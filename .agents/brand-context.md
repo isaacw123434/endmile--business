@@ -1,17 +1,17 @@
 # Brand Context
 
-*Last updated: 2026-05-22*
+*Last updated: 2026-09-25*
 
-This is the AI-readable brand summary. The durable design guide is `docs/brand/brand-and-design.md`.
+This is the AI-readable brand summary. The durable design guide is in the technical repository: [`../endmile-1/docs/brand/brand-and-design.md`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/docs/brand/brand-and-design.md).
 
 ## Source Files
 
-- Brand and design guide: `docs/brand/brand-and-design.md`
-- Product positioning: `.agents/product-marketing.md`
-- Customer evidence: `.agents/customer-feedback.md`
-- Content history: `.agents/content-log.md`
-- LinkedIn assets: `docs/brand/linkedin/`
-- SEO audit: `docs/seo-audit-endmilerouting-2026-05-20.md`
+- Brand and design guide: [`../endmile-1/docs/brand/brand-and-design.md`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/docs/brand/brand-and-design.md)
+- Product positioning: [`.agents/product-marketing.md`](product-marketing.md)
+- Customer evidence: [`.agents/customer-feedback.md`](customer-feedback.md)
+- Content history: [`.agents/content-log.md`](content-log.md)
+- LinkedIn assets: `../endmile-1/docs/brand/linkedin/`
+- SEO audit: `../endmile-1/docs/seo-audit-endmilerouting-2026-05-20.md`
 
 ## Naming
 
@@ -24,7 +24,6 @@ This is the AI-readable brand summary. The durable design guide is `docs/brand/b
 Tone: direct, practical, business-focused.
 
 Style:
-
 - plain English
 - concrete route trade-offs
 - low fluff
@@ -32,7 +31,6 @@ Style:
 - early-stage and candid when asking for testers
 
 Personality:
-
 - useful
 - precise
 - pragmatic
@@ -66,15 +64,13 @@ Use this as a top-of-funnel pain angle, especially on LinkedIn. For follow-up po
 
 Primary brand colour: `#4f46e5`.
 
-Core palette, typography, layout, and CTA rules live in `docs/brand/brand-and-design.md`.
+Core palette, typography, layout, and CTA rules live in `../endmile-1/docs/brand/brand-and-design.md`.
 
 Fonts:
-
 - Headlines: Manrope.
 - Body, labels, UI: Inter.
 
 Design posture:
-
 - restrained, clear, product-led
 - no oversized generic SaaS fluff
 - show the actual product, real route comparisons, or simple journey breakdowns when possible
@@ -84,11 +80,10 @@ Design posture:
 LinkedIn-ready assets are stored in:
 
 ```text
-docs/brand/linkedin/
+../endmile-1/docs/brand/linkedin/
 ```
 
 Current files:
-
 - `endmile-linkedin-logo-square-400.png`
 - `endmile-linkedin-logo-square-400.jpg`
 - `endmile-linkedin-page-cover-4200x700.png`
@@ -105,10 +100,8 @@ The launch image is described in `.agents/content-log.md`. Prefer simple journey
 ## CTA Language
 
 Current CTA language varies by context:
-
 - Website design guide: `Try the Demo`
 - Product/marketing context: compare or plan a route
 - Social/testing context: `Try EndMile`, `Try one real journey`, `Looking for early testers`
 
 Open question: confirm the single primary CTA for current public marketing.
-

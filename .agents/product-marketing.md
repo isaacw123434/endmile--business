@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-*Last updated: 2026-05-22*
+*Last updated: 2026-09-25*
 
 ## Related Research Sources
 - **Customer feedback and conversation log:** `.agents/customer-feedback.md`
@@ -87,7 +87,7 @@
   - We target the **unserved 99% mid-market (4,992 UK cultural & visitor venues)** with NO widget installed.
   - Wedge: £0 setup fee, 2-minute 1-line embed, self-serve £19–£49/month on corporate credit card, lightweight mobile-first layout, and automated Julie's Bicycle Scope 3 carbon exports for Arts Council England (ACE) NPOs.
 - **Active Go-To-Market Execution:**
-  - Founder is actively working through `data/venues/unserved_prospects.csv` in Excel, finding named operational decision-makers (Head of Visitor Experience / Operations Director) via website staff directories and LinkedIn, and executing personalized sniper outreach (10–15/day) using `docs/product/venue-widget-outbound-playbook.md`.
+  - Founder is actively working through `data/venues/unserved_prospects.csv` in Excel, finding named operational decision-makers (Head of Visitor Experience / Operations Director) via website staff directories and LinkedIn, and executing personalized sniper outreach (10–15/day) using [`sales-and-marketing/venue-widget-outbound-playbook.md`](sales-and-marketing/venue-widget-outbound-playbook.md).
 
 ## Differentiation
 **Key differentiators:**
