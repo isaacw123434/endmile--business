@@ -147,3 +147,95 @@ Key Strategic Principles:
 - **Recommended EndMile Tier:** Standard (£19/mo) or Growth (£49/mo)
 - **Value Proposition Angle:**
   Upgrade outbound link to an in-page interactive travel widget so visitors never leave visitbelfast.com.
+
+---
+
+## 6. YST Commercial Positioning & Sector Playbook Deconstruction
+
+Through direct web scraping and analysis of You. Smart. Thing.'s sector pages (Major Events, Cultural Venues, Stadiums, and Local Authorities), we have extracted their core commercial value model and why venues buy travel software:
+
+### 6.1 The 4 Pillars of YST's Event & Venue Pitch
+
+1. **Audience Travel Represents >80% of an Event's Carbon Footprint (Scope 3)**
+   - *The Reality:* For cultural organisations and major events, direct energy use (Scope 1 & 2) is a small fraction of total environmental impact. Over 80% of carbon emissions come from spectator and audience travel.
+   - *The Mandate:* Arts Council England (ACE) National Portfolio Organisations (NPOs) and Theatre Green Book venues are required to measure audience travel emissions for annual **Julie's Bicycle** audits.
+   - *Current Workaround:* Venues currently send post-show email surveys with dismal 3–4% response rates and guess the remainder on spreadsheets.
+   - *YST's Angle:* Automates Scope 3 GHG data capture by recording actual journey queries and modal choices (active travel, rail, bus, EV, combustion car).
+
+2. **Dwell Time & Secondary Spend (The Commercial Engine)**
+   - *The Reality:* Regional theatres, arts centres, and attractions make razor-thin margins on headline tickets (promoters and touring companies take 70%–85% of face value). The venue survives on **secondary spend**: bars, catering, programmes, and merchandise.
+   - *The Pain:* When visitors get delayed by last-mile driving traffic or spend 20 minutes circling for city parking, they arrive flustered at the 2-minute call. They bypass the foyer bar entirely and rush straight into the auditorium.
+   - *YST's Metric:* Helping audiences plan multimodal arrivals gets attendees through the doors 30–45 minutes earlier. Case studies report a **~20% boost in on-site secondary spend / upsell conversion**, while eliminating latecomer seating holds and performance disruptions.
+
+3. **Digital Retention vs. External App Drop-Off**
+   - *The Reality:* When a venue page tells guests "we are near Station X" or embeds a generic Google Maps link, the ticket holder leaves the venue's digital estate.
+   - *The Flaw of Google Maps:* Generic sat-nav apps have no awareness of venue entrance turnstiles, event road closures, temporary traffic regulation orders (TTROs), or preferred Park & Ride corridors. They direct drivers down residential backstreets or closed roads.
+   - *YST's Angle:* Embedding a curated travel assistant keeps visitors within the venue's digital environment, allowing the operator to steer crowd ingress and maintain brand contact.
+
+4. **Accessibility, Inclusion & Step-Free Confidence**
+   - *The Reality:* Over 14 million people in the UK have access requirements.
+   - *The Pain:* Disabled, older, or neurodivergent patrons often hesitate to book tickets if arrival logistics are unclear.
+   - *YST's Angle:* Delivering clear Blue Badge parking locations, step-free public transport interchanges, and walking distances upfront builds booking confidence and complies with Equality Act 2010 accessibility guidelines without forcing visitors to phone ahead.
+
+5. **Planning Permissions, Section 106 & Council Licensing Conditions**
+   - *The Reality:* In the UK, venue operating licences, outdoor festival permits, university campus expansions, and stadium capacity increases require formal **Section 106 Sustainable Travel Plans** approved by council highways departments.
+   - *The Pain:* Local planning authorities and police require proof that the venue is actively mitigating local street congestion, anti-social parking, and single-occupancy car trips. If a venue fails to monitor travel modal splits, they face planning condition enforcement or premises licence review.
+   - *YST's Angle:* Provides continuous travel demand telemetry to prove non-car modal share to local councils and transport authorities.
+
+6. **Peak Ingress Surges, Temporary Traffic Orders (TTROs) & Post-Curfew Egress Dispersal**
+   - *The Reality:* Stadiums, music arenas, and family attractions experience acute bottlenecks:
+     - *Morning Ingress (Attractions/Zoos):* 10:00–11:30 AM family surges back up onto arterial A-roads.
+     - *Night Egress (Music Venues/Arenas):* Post-23:00 curfew crowd dispersal when public transit drops off.
+     - *Highway Compliance:* Enforcing council Temporary Traffic Regulation Orders (TTROs) so generic sat-navs don't route traffic down closed residential streets.
+   - *YST's Angle:* Curates ingress corridors to designated turnstiles/gates and flags last train departures to prevent stranded crowds post-curfew.
+
+7. **Parking Yield Management & Combating Rogue Verge Parking**
+   - *The Reality:* Venues and attractions invest heavily in official car parks or Park & Ride contracts, but lose revenue when visitors park in unauthorized residential streets, council bays, or private rogue lots because arrival advice was vague.
+   - *YST's Angle:* Guides ticket holders directly to pre-booked on-site bays or partner Park & Ride shuttles, capturing parking revenue and eliminating neighborhood friction.
+
+---
+
+### 6.2 Deep Dive: What YST Actually Sells to Visitor Attractions (`/portfolio/visitor-attractions/`)
+
+From scraping `https://yousmartthing.com/portfolio/visitor-attractions/`, `https://yousmartthing.com/benefits/`, and `https://yousmartthing.com/pricing/`:
+
+#### Is it "Parking Tickets"?
+**NO.** YST does not sell or issue parking enforcement tickets, fines, or basic parking vouchers.
+When YST talks about parking and revenue for visitor attractions, they mean two specific things:
+1. **Parking Demand Management & Capacity Smoothing**: Directing visitors away from full main lots to off-site or Park & Ride options before they arrive, avoiding traffic gridlock at rural estate gates (e.g. Compton Verney).
+2. **Booking-Flow Secondary Revenue & Upsell**: Turning the post-ticket confirmation email into an affiliate travel/upsell portal (selling train tickets, hotel stays, gift shop packages, and carbon balancing add-ons).
+
+#### The 4 Core Commercial Hooks YST Uses on Attractions:
+
+1. **Local Authority / Grant Subsidies & Scope 3 Decarbonisation**:
+   - YST pitches local councils (e.g., their live case study with **Warwickshire County Council** funding **Compton Verney Art Gallery & Park**).
+   - Councils fund or co-sponsor the deployment to meet their Net Zero Climate Strategy and count visitor CO2e reductions toward county emissions targets.
+2. **"EV Assist" & ChargePoint Operators (CPO Integration)**:
+   - Targets drivers with range anxiety visiting countryside attractions with limited charging infrastructure.
+   - Allows visitors to log expected EV arrival state-of-charge, pre-book charging bays at the attraction, or route via en-route rapid chargers.
+3. **Accessibility & "Pre-Arrival Assistance Requests"**:
+   - Offers step-free routes, sensory maps, and low-stimulus travel options.
+   - **Operational Wedge**: Allows disabled visitors to request assistance (e.g., buggy transfer, sighted guide, wheelchair loan) directly through the travel assistant, dispatching pre-arrival alerts to front-of-house operations teams.
+4. **"Destination Groups" & Multi-Entrance Wayfinding**:
+   - For historic estates, arboretums, and country parks with multiple ticket offices or separate event fields, YST groups different arrival gates under one umbrella to stop visitors queuing at the wrong gate.
+
+#### YST Published Pricing & Hidden Enterprise Gotchas (`/pricing/`):
+- **Mandatory Setup & Configuration Fee**: **£1,000.00 ex VAT** (£2,250 on G-Cloud 14).
+- **Ongoing Support / Integration Rate**: **£93.75 / hour ex VAT**.
+- **Abstract Architecture**: Heavy emphasis on "Consent Matrices", "Personal Travel Assistants", and "Manufacturer data exploitation", which alienates lean attraction operators who just want visitors to know how to get there.
+
+---
+
+### 6.3 Why YST Leaves the Mid-Market Wide Open for EndMile
+
+While YST's messaging around Scope 3 and dwell time is commercially sound, their execution creates severe friction for the 4,992 UK mid-market venues:
+
+| Strategic Dimension | You. Smart. Thing. (YST) | EndMile Venue Widget | The Commercial Wedge |
+|---|---|---|---|
+| **Procurement & Setup** | Mandatory **£1,000.00 setup fee** (or £2,250 on G-Cloud 14) + enterprise onboarding | **£0 setup fee**, instant self-serve script | Removes 100% of upfront budget friction for independent attractions. |
+| **Ongoing Pricing** | Enterprise contracts + £93.75/hr bespoke rates | **£19 to £49 / month** flat SaaS (cancel anytime) | Easily approved on a credit card without board sign-off. |
+| **Mobile UX & Embed** | Heavy (~10MB) rigid 600px desktop iframe that breaks mobile viewports and causes double-scrollbars | **Lightweight (<45KB)** 1-line script drawer, 100% fluid mobile responsiveness | Looks native on mobile; zero layout shift. |
+| **Cost Transparency** | Transit-focused nudge (rail / walk / cycle) without true multi-leg cost breakdown | **True Door-to-Door Cost Comparison**: driving (fuel + parking tariffs) vs train fares + station walks side-by-side | Solves the #1 visitor question: *"What is the real door-to-door cost of driving vs public transit?"* |
+| **Speed to Value** | Weeks of onboarding, bespoke mapping, and CRM integration meetings | **2-minute drop-in embed** with pre-configured venue gate coordinates | Immediate deployment for the current season. |
+
+

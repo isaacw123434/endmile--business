@@ -137,3 +137,33 @@ docker compose exec postgres pg_dump -U endmile endmile > backup-$(date +%Y%m%d)
 # Restore dump into database
 docker compose exec -T postgres psql -U endmile endmile < backup-20260314.sql
 ```
+
+---
+
+## 4. Production CSP & Embed Framing Toggle (Demo & Trial Runbook)
+
+### The Architecture
+- `guide.endmilerouting.co.uk/embed/*` serves the embeddable venue travel widget.
+- By default, production enforces strict origin security to prevent unauthorized clickjacking:
+  - Caddy sets: `frame-ancestors https://endmilerouting.co.uk https://seleniumbase.io`
+  - Upstream `b2c-site` container (Nginx) also sends this header in `/etc/nginx/conf.d/default.conf`.
+- If an external website (e.g. `harrogatetheatre.co.uk`) attempts to frame the widget, modern browsers block it via CSP.
+
+### How to Toggle Open for Live Demonstrations
+To temporarily allow all external domains (`frame-ancestors *`) for outbound testing:
+1. In `/opt/endmile/Caddyfile`, set:
+   - `@embed path /embed/*`
+   - `header @embed Content-Security-Policy "... frame-ancestors *"`
+   - `reverse_proxy b2c-site:80 { header_down -Content-Security-Policy }` (strips upstream Nginx header).
+2. Reload Caddy zero-downtime:
+   ```bash
+   ssh deploy@155.133.23.54 "cd /opt/endmile && docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile"
+   ```
+
+### How to Revert to Production Lockdown
+1. Restore `/opt/endmile/Caddyfile.bak` (or set `frame-ancestors https://endmilerouting.co.uk https://seleniumbase.io`).
+2. Reload Caddy:
+   ```bash
+   ssh deploy@155.133.23.54 "cp /opt/endmile/Caddyfile.bak /opt/endmile/Caddyfile && cd /opt/endmile && docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile"
+   ```
+

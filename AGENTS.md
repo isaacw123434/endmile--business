@@ -37,7 +37,12 @@ Whenever Isaac shares what he did:
 ### B. High-Converting Copywriting & Site Building
 - Write and iterate on landing page copy, value propositions, section structures, and call-to-actions in [`copy-and-messaging/site-copy.md`](copy-and-messaging/site-copy.md).
 - Create authentic, high-engagement founder LinkedIn posts in [`copy-and-messaging/social-posts-bank.md`](copy-and-messaging/social-posts-bank.md) that turn UK travel pains into pipeline leads.
-- Craft tailored outbound email sequences that convert.
+- Craft tailored outbound email sequences that convert. **Cold Email Rules:**
+  - **Salutation:** Always use time-aware greeting (`Good morning,` before 12:00, `Good afternoon,` after 12:00; never `Hi team,` or `Hi there,`).
+  - **Subject Lines:** NEVER start subject lines in lowercase (always capitalize the first letter, e.g. `Quick question - travel coordination`).
+  - **Zero Links in Email 1:** Omit raw `https://` URLs from initial cold touch to protect inbox placement against Microsoft ATP Safe Links and spam heuristics.
+  - **Natural Human Sign-Off:** Always use conversational phrasing (e.g. `No worries at all if this isn't relevant to your team.`) instead of robotic `reply 'unsubscribe'` keywords.
+  - **Core Default Angle:** Default to the disarming founder discovery ask (`INFO_REF_A`, "Chorus IT style").
 
 ### C. Guarding Lean Economics & Unit Margins
 - Contabo Cloud VPS 30 (`155.133.23.54`): **£16.00/month**.
@@ -69,15 +74,12 @@ Whenever Isaac shares what he did:
 
 ## 3. Telemetry & Analytics CLIs
 
-When analyzing site performance, widget volume, or acquisition channels:
+**Operating Rule:** ALWAYS run the live CLIs first whenever asked about recent activity, platform usage, traffic, or user behavior. Only drop down to raw SQL / Redis if an anomaly or specific question requires deeper inspection.
 
 ```bash
-# Guide traffic, widget search volume, OJP costs:
-node scripts/analytics/guide-performance.mjs --days 28 --surface guide --markdown
+# 1. Complete App Telemetry (App searches, user signups, corridors, TCO savings, GA4, GSC, Bing):
+node scripts/analytics/app-performance.mjs --days 7 --ssh-db deploy@155.133.23.54 --gsc-google-cloud-config C:\Users\isaac\.gcloud-endmile-gsc --ga4-google-cloud-config C:\Users\isaac\.gcloud-endmile-analytics --markdown
 
-# App acquisition channels (Direct, LinkedIn, SEO, AI referrals) and corridors:
-node scripts/analytics/app-performance.mjs --days 28 --markdown
-
-# Direct production PostgreSQL query over SSH:
-node scripts/analytics/app-performance.mjs --days 7 --ssh-db deploy@155.133.23.54 --markdown
+# 2. Complete Guide Telemetry (Guide views, widget searches, OJP API calls & costs, Bing & GSC):
+node scripts/analytics/guide-performance.mjs --days 28 --surface guide --ssh-db deploy@155.133.23.54 --gsc-google-cloud-config C:\Users\isaac\.gcloud-endmile-gsc --ga4-google-cloud-config C:\Users\isaac\.gcloud-endmile-analytics --markdown
 ```

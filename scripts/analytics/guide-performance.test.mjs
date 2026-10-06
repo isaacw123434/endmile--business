@@ -150,15 +150,16 @@ test('buildReport joins fixture rows into opportunities', async () => {
       id: 130231837,
       name: "Leicester Magistrates' Court",
     }]);
+    const recentBingDate = `/Date(${Date.now() - 2 * 86400000})/`;
     await writeFixture(fixtureDir, 'bing.json', {
       traffic: [
-        { Date: '/Date(1788480000000)/', Clicks: 1, Impressions: 15 },
+        { Date: recentBingDate, Clicks: 1, Impressions: 15 },
       ],
       queries: [
-        { Query: 'leicester magistrates court parking', Clicks: 1, Impressions: 15, AvgImpressionPosition: 2, Date: '/Date(1788480000000)/' },
+        { Query: 'leicester magistrates court parking', Clicks: 1, Impressions: 15, AvgImpressionPosition: 2, Date: recentBingDate },
       ],
       pages: [
-        { Query: 'https://guide.endmilerouting.co.uk/venues/leicester-magistrates-court-130231837/', Clicks: 1, Impressions: 15, AvgImpressionPosition: 2, Date: '/Date(1788480000000)/' },
+        { Query: 'https://guide.endmilerouting.co.uk/venues/leicester-magistrates-court-130231837/', Clicks: 1, Impressions: 15, AvgImpressionPosition: 2, Date: recentBingDate },
       ],
       crawl: [
         { InIndex: 120, CrawledPages: 10, CrawlErrors: 0, Code2xx: 120 },

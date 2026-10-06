@@ -144,6 +144,36 @@ Would you try one real journey you have done recently and tell me whether the co
 - The strongest early pain is not only booking. It is comparing options under constraints: timings, cost, transfers, disruption, and expense rules.
 - Avoid making the product sound like only a carbon reporting tool. Carbon is useful, but survey responses show stronger initial pain around planning time, cost, uncertainty, and expenses.
 
+### 2026-10-04 Macro-Market Research Synthesis: Expanding the Consultant & Field Profile
+
+**Research question:** Who else shares the travel planning and route checking behavior observed with our high-engagement organic user, and what are our viable acquisition and monetization options?
+
+**Sample:** Analysis of observed telemetry from our organic IT consulting user cross-referenced against UK corporate travel, professional services, and field engineering market research.
+
+**Key Findings:**
+1. **Broader Ecosystem:** The need for daily/frequent multimodal UK route planning extends beyond software consultancies to:
+   - Management & HR consultancies
+   - Regional accountancy and legal audit teams
+   - Field service engineering, utility maintenance, and construction commissioning teams
+   - Public sector inspectorates and academic accreditation bodies
+2. **Operational Roles & Job Titles (Mid-Market UK Firms, 50–300 staff):**
+   - *No "Travel Managers":* Travel coordination falls to operational generalists: **Operations Coordinators, Practice Managers, Resource Managers, Project Support Officers (PSOs), and Executive Assistants (EAs)**.
+   - *Daily Micro-Workflow:* Informal request via Slack/email -> manual collation across 3 tabs (Google Maps driving + Trainline rail + parking/taxi) -> summary pasted into Outlook/Slack -> costs entered into PSA/ERP tools (Kimble, Kantata, NetSuite) under client billing codes.
+   - *Triggers for Daily 1–2 Searches:* Recurring weekly consultant client rotations, budget pre-approvals, and checking connection risks/strikes the day before travel.
+3. **Core Economic & Regulatory Drivers:**
+   - **HMRC 55p AMAP vs Rail TCO Arbitrage:** Mileage recharges (£110+ on a 200mi trip) trigger disputes when clients see cheap headline train fares on Trainline; EndMile proves the true door-to-door TCO (station parking + taxi + transit time).
+   - **Duty of Care & Connection Risk:** Avoiding itineraries with fragile transfers or rail disruptions.
+   - **Scope 3 Category 6 (DEFRA 2026):** Activity-based carbon accounting required for PPN 06/21 public tender compliance.
+4. **Commercial Monetization Filter (Crucial Boundary):**
+   - **High-Burn Vanity Traps (Rejected):** Multi-thousand-pound trade shows/conventions (e.g. Business Travel Show), PR in trade magazines (e.g. *Business Travel News Europe*), and expensive LinkedIn ads (£8-£15 CPC) have **no direct, cost-effective monetization path** for a £19–£49/mo SaaS.
+   - **High-ROI Monetized Channels (Approved):** 
+     - *Direct sniper cold outreach* to named Operations Coordinators, Practice Managers, and EAs.
+     - *High-intent inbound search* targeting pain-led queries (*"train vs car cost calculator UK"*, *"fuel vs train fare calculator"*, *"55p per mile calculator UK"*, *"rail + taxi route cost UK"*).
+     - *In-product PLG viral loops* (watermarked Pre-Trip PDF justification reports attached to client invoices, 1-click mobile itineraries dispatched to consultants).
+     - *Purchasing friction:* Low (£19–£49/mo sits comfortably on coordinator corporate credit cards without IT procurement).
+
+---
+
 ## Source Log
 
 ### 2026-07-03 - Holly Onstenk (ESG & Social Value Lead) - Cold Email Reply
@@ -368,19 +398,28 @@ Would you try one real journey you have done recently and tell me whether the co
 **Acquisition Context:** Discovered organically via Google & Bing UK Search (`google / organic` and brand query `endmile`), clicking "Compare a route" into `https://app.endmilerouting.co.uk`.
 
 **Observed Usage Data & Telemetry:**
-- **Paul Hardy (Power User / B2B Logistics):** 35 searches across 19 sessions and 8 active days (Aug 28 – Sep 15; including new searches on Tuesday Sep 15: Bristol ➔ Wandsworth London and Reading ➔ Telford). 11 saved journeys with advance scheduling (Sep, Oct, Nov 2026). Corridors: Poole/Wimborne base to Oxford, Birmingham, Manchester, London, Telford, Bristol. Regularly compares Drive vs Train vs Taxi door-to-door cost (£26.80 to £137.45) against travel duration.
-  - **Inferred Workflow & Buyer Intent:** 
-    - Dorset Software Services Ltd employs hundreds of software consultants dispatched from their Poole headquarters to client projects across the UK.
-    - Paul's role (`logistics@dorsetsoftware.com`) is coordinating consultant dispatch and approving travel plans.
-    - **Why he uses EndMile:** To find the optimal door-to-door cost (driving mileage + parking vs train + station parking + taxi) for each consultant assignment.
-    - **The Missing Link (Why PDF / Itinerary Export is Critical):** Paul does not travel himself; he plans the route, but then has to *hand off* the itinerary to the consultant and *justify the cost* to internal finance or client billing. A clean 1-click **Shareable Route Itinerary / PDF Cost Breakdown** solves his entire dispatch and expense-approval workflow without EndMile needing to be a booking engine.
+- **Paul Hardy (Power User / B2B Logistics - Forensically Audited 2026-10-04 via PostHog):**
+  - **Lifetime Volume:** 1,626 total events, 109 searches, 85 route detail views, 20 Smart Swaps (`segment_swapped`), 3 deep links out (Google Maps walking / Uber).
+  - **The "Saved Routes" Myth Debunked:** While PostgreSQL shows 13–20 saved routes, PostHog reveals Paul **never clicked the Heart/Save icon intentionally**. In `detail_screen.dart:653`, `_applySwapWithCascade` automatically triggers `_saveCurrentRoute()`. Every save was a silent side-effect of him swapping a leg. Paul has **0 visits to `/saved-routes`** and **0 visits to `/travel-day`**.
+  - **Zero PDF & Share Usage:** Paul has clicked PDF export **0 times**, copied a share link **0 times**, and downloaded a calendar file **0 times**.
+  - **The Real Observed Workflow:** 
+    1. Paul receives a consultant travel request.
+    2. Opens his bookmarked magic link to EndMile.
+    3. Runs the origin $\to$ destination search and inspects the transit legs.
+    4. Uses **Smart Swap** to test realistic consultant alternatives (e.g. swapping a 25-minute bus/walk to a taxi or tube).
+    5. Checks the arrival time and total door-to-door cost on screen.
+    6. **Closes the tab.** He does not distribute itineraries from EndMile; he executes bookings in Dorset Software's internal corporate tool (Navan, TravelPerk, Trainline, etc.) or communicates directly.
+  - **Monetisation Implication:** Paul will never convert via PDF or Saved Route paywalls because he does not touch them. To monetise on-screen feasibility planners like Paul, gating must hit his actual workflow: **monthly search volume caps (e.g. >10 searches/mo)**, **Smart Swap customization paywalls**, or **advance date planning horizons (>14 days)**.
 - **Nick Walsh (B2B/Intercity Driver vs Rail):** Registered 2026-08-22, searched Birmingham Moor Street Station $\to$ Milton Keynes (MK5) with `drive: true, train: true`.
 - **Jasra Mont (Peak Commuter):** Registered 2026-09-04, morning rush-hour search Potters Bar $\to$ Finsbury Park (London) comparing Train vs Bus.
 - **System Performance:** 83/83 app search streams succeeded with HTTP 200 (100% success rate, 0 errors, 0 crashes). Delivered £15.37–£16.54 average savings vs driving and 29.4 kg average CO2 reductions (75–85% less carbon). Total upstream OJP cost across all runs: £2.82.
 
 **Strategic Product & Monetization Takeaway:**
 - EndMile's moat is **not** consumer rail split-ticketing (which is dominated by Trainline/SplitMyFare and has high accreditation friction).
-- EndMile's true commercial wedge is **Multimodal Total Cost of Ownership (Fuel + Parking vs Rail + Taxi)** for corporate travel planning, plus **B2B 'Plan Your Visit' Venue Widgets (£29–£99/mo)** and **Programmatic SEO arrival guides earning parking/train affiliate revenue**.
+- EndMile serves two distinct B2B corporate patterns:
+  1. **The Pre-Booking Feasibility Scratchpad (Paul):** Fast door-to-door cost & Smart Swap comparison before booking in an external TMC (Navan/Perk). Monetised via search quotas or Smart Swap gating.
+  2. **The Billing & Dispatch Workflow:** Generating 1-page Pre-Trip Cost Justifications for client recharges and zero-login mobile itineraries.
+- Plus **B2B 'Plan Your Visit' Venue Widgets (£29–£99/mo)** and **Programmatic SEO arrival guides earning parking/train affiliate revenue**.
 
 ## Follow-Up Action Items & Outbound Log
 
@@ -443,3 +482,28 @@ Would you try one real journey you have done recently and tell me whether the co
    - If no email response after 12 days, place a polite call to Dorset Software reception (`01202 777770`) and ask to speak with Paul Hardy regarding travel planning software tools.
 4. **Phase 3 Co-Branding & Monetization Alignment**:
    - Offer Paul early complimentary access to Phase 3 features (Dorset Software custom logo on PDF headers, custom mileage presets, and admin portal dispatch dashboard) to secure them as our premier B2B case study.
+
+### 2026-10-06 - Organic B2C Visitor (Sheffield S21 -> Derby Museum & Art Gallery)
+**Stage:** Live Production Guide / Organic Search (`ecosia.org`)  
+**Visitor IP / Location:** `91.125.21.88` (`88.21.125.91.dyn.plus.net`, Plusnet residential broadband, Killamarsh / Sheffield)  
+**Landing URL:** `https://guide.endmilerouting.co.uk/venues/derby-museum-and-art-gallery-299497023/`  
+**Context:** Regional visitor researching travel from Sheffield/Killamarsh to Derby Museum & Art Gallery.
+
+**Observed User Action:**
+1. Landed via Ecosia organic search directly on the Derby Museum arrival guide.
+2. Scrolled content and initiated the interactive live travel widget.
+3. Toggled mode filters 4 times to configure preferences.
+4. Typed home postcode character-by-character: `S2` -> `S21` -> `S21 1` -> `S21 1e` -> `S21 1en` (Killamarsh, Sheffield).
+5. Selected autocomplete place suggestion for *Station Rd, Killamarsh, Sheffield S21 1EN*.
+6. Clicked **Compare Routes**; backend streaming search returned 6 options in 3.4s (HTTP 200).
+7. Spent extended time reviewing route cards (4 `page_engaged` heartbeats) without clicking out to affiliate booking links (`cta_click = 0`).
+
+**Mode Constraints Sent:**
+- `excludedModes: ["bus", "coach", "cycling", "taxi"]`
+- Focused strictly on **Direct Driving vs Rail / Park & Ride**.
+
+**Routing Output & Quality Assessment:**
+- **Drive Option (Winner on Time & Convenience):** 54 mins door-to-door (43m drive via M1 south + 6m walk). Matched directly to **Ford Street car park** (`cp_derby_10`), 452m from museum, with an exact **£3.90** parking tariff calculated (£22.93 total TCO including fuel; 11.7 kg CO₂).
+- **Rail / Park & Ride Option (Winner on Carbon):** Killamarsh -> Chesterfield Station (20m drive) -> direct EMR train to Derby (19m rail, £11.86–£20.26) -> walk 1.6 km through Derby (23m walk). 1h 36m total, 5.2 kg CO₂ (>55% carbon reduction).
+- **Takeaway:** System performed flawlessly. Provided an exact, realistic choice between fast direct driving with parking tariff lookup vs rail park-and-ride. Shows that organic guide visitors treat the widget as an authoritative feasibility and pricing calculator.
+

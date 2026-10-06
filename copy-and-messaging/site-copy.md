@@ -58,13 +58,27 @@ Why planning UK business travel is broken.
 
 ---
 
-## Section 4: Transparent SaaS Pricing
+---
 
-| Tier | Price | Ideal For | What's Included |
+## Section 4: Dual SaaS Pricing Architecture
+
+### 4.1 'Plan Your Visit' Venue Widget SaaS (`/venue-widget`)
+*Self-serve monthly or annual billing on corporate card. 14-day free pilot on live venue website. £0 setup fees.*
+
+| Tier | Monthly Price | Annual Price | Included Searches | Ideal For | Key Features |
+|---|---|---|---|---|---|
+| **Starter** | **£19 / mo** | **£16 / mo** (£190/yr) | 150 searches / mo | Small theatres, historic houses, independent galleries (<100 seats) | 1-line HTML embed, live door-to-door driving vs rail, station parking tariffs, CAZ warnings, £0 setup fee. |
+| **Growth** *(Recommended)* | **£49 / mo** | **£39 / mo** (£468/yr) | 750 searches / mo | Mid-sized civic theatres (300–800 seats), regional museums & attractions | Everything in Starter + multi-operator TOC logos, mode sector filters, Julie's Bicycle Scope 3 carbon export, email support. |
+| **Scale** | **£119 / mo** | **£99 / mo** (£1,188/yr) | 3,000 searches / mo | Major concert halls, multi-venue arts centres, high-footfall attractions | Everything in Growth + custom CSS styling, priority routing SLA, fair overage rates (£12 per 1,000 searches). |
+
+### 4.2 Consultant Travel Dispatch & Pre-Trip Justification SaaS (`/platform` & Web App)
+*Defend billing margins against client travel invoice disputes and eliminate multi-tab checking admin.*
+
+| Tier | Price | Ideal For | Included Capabilities |
 |---|---|---|---|
-| **Free Explorer** | **£0** | Occasional travellers | Unlimited multimodal searches, web route previews, 3 free PDF exports. |
-| **Pro Coordinator** | **£19 / month** | Solo consultants & dispatchers | Unlimited Pre-Trip Justification PDFs, calendar (.ics) sync, client invoice summary tables, saved route presets. |
-| **Teams & Venues** | **£49 / month** | Consultancies (up to 5 seats) & Venues | Co-branded PDF reports (Company Logo), 1-line embeddable venue travel widget, Julie's Bicycle Scope 3 carbon report exports. |
+| **Free Planner** | **£0** | Occasional travellers & trial | 10 door-to-door searches / month, on-screen TCO calculations, driving vs rail baseline comparison. |
+| **Pro Planner** | **£19 / month** | Solo consultants, EAs & dispatchers | Unlimited door-to-door searches, Smart Swap leg customization, unlimited audit-ready Pre-Trip Justification PDFs (HMRC 55p AMAP vs rail), calendar (.ics) sync, digital itinerary sharing. |
+| **Teams** | **£49 / month** | Consultancies & field practices (up to 3 seats) | Co-branded PDF justification reports with company logo, centralized corporate credit card billing, multi-consultant dispatch boards. |
 
 ---
 
@@ -78,3 +92,19 @@ A: No. Consultants receive a lightweight, zero-login mobile web link with callin
 
 #### Q: How does the venue widget compare to You. Smart. Thing. (YST)?
 A: YST targets five-figure enterprise transport authority tenders with £2,250 minimum setup fees and heavy iframe embeds. EndMile is built for the 99% unserved mid-market: £0 setup fee, £19–£49/month, lightweight fluid mobile drawers, and automated Arts Council England green reporting.
+
+#### Q: What happens if a venue exceeds its monthly search limit?
+A: On the Scale tier, overages are billed fairly at £12 per 1,000 searches. On Starter and Growth, you receive an automated notification at 80% and 100% capacity with 1-click tier upgrades.
+
+---
+
+## Section 6: Thought Leadership Blog Engine (`/blog`)
+
+The marketing site maintains an authoritative blog at `endmilerouting.co.uk/blog` to build organic SEO authority and founder credibility:
+
+1. **`150 journeys, 2,466 miles. What the early EndMile data shows.`** (`/blog/150-journeys-2466-miles-what-early-endmile-data-shows`)
+   - *Core Angle:* Early platform telemetry analysis showing £25.13 average savings per trip, 71% emissions reduction, and £40+ savings on regional corridors between 150 and 250 miles.
+   - *CTA:* Invite business travellers to benchmark one recent route.
+2. **`Planning a UK journey should not take 3 apps`** (`/blog/planning-a-uk-journey-shouldnt-take-3-apps`)
+   - *Core Angle:* Google Maps hides fuel/parking; Trainline stops at the station; Citymapper won't go intercity. EndMile proves Ripon to West Jesmond saves £3.01 and 61% CO₂ by taking rail via Northallerton.
+   - *CTA:* Test one route to see door-to-door cost breakdown.

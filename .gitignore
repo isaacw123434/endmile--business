@@ -20,3 +20,8 @@ tmp/
 .env
 .env.local
 .env.*.local
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class

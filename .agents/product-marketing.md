@@ -40,23 +40,34 @@
 3. **Data-as-a-Service (DaaS)**: Retained anonymised UK travel search intent telemetry for transport and parking planners.
 
 ## Target Audience
-**Primary B2B Target:** UK venue managers, event operations leads, theatre directors, stadium logistics teams, and university visitor management.
+**Primary B2B Target:** 
+1. **UK Venues & Cultural Destinations:** Venue managers, event operations leads, theatre directors, stadium logistics teams, and university visitor management.
+2. **Professional Services, Consultancies & Field Operations:** Operations coordinators, executive assistants, practice managers, and logistics dispatchers at UK software consultancies, management consultancies, engineering field service firms, and legal/accountancy practices (50–500 employees).
+
 **Primary B2C Target:** UK event-goers, hospital visitors, jury/court attendees, stadium fans, and regional travellers seeking accurate door-to-door travel and parking options.
 
-**Decision-makers (B2B):** Venue managers, marketing heads, operations directors looking to eliminate attendee parking confusion and reduce "how do I get there?" customer support tickets.
+**Decision-makers (B2B):** 
+- Venue Directors, Heads of Visitor Experience, and Operations Leads seeking to eliminate website bounce to Google Maps, enforce accessible step-free guidance, satisfy council crowd dispersal licensing, warn drivers of Clean Air Zones (CAZ), and automate Scope 3 / Green Book reporting.
+- Operations managers, travel dispatchers, and practice leads looking to protect billing margins against disputed travel recharges and cut travel-checking admin.
 
 **Primary use cases:**
-- **For Venues (B2B)**: Embedding a live, interactive "Plan Your Visit" widget on the venue website that routes visitors from anywhere in the UK, calculates driving vs rail costs, and highlights preferred car parks and Park & Ride hubs.
+- **For Venues (B2B)**: Embedding a live, lightweight journey planner directly on their "Visit" or "Find Us" page in 1 line of code. It keeps visitors on-site, provides verified step-free transit under the Equality Act 2010, guides drivers away from congested residential lanes to designated Park & Ride hubs, flags late-night egress transit cut-offs for gig-goers, and generates verified DEFRA Scope 3 carbon telemetry.
+- **For Consultancies & Field Teams (B2B)**: Evaluating driving (HMRC 55p AMAP) vs rail door-to-door TCO in one search, generating 1-click Pre-Trip Justification PDFs to defend client invoice recharges, and sending zero-login mobile itineraries to travelling staff.
 - **For Consumers (B2C)**: Finding verified, hyper-local arrival guides with exact parking tariffs, station walks, and regional comparison matrices before visiting high-friction UK destinations.
 - **For Travel Decision Making**: Comparing full door-to-door cost (driving + parking vs rail + last mile) before committing to a journey.
 
 ## Personas
-| Persona | Cares about | Challenge | Value we promise |
-|---------|-------------|-----------|------------------|
-| Venue / Operations Manager | Reducing parking chaos, attendee delays, customer support calls | Static "How to Find Us" text pages leave visitors confused about parking and transit | Drop-in interactive "Plan Your Visit" widget that answers all travel questions |
-| Event / Stadium Director | Visitor experience, VIP/accessible transport, sustainability goals | Attendees arrive late or park illegally in local residential streets | Promotes public transit, Park & Ride, and designated parking with live routing |
-| Event Goer / Visitor | Finding the cheapest/easiest way to reach a venue without parking fines | Unsure whether to drive or take the train; doesn't know local parking fees | Complete door-to-door cost, time, parking, and transit comparison in one view |
-| Corporate Travel / Transport Planner | Understanding real door-to-door travel tradeoffs | Tools only show single legs (train-only or drive-only) | Full multimodal journey cost and carbon intelligence |
+| Persona / Archetype | Operational Pain & Triggers | What They Care About | Value We Promise |
+|---------------------|-----------------------------|----------------------|------------------|
+| **1. Theatres & Performing Arts** (Director / Visitor Services) | Bouncing patrons to Google Maps loses entrance door context and station walking links; accessibility booking hesitation. | On-site patron retention, step-free access confidence, Julie's Bicycle (if ACE NPO) | 1-line interactive widget with door-to-door transit, verified step-free routes, and automated Scope 3 exports (£19–£49/mo). |
+| **2. Gigs, Music Halls & Arenas** (Venue Manager / Licensing Ops) | 23:00 curfew transit drop-offs; council licensing scrutiny over street congestion and crowd noise. | Late-night transit visibility, smooth crowd dispersal, council licence compliance | Real-time last train/tram departures, arterial dispersal routing, pre-planned egress itineraries. |
+| **3. Urban Museums & Galleries** (Head of Visitor Experience) | Visiting drivers hit with surprise £8–£12.50 CAZ/ULEZ charges and £20+ multi-storey fees; elderly/disabled access needs. | Visitor arrival experience, Clean Air Zone compliance, Equality Act step-free routing | Integrated CAZ alerts, direct navigation to suburban Park & Ride hubs, step-free station walking maps. |
+| **4. Rural Castles, Estates & Gardens** (General Manager / Operations) | Missing out on non-driver tourists; peak bank holiday traffic gridlocking narrow rural single-track lanes. | Expanding non-driver catchment, highway traffic management, protecting estate access | Mainline rail-to-bus/taxi connection views, locked arterial routing to designated estate gates and overflow bays. |
+| **5. Family Attractions & Zoos** (Director of Guest Operations) | 10:00 AM ingress traffic tailbacks on A-roads; family budget sensitivity to fuel and parking fees. | Morning ingress smoothing, overflow parking management, family cost transparency | Highway approach routing, off-peak rail vs motoring cost comparisons, green visitor discounts (Good Journey). |
+| **6. University Campuses** (Admissions / Estates Travel Lead) | Open day parent parking gridlock at 09:30; Section 106 council planning conditions requiring modal shift proof. | Recruitment first impressions, campus building wayfinding, Section 106 travel plan telemetry | Multi-site door-to-door navigation from train stations, continuous travel mode telemetry proving modal shift. |
+| **Logistics Coordinator / EA** ("Paul Hardy") | Client AP disputes £110 mileage recharges; manual 3-app route checking takes 15–30m per trip. | Dispatched consultant routes, billing margin protection, preventing invoice disputes | 1-search TCO comparison, 1-click audit-ready Pre-Trip PDF for client invoices, instant mobile itinerary dispatch. |
+| **Travelling Consultant / Field Engineer** | Fragmented legs, missed connections, hidden parking walk times, unclear expense rules. | Clear itinerary, reliable connections, zero out-of-pocket dispute | Clean mobile itinerary with exact station parking, platform buffers, and in-policy route clarity. |
+| **Event Goer / Visitor** | Unsure whether to drive or take train; doesn't know local parking fees or CAZ rules. | Cheapest/easiest way to reach venue without fines | Complete door-to-door cost, time, parking, and transit comparison in one view. |
 
 ## Problems & Pain Points
 **Core problem:** UK business journey planning is fragmented. Employees have to stitch together separate apps for maps, trains, taxis, buses, driving costs, and carbon.
@@ -87,7 +98,28 @@
   - We target the **unserved 99% mid-market (4,992 UK cultural & visitor venues)** with NO widget installed.
   - Wedge: £0 setup fee, 2-minute 1-line embed, self-serve £19–£49/month on corporate credit card, lightweight mobile-first layout, and automated Julie's Bicycle Scope 3 carbon exports for Arts Council England (ACE) NPOs.
 - **Active Go-To-Market Execution:**
-  - Founder is actively working through `data/venues/unserved_prospects.csv` in Excel, finding named operational decision-makers (Head of Visitor Experience / Operations Director) via website staff directories and LinkedIn, and executing personalized sniper outreach (10–15/day) using [`sales-and-marketing/venue-widget-outbound-playbook.md`](sales-and-marketing/venue-widget-outbound-playbook.md).
+  - Founder is actively working through `C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx` in Excel, selecting approved, named operational decision-makers (Head of Visitor Experience / Operations Director / General Manager) and executing personalized multi-archetype outreach via `scripts/outreach/send_venue_outreach.py`.
+
+### 3. What UK Venues Need Beyond Carbon (The YST & Transit Demand Reality)
+Non-NPO cultural and commercial visitor destinations do not have mandatory Arts Council England (ACE) Julie's Bicycle Scope 3 reporting requirements. When pitching venue directors, transit platforms and EndMile sell six operational and regulatory necessities:
+1. **Council Planning Permission & Section 106 Modal Shift**: Venues seeking capacity increases or planning approvals must submit Green Travel Plans demonstrating active reduction of private vehicle trips and non-car modal share.
+2. **Licensing & Crowd Dispersal / Curfew Egress**: Music venues, arenas, and event halls risk noise complaints and licence enforcement at 23:00 curfew. Showing live last train/tram departures and directing fans to arterial corridors prevents street congestion and police scrutiny.
+3. **Accessibility & Equality Act 2010 Compliance**: 14.1 million disabled people in the UK. Venues without verified step-free public transport and Blue Badge parking guidance suffer ticket booking hesitation.
+4. **Clean Air Zones (CAZ), ULEZ & Parking Tariffs**: In cities like Birmingham, Bristol, Bath, and London, driving patrons face surprise £8–£12.50 daily penalties and £20+ multi-storey fees. Venues need automated Park & Ride routing to safeguard the visitor experience.
+5. **Highway Authority TTROs & Event Ingress Control**: Family attractions, zoos, and greenfield events face severe A-road tailbacks at 10:00 AM ingress. Lock-in navigation to approved estate roads and overflow fields prevents residential road rage and police warnings.
+6. **Rural Catchment Expansion**: Country estates, castles, and historic gardens miss out on non-driver tourists and students. Linking rail with local bus shuttles and fixed-fare taxis unlocks the car-free market.
+
+### 4. Multi-Archetype A/B Testing Matrix (Outbound Email)
+| Archetype | Variant A (Operational / Egress / Access) | Variant B (Alternative Regulatory / Commercial) |
+|---|---|---|
+| **Theatres & Arts** | `THEATRE_JOURNEY_A` (Digital retention vs bouncing to Google Maps) | `THEATRE_ACCESS_B` (Equality Act step-free transit & Blue Badge parking) |
+| **Gigs & Music Venues** | `GIG_EGRESS_A` (Late-night transit curfews & last train cut-offs) | `GIG_DISPERSAL_B` (Council licensing crowd dispersal & noise mitigation) |
+| **Arts NPOs** | `THEATRE_SCOPE3_A` (Julie's Bicycle Scope 3 automated reporting) | `THEATRE_GREENBOOK_B` (Theatre Green Book Operations standard compliance) |
+| **Urban Museums & Galleries** | `MUSEUM_CAZ_A` (Clean Air Zone alerts & Park & Ride tariffs) | `MUSEUM_ACCESS_B` (Accessible step-free wayfinding & door-to-door confidence) |
+| **Rural Estates & Heritage** | `HERITAGE_CATCHMENT_A` (Unlocking car-free tourists via rail-to-bus links) | `HERITAGE_LANES_B` (Steering traffic away from narrow rural single-track lanes) |
+| **Family Attractions & Zoos**| `ATTRACT_INGRESS_A` (Smoothing 10am peak morning arrival bottlenecks) | `ATTRACT_COST_B` (Family motoring vs off-peak rail cost transparency) |
+| **Greenfield / Event Venues** | `ATTRACT_HIGHWAY_A` (Council TTRO & locked approach gate navigation) | `ATTRACT_GREEN_B` (Good Journey / Green Tourism car-free visitor incentives) |
+| **University Campuses** | `UNI_OPENDAY_A` (Relieving 09:30 open day parent parking gridlock) | `UNI_CAMPUS_B` (Station-to-building campus wayfinding) / `UNI_TRAVELPLAN_A` (S106) |
 
 ## Differentiation
 **Key differentiators:**
@@ -132,9 +164,9 @@
 - "EndMile helps businesses plan UK travel by comparing routes by true door-to-door cost, time, journey risk and carbon impact."
 - "EndMile does."
 
-**Words to use:** Door-to-door, real cost, UK business travel, journey risk, carbon, Scope 3, compare, before employees travel, route trade-offs, first mile, last mile.
+**Words to use:** Door-to-door, real cost, UK business travel, journey risk, carbon, Scope 3, compare, before employees travel, route trade-offs, first mile, last mile, step-free, Clean Air Zone, Park & Ride, crowd dispersal.
 
-**Words to avoid:** Consumer-only positioning, fastest-only messaging, vague sustainability claims without route-level proof.
+**Words to avoid:** "Visitors rushing through the doors", "relieving box office parking emails", "flustered patrons at the 2-minute bell", consumer-only positioning, fastest-only messaging, vague sustainability claims without route-level proof.
 
 **Glossary:**
 | Term | Meaning |
