@@ -30,3 +30,13 @@ notes/
   - Copy ideas $\rightarrow$ [`copy-and-messaging/`](../copy-and-messaging/)
   - Customer quotes $\rightarrow$ [`.agents/customer-feedback.md`](../.agents/customer-feedback.md)
   - Strategic decisions $\rightarrow$ [`.agents/decisions.md`](../.agents/decisions.md)
+
+---
+
+## 3. Active Strategic Advisory Memos
+
+- [`notes/advisory/2026-10-02-executive-brief-b2b-go-to-market-strategy.md`](advisory/2026-10-02-executive-brief-b2b-go-to-market-strategy.md) — *Executive Brief: B2B Go-To-Market & Acquisition Strategy for Logistics Coordinators (Report 1)*
+- [`notes/advisory/2026-10-02-b2b-gtm-monetisation-acquisition-strategy-report-2.md`](advisory/2026-10-02-b2b-gtm-monetisation-acquisition-strategy-report-2.md) — *In-Depth Research: Macroeconomic, Regulatory & Microeconomic GTM Analysis (Report 2)*
+- [`notes/advisory/2026-09-25-strategic-status-and-growth-advisory.md`](advisory/2026-09-25-strategic-status-and-growth-advisory.md) — *Advisory Memo: Strategic Positioning, Infrastructure Economics & Dual-Wedge Growth*
+
+

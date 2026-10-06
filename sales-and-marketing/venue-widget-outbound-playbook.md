@@ -76,19 +76,22 @@ $$\text{Monthly Widget Searches} \approx \text{Arrival Page Views} \times 8\%\te
 - **Operational Reality:**
   - Strict arrival window: 80% of attendees arrive in a compressed 45-minute window (6:45 PM – 7:30 PM).
   - High friction around evening city centre parking: confusing multi-storey tariffs, evening event flat rates, Clean Air Zone (CAZ) charges.
-- **The Front-Line Pain:**
-  - Box office and front-of-house staff inundated with phone calls: *"Where should I park?", "Is Q-Park open late?", "Do I pay the CAZ fee?"*
-  - Late-curtain disruptions: stuck drivers arriving 10 minutes after curtain up cause seating holds, auditoriums opening mid-performance, and lost bar revenue.
-- **The Governance / Grant Pain:**
-  - Arts Council England (ACE) National Portfolio Organisations (NPOs) must calculate and report Audience Travel Scope 3 Carbon to **Julie's Bicycle**. Most theatres do this via clumsy post-show email surveys with 4% response rates.
+- **The Front-Line Commercial & Operational Pain:**
+  - **Lost Secondary Spend**: When audience members get stuck in last-mile traffic or circle for city centre parking, they arrive flustered at the 2-minute call. They rush straight into the auditorium, completely skipping the bar, programmes, merchandise, and concessions—which is where regional venues make their highest profit margins (ticket revenue largely flows to touring producers and artists).
+  - **Late-Curtain Disruptions**: Patrons delayed by city parking hunts arrive 10 minutes into the performance, forcing front-of-house to enforce auditorium holds or disrupt Act 1 with late seating in the dark.
+  - **Website Bounce**: Static directions or Google Maps links bounce ticket holders off the venue's site to third-party apps that don't know the venue's entrance gates, local road closures, or preferred parking.
+- **The Governance & Grant Pain:**
+  - Arts Council England (ACE) National Portfolio Organisations (NPOs) and Theatre Green Book participants must track and report Audience Travel Scope 3 Carbon to **Julie's Bicycle**. Audience travel represents **>80% of the venue's total carbon footprint**, yet venues currently guess this through clumsy post-show email surveys with 3–4% response rates.
 - **Target Personas / Job Titles:**
-  - *Head of Visitor Experience / Operations Director*
-  - *Front of House Manager / Box Office Manager*
   - *Executive Director / Chief Executive*
+  - *Head of Visitor Experience / Operations Director*
+  - *Commercial Director / Front of House Manager*
+  - *Sustainability / Environmental Lead*
 - **EndMile Value Hook:**
-  - Deflects pre-show parking phone calls.
-  - Door-to-door rail vs driving comparison prevents late-curtain arrivals.
-  - Automated Julie's Bicycle Scope 3 audience travel carbon data export.
+  - Increases pre-show dwell time and protects high-margin bar/concession spend by helping audiences plan travel and arrive 30–45 minutes earlier.
+  - Door-to-door transit and parking certainty eliminates late-curtain arrivals and seating holds.
+  - 1-line script keeps visitors on-site instead of bouncing them to external apps.
+  - Automated Julie's Bicycle Scope 3 audience travel carbon data export directly from real visitor journey telemetry.
 - **Recommended Tier:** Standard (£19/mo) or Growth (£49/mo).
 
 ---
@@ -96,24 +99,22 @@ $$\text{Monthly Widget Searches} \approx \text{Arrival Page Views} \times 8\%\te
 ### Archetype 2: Regional Civic & University Museums & Art Galleries
 
 - **Target Universe:** 2,418 qualified UK venues in OSM dataset with active websites.
-- **Examples:** Bar Convent Museum York, Bowes Museum Barnard Castle, Kelvingrove Art Gallery Glasgow, National Museum of the Royal Navy Portsmouth, Royal Armouries Leeds, Fitzwilliam Museum Cambridge, Ashmolean Museum Oxford.
-- **Operational Reality:**
-  - High proportion of family visitors, coach parties, and tourists unfamiliar with local geography.
-  - Weekend morning surges (10:00 AM – 12:00 PM).
-- **The Front-Line Pain:**
-  - Reception and information desks overwhelmed by repetitive arrival inquiries: nearest station walks, blue badge parking spaces, bus connections.
-  - Accessibility anxiety: visitors calling ahead to check step-free station routes, walking distances, and parking proximity.
-- **The Governance / Grant Pain:**
-  - Local authority net-zero 2030 targets and DCMS / ACE environmental reporting mandates.
-  - Pressure to prove public transit accessibility and decarbonise visitor travel.
+- **Examples:** Bar Convent Museum York, Bowes Museum Barnard Castle, Kelvingrove Art Gallery Glasgow, National Museum of the Royal Navy Portsmouth, Royal Armouries Leeds, Fitzwilliam Museum Cambridge, Compton Verney.
+- **Sub-Types:**
+  1. *Urban / City Centre Museums & Galleries (e.g. Leeds, Oxford, Manchester, London, Bristol, Bath)*
+  2. *Rural Heritage Estates, Historic Mansions & Country Parks (e.g. Compton Verney, Bowes Museum)*
+- **The Front-Line Operational & Regulatory Pain:**
+  - **Urban Pains:** Drivers face surprise £8–£12.50 daily Clean Air Zone (CAZ/ULEZ) charges or £20+ city centre multi-storey parking fees. Venues need to direct motorists toward suburban Park & Ride hubs or direct rail corridors before they enter congested city rings.
+  - **Accessibility & Equality Act 2010 Pains:** 14.1M disabled individuals in the UK; elderly visitors, wheelchair users, and school trips need guaranteed step-free transit routes, verified walking distances from station exits, and Blue Badge bay locations upfront to eliminate booking hesitation.
+  - **Rural / Estate Pains:** Rural heritage properties miss out on non-driving tourists and students who assume the estate is inaccessible without a car. Connecting mainline railway stations with local connecting buses and fixed-rate station taxis expands the visitor catchment pool. On peak bank holidays, single-track country lanes become choked with visitor traffic.
 - **Target Personas / Job Titles:**
   - *Head of Visitor Services / Visitor Experience Manager*
   - *Operations Manager / Commercial Director*
-  - *Marketing & Audience Development Director*
+  - *Access & Inclusion Officer / Sustainability Lead*
 - **EndMile Value Hook:**
-  - Answers all parking tariffs, blue badge options, and train station walking times in one live widget.
-  - Blue badge and step-free transit routing built-in.
-  - Zero IT burden: drop-in 1-line script that matches the museum's existing brand styles.
+  - Alerts visiting motorists to Clean Air Zones and routes them to suburban Park & Ride hubs with live tariff transparency.
+  - Built-in step-free transit routes and Blue Badge parking locations for Equality Act compliance.
+  - Bridges the rural transit gap by linking rail with local bus/taxi connections, expanding car-free visitor footfall.
 - **Recommended Tier:** Standard (£19/mo) or Growth (£49/mo).
 
 ---
@@ -121,20 +122,22 @@ $$\text{Monthly Widget Searches} \approx \text{Arrival Page Views} \times 8\%\te
 ### Archetype 3: Regional Visitor Attractions, Heritage Sites & Wildlife Parks
 
 - **Target Universe:** 1,197 qualified UK venues in OSM dataset with active websites.
-- **Examples:** Jorvik DIG, Parceval Hall Gardens, SS Great Britain, Black Country Living Museum, Yorkshire Wildlife Park, Beamish Museum, Prior Park Bath.
-- **Operational Reality:**
-  - Heavily car-dependent, often located in edge-of-town, rural, or historic urban settings with constrained road access.
-  - Extreme peaks on bank holidays, sunny weekends, and school holidays.
-- **The Front-Line Pain:**
-  - On-site car park bottlenecks, tailbacks on local access roads, and complaints from local residents / parish councils.
-  - Visitors missing timed-entry tickets because they got stuck in last-mile traffic or struggled to find overflow parking.
-  - Inquiries regarding EV charger availability, coach drop-off points, and rural public bus connections.
+- **Examples:** Yorkshire Wildlife Park, Black Country Living Museum, Beamish Museum, Prior Park Bath, Twycross Zoo, Banham Zoo.
+- **Sub-Types:**
+  1. *Family Zoos, Safari Parks & Commercial Attractions*
+  2. *Greenfield Outdoor Attractions, Farm Parks & Heritage Railways*
+- **The Front-Line Operational & Commercial Pain:**
+  - **10:00 AM Morning Ingress Bottlenecks:** Unlike evening theatres, family attractions experience extreme morning arrival spikes (10:00–11:30 AM). Queuing traffic backs up onto arterial A-roads, triggering police warnings and local authority highway enforcement notices.
+  - **Family Motoring Cost Uncertainty:** For visiting families, petrol plus on-site parking (£15–£20) is a major expense. Lack of door-to-door transit cost transparency causes drop-off during the advance ticket checkout flow.
+  - **Temporary Traffic Regulation Orders (TTROs) & Seasonal Events:** Major outdoor events require strict adherence to council temporary traffic routes and designated event overflow car parks; generic navigation apps steer drivers into closed lanes or residential streets.
 - **Target Personas / Job Titles:**
   - *Director of Operations / General Manager*
-  - *Visitor Experience Manager / Head of Commercial Operations*
+  - *Visitor Operations Manager / Head of Commercial Operations*
+  - *Event Logistics Coordinator / Marketing Director*
 - **EndMile Value Hook:**
-  - Dynamically guides visitors to Park & Ride facilities, public rail corridors, or designated overflow car parks before they hit the access road.
-  - Displays real door-to-door driving costs (fuel + parking) alongside train/bus options.
+  - Steers visiting families to designated approach corridors, Park & Ride, and overflow car parks before they hit the access road, flattening morning arrival peaks.
+  - Displays upfront motoring costs (fuel + parking) alongside family train fares to give booking confidence.
+  - Locks approved council TTRO routes and specific event entrance gate pins directly into the visit page embed.
 - **Recommended Tier:** Growth (£49/mo) or Scale (£119/mo).
 
 ---
@@ -143,21 +146,21 @@ $$\text{Monthly Widget Searches} \approx \text{Arrival Page Views} \times 8\%\te
 
 - **Target Universe:** 423 qualified UK institutions in OSM dataset with active websites.
 - **Examples:** University of Leeds, University of Manchester, Bristol, Derby, Solent, Royal Central School of Speech and Drama.
-- **Operational Reality:**
-  - 4 to 6 massive Open Days per year, plus graduation weeks and academic conferences.
-  - 5,000 to 15,000 visitors arriving within a 2-hour window on a Saturday morning.
-- **The Front-Line Pain:**
-  - Campus car parks fill up within 30 minutes; campus security and parking attendants face angry parents and snarled surrounding arterial roads.
-  - Conflicting travel instructions across disparate faculty pages, PDF maps, and generic Google Maps pins.
-- **The Governance / Grant Pain:**
-  - Strict Higher Education Decarbonisation and Campus Masterplan modal split commitments (mandating 70%+ public transit arrival).
+- **Sub-Types:**
+  1. *Undergraduate Open Days & Graduation Ceremonies*
+  2. *Campus Masterplans & Section 106 Sustainable Travel Plans*
+- **The Front-Line Operational & Regulatory Pain:**
+  - **Saturday Parent Ingress Chaos:** 5,000 to 15,000 parents and prospective students arrive within a 2-hour Saturday morning window. Barrier car parks fill by 9:15 AM, creating gridlock across city ring roads and ruining the student recruitment experience.
+  - **Multi-Site Campus Wayfinding:** Mainline rail journeys drop visitors at the city centre station with zero clarity on how to reach specific faculties, satellite campuses, or halls of residence.
+  - **Section 106 Planning Compliance:** Universities expanding campus facilities must legally demonstrate verified reductions in single-occupancy vehicle commutes under local planning authority agreements.
 - **Target Personas / Job Titles:**
-  - *Head of Events & Conferencing / Student Recruitment Lead*
+  - *Head of Student Recruitment / Events & Conferencing*
   - *Campus Travel & Sustainable Transport Manager*
-  - *Head of Facilities / Estates Operations*
+  - *Director of Estates / Facilities Operations*
 - **EndMile Value Hook:**
-  - Dedicated "Open Day Travel Hub" embed routing parents directly to designated Park & Ride or university satellite car parks, not gridlocked main campus gates.
-  - Live train fare and walking timetable integration reduces parental driving habit.
+  - Embeddable Open Day Travel Planner guiding parents directly to satellite Park & Ride hubs, park-and-walk zones, and direct rail connections.
+  - Door-to-door routing terminating at specific faculty entrance doors rather than generic city pins.
+  - Continuous, verified modal split telemetry (active, rail, bus) to satisfy council Section 106 planning requirements without manual annual surveys.
 - **Recommended Tier:** Scale (£119/mo).
 
 ---
@@ -175,195 +178,119 @@ $$\text{Monthly Widget Searches} \approx \text{Arrival Page Views} \times 8\%\te
 
 ---
 
-### 3.2 Modular Email Matrix (Mix & Match by Archetype)
+### 3.2 Modular Email Construction Kit (Mix & Match by Sector)
 
 Use this modular matrix to compose customized emails in seconds:
 
 #### Slot 1: Subject Line Bank (Choose One)
 - `visitor directions`
 - `getting here page`
-- `parking queries`
-- `curtain times` *(for theatres)*
-- `weekend visitor parking` *(for museums/attractions)*
-- `open day directions` *(for universities)*
+- `plan your visit`
+- `{{venue_name}} directions`
 
 #### Slot 2: The Observation Hook (Choose One by Archetype)
-- **Theatre Hook:** `Noticed the visitor directions on {{domain}} mention nearby parking for evening shows.`
-- **Museum Hook:** `Saw the visit page on {{domain}} outlining station walks and local car parks.`
-- **Attraction Hook:** `Took a look at the visitor arrival guide on {{domain}}.`
-- **University Hook:** `Looked at the campus travel directions on {{domain}} ahead of upcoming visitor days.`
+- **Theatre Hook:** `Looking at {{venue_name}}'s "Getting Here" page, visitors planning their trip currently have to read through static text paragraphs and jump between map apps and train timetables.`
+- **Museum Hook:** `Taking a look at the visitor guide on {{venue_name}}'s website, day visitors currently have to sort through multiple text bullet points to compare driving vs public transit.`
+- **Attraction Hook:** `Looking at the arrival advice on {{venue_name}}'s website, families planning a day out currently have to manually cross-reference driving routes, parking advice, and train connections across different tabs.`
+- **Live Music Hook:** `For evening gigs finishing after 10:30 PM at {{venue_name}}, out-of-town attendees often struggle to check return train and bus times in advance.`
 
-#### Slot 3: The Operational Problem Injection (Choose One by Archetype)
-- **Theatre Pain:** `With evening curtain times, front-of-house teams usually get hit with the same questions about multi-storey rates, Clean Air Zone charges, and walking times from the station—and late arrivals still disrupt the first act.`
-- **Museum Pain:** `Reception desks often spend the first two hours every morning answering repeated calls about parking charges, blue badge bays, and walking times from the station.`
-- **Attraction Pain:** `On busy weekends and school holidays, visitors navigating car park capacity and last-mile driving create avoidable arrival congestion and late entries.`
-- **University Pain:** `On open days, directing thousands of visiting families to the correct campus car parks without snarling local roads is always a headache for security.`
+#### Slot 3: The Credibility / Solution Drop (Choose One)
+- **General / Travel Solution:** `We built EndMile as a lightweight, 1-line trip planner for UK venues. Ticket holders simply type their postcode and instantly get door-to-door transit times, station walks, and car parks directly on your page.`
+- **The Rural Transit Angle:** `EndMile embeds a 1-line route planner connecting mainline rail arrivals with local onward travel and station taxis directly on your website.`
+- **The Arts / Julie's Bicycle Angle (NPOs Only):** `It embeds in one line, guides audiences to direct transit or preferred car parks, and passively logs Scope 3 audience travel carbon data for Julie's Bicycle reporting.`
 
-#### Slot 4: The Credibility / Solution Drop (Choose One)
-- **General / Travel Solution:** `We built a lightweight 1-line "Plan Your Visit" widget for UK venues that compares door-to-door driving costs and parking tariffs against live train and bus times, keeping visitors on your site.`
-- **The Arts / Julie's Bicycle Angle:** `It embeds in one line, guides audiences to preferred car parks or direct trains, and automatically tracks Scope 3 audience travel carbon for Julie's Bicycle reporting.`
-
-#### Slot 5: The Low-Friction Ask CTA (Choose One)
-- `Worth sending a 2-minute preview of how it looks for {{venue_name}}?`
-- `Open to seeing a quick 2-minute preview for {{venue_name}}?`
-- `Would a drop-in preview be useful to see?`
+#### Slot 4: The Low-Friction Ask CTA (Referencing the Visual Mockup)
+- `I went ahead and mocked up how this looks on your actual visit page (see attached screenshot). Would you be open to trying a live preview?`
+- `I attached a quick mockup showing how it sits on your website. Would this be useful for {{venue_name}}?`
+- `I mocked up how this looks on {{venue_name}}'s visit page (attached). Worth sending over a quick preview link to test?`
 
 ---
 
-### 3.3 Ready-to-Send 3-Touch Campaigns by Archetype
-
-#### Campaign 1: Independent Regional Theatres (e.g. Harrogate Theatre, York Theatre Royal)
-
-**Touch 1 (Day 1) — Front-of-House Calls & Late Curtains**
-```text
-Subject: visitor directions
-
-Hi {{FirstName}},
-
-Noticed the visitor directions on {{domain}} mention nearby parking for evening shows.
-
-With evening curtain times, front-of-house teams usually get hit with the same questions about multi-storey charges, CAZ fees, and walking times from the station—and late arrivals still disrupt the first act.
-
-We built a lightweight 1-line "Plan Your Visit" widget for UK theatres. It shows audiences their exact door-to-door travel—comparing driving costs and parking tariffs directly against live train times so they arrive before curtain up.
-
-Worth sending a 2-minute preview of how it looks for {{venue_name}}?
-
-Best,
-Isaac
-EndMile
-```
-
-**Touch 2 (Day 4) — Julie's Bicycle Scope 3 Carbon Angle**
-```text
-Subject: quick follow up: {{venue_name}}
-
-Hi {{FirstName}},
-
-One quick detail I should have mentioned: if {{venue_name}} reports audience travel carbon to Julie's Bicycle for Arts Council England, the widget calculates audience modal split and CO2 automatically.
-
-Saves running post-show travel surveys with 4% response rates.
-
-Happy to send over a 2-minute interactive preview if useful?
-
-Best,
-Isaac
-```
-
-**Touch 3 (Day 9) — Polite Breakup**
-```text
-Subject: visitor directions
-
-Hi {{FirstName}},
-
-Assuming visitor travel and parking aren't top priorities right now.
-
-I'll close the loop here, but feel free to reach out if you ever want to see the {{venue_name}} travel preview.
-
-Best,
-Isaac
-```
+#### The Core Outbound Campaigns:
+- **Campaign 1 (`THEATRE_VISIT_A`):** Theatres & Arts Centres — Interactive Trip Planning vs Static Text.
+- **Campaign 2 (`THEATRE_ACCESS_B`):** Cultural Venues — Step-Free Transit & Accessible Arrival Clarity.
+- **Campaign 3 (`GIG_CURFEW_A`):** Music Venues & Concert Halls — Post-Gig Public Transit & Last Train Timing.
+- **Campaign 4 (`MUSEUM_PLANNER_A`):** Urban Museums & Galleries — Transit vs Driving Clarity on Mobile.
+- **Campaign 5 (`HERITAGE_RURAL_B`):** Rural Heritage & Historic Estates — Connecting Mainline Rail to Rural Venues.
+- **Campaign 6 (`ATTRACT_FAMILY_A`):** Family Attractions & Zoos — Instant Home-to-Gate Trip & Parking Planning.
+- **Campaign 7 (`THEATRE_SCOPE3_A`):** Arts Council NPOs — Replacing 3-4% Post-Show Survey Guesswork with Passive Telemetry.
 
 ---
 
-#### Campaign 2: Regional Civic & University Museums (e.g. Bar Convent Museum, Royal Armouries)
+### 3.4 The Visual Proof Multiplier: DevTools Mock Screenshot Outbound
 
-**Touch 1 (Day 1) — Reception Desk Call Volume & Transit Comparison**
-```text
-Subject: getting here page
+Venue directors, operations heads, and visitor experience managers receive dozens of generic sales emails a week. Abstract pitches ("imagine an embeddable widget") or plain URLs are routinely ignored.
 
-Hi {{FirstName}},
+**The Solution:** Using Playwright headless Chromium (`scripts/outreach/generate_venue_mock_screenshot.py`), EndMile automatically:
+1. Navigates to the prospect's real website and discovers their dedicated "Getting Here", "Your Visit", or "Directions" page.
+2. Dismisses cookie banners and modals.
+3. Injects the EndMile Journey Planner card (`#endmile-mock-widget`) directly into their page's DOM (above their static map or under their primary visit H1 header).
+4. Captures a crisp 1.5x retina screenshot (`screenshots/venues/{VenueID}_{Slug}.png`) displaying their own logo, branding, and navigation alongside the embedded EndMile widget.
+5. Attaches the image directly to the cold email via `--attach-screenshot` and adjusts the closing CTA to reference the visual proof.
 
-Saw the visit page on {{domain}} outlining local car parks and station walks.
+**Impact on Prospect Psychology:**
+- Instantly proves the email is genuinely bespoke and that the founder personally reviewed their website.
+- Eliminates any ambiguity about what the widget is, how it looks, or where it lives.
+- Reduces friction to zero: the prospect can judge the visual aesthetic right inside their email client on mobile or desktop without clicking external links.
 
-Reception desks often spend the first hour of every morning fielding repeated questions about parking charges, blue badge spaces, and walking times from the station.
+```bash
+# Generate mock screenshot for any venue:
+python scripts/outreach/generate_venue_mock_screenshot.py --url https://www.oxfordplayhouse.com --name "Oxford Playhouse" --archetype theatre
 
-We built a lightweight 1-line "Plan Your Visit" widget for UK cultural venues. It lets visitors compare door-to-door driving costs and parking tariffs against live train and bus times in one view, right on your website.
-
-Worth sending a 2-minute preview of how it looks for {{venue_name}}?
-
-Best,
-Isaac
-EndMile
+# Dispatch outreach batch with screenshot attachments:
+python scripts/outreach/send_venue_outreach.py --limit 5 --variant auto --attach-screenshot
 ```
 
-**Touch 2 (Day 4) — Accessibility & Civic Net-Zero Mandates**
-```text
-Subject: quick question: {{venue_name}}
-
-Hi {{FirstName}},
-
-Following up on my note below—the widget also highlights step-free train routes and accessible parking bays, which helps visitors with access requirements plan ahead before traveling.
-
-Would a quick preview for {{venue_name}} be helpful to see?
-
-Best,
-Isaac
-```
-
-**Touch 3 (Day 9) — Polite Breakup**
-```text
-Subject: getting here page
-
-Hi {{FirstName}},
-
-Assuming visitor travel directions are working fine as they are.
-
-I won't follow up again, but let me know if you ever want to test the interactive widget for {{venue_name}}.
-
-Best,
-Isaac
-```
+- **Cohort 1A: Independent Regional Playhouses & Commercial Theatres**
+  - **Variant A (`THEATRE_JOURNEY_A` — Digital Retention vs Google Maps):** Focuses on stopping ticket buyers from bouncing to external map apps that lack entrance context and local parking.
+  - **Variant B (`THEATRE_ACCESS_B` — Step-Free Confidence):** Focuses on accessibility, step-free rail transit, and Blue Badge parking certainty to eliminate booking hesitation.
+- **Cohort 1B: Music Venues, Gig Spaces & Concert Halls**
+  - **Variant A (`GIG_EGRESS_A` — Late-Night Transit Curfews):** Flags last regional train/tram departures so fans don't get stranded post-23:00.
+  - **Variant B (`GIG_DISPERSAL_B` — Post-Curfew Dispersal & Licensing):** Directs fans to arterial transit corridors to satisfy council premises licensing conditions.
+- **Cohort 1C: Arts Council England NPOs & Green Book Venues**
+  - **Variant A (`THEATRE_SCOPE3_A` — Julie's Bicycle Scope 3 Automation):** Solves the annual audit burden (>80% of footprint) by replacing 3-4% post-show survey guesswork with verified telemetry.
+  - **Variant B (`THEATRE_GREENBOOK_B` — Green Book Operations Standard):** Demonstrates active modal shift tracking to meet Green Book operations standards.
 
 ---
 
-#### Campaign 3: Visitor Attractions & Wildlife Parks (e.g. Jorvik DIG, Prior Park)
+#### Campaign 2: Regional Civic & University Museums & Art Galleries
 
-**Touch 1 (Day 1) — Car Park Congestion & Timed Entries**
-```text
-Subject: weekend visitor parking
+- **Cohort 2A: Urban / City Centre Museums (In or Near Clean Air Zones)**
+  - **Variant A (`MUSEUM_CAZ_A` — Clean Air Zone & Parking Penalties):** Alerts visiting motorists to £12.50 CAZ charges and steers them to suburban Park & Ride hubs with live tariff comparisons.
+  - **Variant B (`MUSEUM_ACCESS_B` — Equality Act Step-Free Access):** Provides step-free walking paths from station exits and Blue Badge locations for disabled, senior, and school group visitors.
+- **Cohort 2B: Rural Heritage, Castles, Gardens & Historic Houses**
+  - **Variant A (`HERITAGE_CATCHMENT_A` — Non-Driver Catchment Expansion):** Connects mainline rail with connecting local buses and fixed-fare taxis, unlocking the non-driving tourist and student market.
+  - **Variant B (`HERITAGE_LANES_B` — Rural Country Lane Bottlenecks):** Steers visiting drivers along approved highway corridors away from single-track country lanes and residential verges.
 
-Hi {{FirstName}},
+---
 
-Took a look at the visitor arrival guide on {{domain}}.
+#### Campaign 3: Regional Visitor Attractions, Zoos & Wildlife Parks
 
-On busy weekends and school holidays, visitors navigating car park capacity and last-mile driving often creates arrival congestion—and families arriving late miss their entry slots.
+- **Cohort 3A: Major Family Attractions, Zoos & Wildlife Parks**
+  - **Variant A (`ATTRACT_INGRESS_A` — 10am Morning Ingress Tailbacks):** Manages the 10:00–11:30 AM arrival spike, preventing tailbacks onto arterial A-roads and police warnings.
+  - **Variant B (`ATTRACT_COST_B` — Family Motoring vs Rail Cost Transparency):** Compares petrol + on-site parking fees (£15–£20) against family train fares upfront to stop ticket booking abandonment.
+- **Cohort 3B: Greenfield & Outdoor Seasonal Attractions**
+  - **Variant A (`ATTRACT_HIGHWAY_A` — Council TTRO Compliance):** Complies with council Temporary Traffic Regulation Orders and designated temporary event gates.
+  - **Variant B (`ATTRACT_GREEN_B` — Green Visitor Scheme Tracking):** Validates car-free arrivals and tracks uptake for Good Journey / Green Tourism admission discount schemes.
 
-We built a lightweight "Plan Your Visit" widget that embeds on your site in one line. It routes visitors from anywhere in the UK, calculates driving vs rail costs, and guides cars to preferred parking or Park & Ride hubs before local roads snarl up.
+---
 
-Open to seeing a 2-minute preview for {{venue_name}}?
+#### Campaign 4: Higher Education Campuses & Open Days
 
-Best,
-Isaac
-EndMile
-```
+- **Cohort 4A: Undergraduate Open Days & Graduations**
+  - **Variant A (`UNI_OPENDAY_A` — Saturday Parent Ingress Gridlock):** Guides 5,000–15,000 driving parents directly to designated satellite Park & Walk lots before campus barrier car parks fill at 9:15 AM.
+  - **Variant B (`UNI_CAMPUS_B` — Station-to-Faculty Building Navigation):** Routes prospective students and parents from the mainline train station right to specific faculty entrance halls.
+- **Cohort 4B: Sustainable Travel Plans & Planning Permission**
+  - **Variant A (`UNI_TRAVELPLAN_A` — Section 106 Modal Split Compliance):** Continuous, verified travel search telemetry across active travel, rail, and bus to prove modal shift for local planning authorities without manual annual surveys.
 
-**Touch 2 (Day 4) — Peak Season Arrival Smoothing**
-```text
-Subject: peak travel preview: {{venue_name}}
+---
 
-Hi {{FirstName}},
+#### Universal Outreach Flow (All Archetypes)
 
-Quick note—several attractions use the widget ahead of bank holidays and school breaks to divert traffic toward public transit or satellite parking before their main gates fill up.
-
-Happy to share a 2-minute mock-up for {{venue_name}} if you'd like to take a look?
-
-Best,
-Isaac
-```
-
-**Touch 3 (Day 9) — Polite Breakup**
-```text
-Subject: weekend visitor parking
-
-Hi {{FirstName}},
-
-I'll assume parking and visitor routing are well in hand for the upcoming season.
-
-I'll leave it here, but feel free to reach out anytime.
-
-Best,
-Isaac
-```
+- **Touch 1 (Day 1):** Sniper pitch using Variant A or B tailored to the venue archetype.
+- **Touch 2 (Day 4):** Alternate angle follow-up (e.g. accessibility, modal shift, or seasonal timing).
+- **Touch 3 (Day 7):** Interactive Mockup Preview (`VENUE_FOLLOWUP_PREVIEW`) delivering their dynamic URL (`https://endmilerouting.co.uk/venue-widget/?url=...&venue=...`).
+- **Touch 4 (Day 11):** Polite Breakup closing the loop.
 
 ---
 
@@ -429,7 +356,7 @@ When prospects reply, use these concise, peer-level responses:
 > *"There's zero development needed. It's a single line of HTML snippet that you or your web manager can paste into WordPress, Drupal, or Squarespace in two minutes. We host and maintain the routing, parking data, and live transit feeds."*
 
 ### Objection 3: "We have no budget / budgets are frozen."
-> *"Completely understand. Our Standard plan is just £19/month on a monthly credit card with zero setup fee and no annual contract. Most venues find that deflecting just 10–15 telephone calls a month to box office or reception more than pays for the tool. We also offer a free 30-day trial so you can test it on a live show or exhibition first."*
+> *"Completely understand. Our Standard plan is just £19/month on a monthly credit card with zero setup fee and no annual contract. Selling just 3 to 4 extra pre-show drinks or interval ice creams a month pays for the entire £19/mo subscription—by getting just a handful of ticket holders through the doors 30 minutes earlier rather than rushing in flustered at the 2-minute bell. We also offer a 14-day free pilot so you can test it on a live production first."*
 
 ### Objection 4: "Why wouldn't we just use You. Smart. Thing.?"
 > *"YST is great for £20k enterprise transport authority tenders like TfGM Bee Network or mega-stadiums, but they charge £2,250 minimum setup fees and day rates for single locations. EndMile is purpose-built for independent cultural venues: £0 setup, self-serve from £19/month, lightweight mobile-first UX, and automated Julie's Bicycle carbon exports."*
@@ -439,25 +366,56 @@ When prospects reply, use these concise, peer-level responses:
 
 ---
 
-## 5. Prospect Discovery Engine & Cross-Matching Workflow
+## 5. Prospect Discovery Engine & Qualification Architecture
 
-### 5.1 How the Discovery Engine Operates
+### 5.1 The Two Critical Outreach Quality Filters (2026-09-26 Upgrade)
 
-The discovery engine lives in [`scripts/scrapers/generate-unserved-prospects.mjs`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/scripts/scrapers/generate-unserved-prospects.mjs) and processes our master OSM dataset ([`data/venues/master_venues.json`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/data/venues/master_venues.json)):
+Raw OpenStreetMap data contains over 111,000 UK venues, but prospecting requires two essential qualification filters to ensure your outreach converts:
+
+#### Filter 1: Ownership Demarcation (Independent vs. Corporate Chains & Council Portals)
+- **The Issue:**
+  1. **Corporate Entertainment Chains & National Trusts:** Venues owned by Ambassador Theatre Group (`atgtickets.com`), Live Nation / Academy Music Group (`academymusicgroup.com`), Merlin Entertainments (`thedungeons.com`, `visitsealife.com`, `madametussauds.com`, `londoneye.com`, `altontowers.com`, `warwick-castle.com`, `cadburyworld.co.uk`), National Trust (`nationaltrust.org.uk`), National Trust for Scotland (`nts.org.uk`), or Royal Collection Trust (`rct.uk`) have zero local web authority. IT, digital marketing, and CMS code are strictly governed from centralized corporate headquarters (e.g. Merlin in Poole, National Trust in Swindon, ATG in London).
+  2. **Local Authority / Council Portals:** Civic landmarks like The Roman Baths (`romanbaths.co.uk` / B&NES Council), Scott Monument (`edinburghmuseums.org.uk` / City of Edinburgh Council), and M Shed (`bristolmuseums.org.uk` / Bristol City Council) operate under municipal committee procurement where adding third-party SaaS tools requires lengthy council tenders.
+- **The Solution:** The discovery engine automatically segregates all 4,992 venues into 3 distinct ownership models:
+  - **`Independent Single/Dual-Site` (4,414 venues):** Autonomous trusts, civic arts centres, and independent commercial operators with direct decision-making power. **These occupy the top 1,000+ rows of your spreadsheet.**
+  - **`Local Authority / Council` (207 venues):** Municipal museums and council culture portals (demoted below independent venues).
+  - **`Corporate Chain / Centralized Trust` (371 venues):** Multi-venue commercial operators, cinema chains, and national heritage trusts (pushed to the very bottom).
+
+#### Filter 2: Multimodal Transit Fit vs. Rural Car-Only Sites (The "Yorkshire Sculpture Park" Problem)
+- **The Issue:** If a venue is in a remote rural setting with no walkable railway station, no bus routes, no Park & Ride, and only a single on-site field car park (e.g. *Yorkshire Sculpture Park*, where Darton station is nearly 6 km away and requires a £12 taxi), an interactive multimodal journey widget delivers minimal value. Visitors have only one viable choice: drive. Pitching a multimodal tool to them gets ignored.
+- **The Solution:** The discovery engine inspects our B2C routing data (`data/b2c/content/[venueId].json`) to evaluate the **Widget Value Score (0 to 100)**:
+  - **Walkable Railway Station (within 20 mins):** +25 pts
+  - **Clean Air Zone (CAZ) / ULEZ / Low Emission Zone:** +20 pts (high driver pain; avoiding emission fines)
+  - **Park & Ride Hub:** +15 pts (high congestion; directing cars to P&R)
+  - **Verified Parking Tariffs:** +10 pts (parking confusion & cost comparison)
+  - **Independent Single/Dual-Site Operator:** +15 pts (empowered decision-maker)
+  - **Capacity / Footfall (>500 seats or >100k annual visits):** +15 pts
+- **The Fit Tiers:**
+  - **Exceptional Fit (Score 60+):** **810 independent venues** (dense urban centers, walkable trains, CAZ fees, P&R hubs). *Pitch these first.*
+  - **Strong Fit (Score 40–59):** **1,324 independent venues** (regional hubs with at least 1 strong multimodal alternative).
+  - **Low Fit (Score <40):** **2,280 venues** (car-only rural parks, country estates). Deprioritized in the CSV.
 
 ```mermaid
 flowchart TD
-    A["111,233 Raw UK OSM Venues (master_venues.json)"] --> B["Filter Target Types (theatre, arts_centre, museum, gallery, attraction, university)"]
-    B --> C["Filter: Has Active Website (v.website != null)"]
-    C --> D["Exclude Known Widget & YST Domains (theherbert.org, cooplive.com, etc.)"]
-    D --> E["4,992 Qualified Unserved UK Prospects"]
-    E --> F["Prominence Scoring Engine (Wikipedia, Wikidata, Capacity, Verified Address, Phone)"]
-    F --> G["Footfall & Tier Calculator (Standard £19/mo, Growth £49/mo, Scale £119/mo)"]
-    G --> H["Export: data/venues/unserved_prospects.json & unserved_prospects.csv"]
+    A["111,233 Raw UK OSM Records"] --> B["Filter Target Archetypes (theatre, museum, attraction, university)"]
+    B --> C["Filter Active Websites (v.website != null)"]
+    C --> D["Exclude Known Widget Competitors (YST / Bee Network)"]
+    D --> E["4,992 Qualified Prospects"]
+    E --> F["Filter 1: Ownership Demarcation"]
+    F -->|Independent| G["4,414 Independent Venues (Top of Sheet)"]
+    F -->|Council| H["207 Local Authority Portals (Demoted)"]
+    F -->|Corporate / Trust| I["371 Corporate Chains & National Trusts (Bottom of Sheet)"]
+    G --> J["Filter 2: Multimodal Fit (Inspect Rail, P&R, Parking, CAZ)"]
+    J --> K["810 Exceptional Fit Independents (Top Priority for Outreach)"]
+    J --> L["1,324 Strong Fit Independents"]
+    J --> M["2,280 Low Fit Rural / Car-Only Venues"]
 ```
 
-### 5.2 Running the Discovery Tool
-Run the tool from repository root:
+---
+
+### 5.2 Running the Discovery Pipeline
+
+Run the tool from repository root in `../endmile-1`:
 ```bash
 node scripts/scrapers/generate-unserved-prospects.mjs
 ```
@@ -468,77 +426,64 @@ node scripts/scrapers/generate-unserved-prospects.test.mjs
 ```
 
 Outputs generated:
+- [`data/venues/unserved_prospects.csv`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/data/venues/unserved_prospects.csv): Spreadsheet-ready CSV with 21 columns including `OwnershipType`, `WidgetFit`, `Column 1 (Notes & Contacts)`, `DeepLinkGoogleSearch`, `EndMileGuideUrl`, and `EmailHook`.
+- `C:\Users\isaac\Downloads\endmile_widget_prospects.xlsx`: Native Excel Workbook formatted as an official **Excel Table (`ProspectTable`)** with instant column sort/filter dropdowns, frozen header row, and clickable deep-links.
 - [`data/venues/unserved_prospects.json`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/data/venues/unserved_prospects.json): Complete structured JSON database (4,992 records).
-- [`data/venues/unserved_prospects.csv`](file:///c:/Users/isaac/Videos/files%20too%20big%20for%20onedrive/github/endmile-1/data/venues/unserved_prospects.csv): Spreadsheet-ready CSV for CRM, Lemlist, or Apollo outreach.
 
 ---
 
-## 6. Curated Top 40 Actionable Unserved Targets
+## 6. Curated High-ROI Independent Launch Targets
 
-*High-prominence UK venues with verified websites, notable cultural footprint, and zero travel widget installed:*
+*Top independent UK venues with empowered local management, high multimodal arrival friction, and zero travel widget installed:*
 
-### 6.1 Theatres & Performing Arts Centres
-| Venue Name | City / Region | Website / Domain | Capacity | Recommended Tier | Tailored Angle |
+### 6.1 Regional Independent Theatres & Arts Centres (Exceptional Fit)
+| Venue Name | Location | Domain | Capacity | Fit Score & Multimodal Features | Tailored Email Hook Angle |
 |---|---|---|---|---|---|
-| **His Majesty's Theatre** | Aberdeen | `aberdeenperformingarts.com` | 1,400 | Standard (£19/mo) | Evening show curtain holds; city centre parking tariffs |
-| **Charing Cross Theatre** | London | `charingcrosstheatre.co.uk` | 265 | Standard (£19/mo) | Underground & Charing Cross rail walking directions |
-| **Manchester Opera House** | Manchester | `manchestertheatres.com` | 1,920 | Growth (£49/mo) | City centre parking friction & Clean Air Zone alerts |
-| **O2 City Hall** | Newcastle | `academymusicgroup.com` | 2,135 | Growth (£49/mo) | Pre-gig arrival surges & Metro rail station routing |
-| **New Wimbledon Theatre** | London | `atgtickets.com` | 1,670 | Growth (£49/mo) | Evening parking availability & District Line transit |
-| **York Theatre Royal** | York | `yorktheatreroyal.co.uk` | 750 | Standard (£19/mo) | Julie's Bicycle Scope 3 reporting & Park & Ride options |
-| **Harrogate Theatre** | Harrogate | `harrogatetheatre.co.uk` | 500 | Standard (£19/mo) | Evening multi-storey tariffs & regional rail connection |
-| **Sheffield Crucible / Lyceum** | Sheffield | `sheffieldtheatres.co.uk` | 980 | Standard (£19/mo) | Supertram transit integration & CAZ clean air advice |
-| **Nottingham Playhouse** | Nottingham | `nottinghamplayhouse.co.uk` | 750 | Standard (£19/mo) | Nottingham tram connection & Julie's Bicycle audit |
-| **Belgrade Theatre** | Coventry | `belgrade.co.uk` | 858 | Standard (£19/mo) | Local Coventry parking guidance & station walk times |
+| **Charing Cross Theatre** | London | `charingcrosstheatre.co.uk` | 265 seats | **Score: 95** (Rail 2m walk; P&R; CAZ/ULEZ; Parking Tariffs) | Rail station 2-min walk vs London congestion & parking tariffs |
+| **Oxford Playhouse** | Oxford | `oxfordplayhouse.com` | 630 seats | **Score: 95** (Rail 10m walk; 5 P&R hubs; Oxford ZEZ; Parking) | Oxford Zero Emission Zone (ZEZ) & 5 Park & Rides vs rail walk |
+| **Tramway** | Glasgow | `tramway.org` | 500 seats | **Score: 95** (Rail 5m walk; P&R; Glasgow LEZ; Parking) | Pollokshields East station (5m) & Glasgow LEZ emission rules |
+| **York Theatre Royal** | York | `yorktheatreroyal.co.uk` | 750 seats | **Score: 90** (Rail 8m walk; 6 P&R hubs; Parking; ACE NPO) | Julie's Bicycle Scope 3 reporting & York Park & Ride routing |
+| **Harrogate Theatre** | Harrogate | `harrogatetheatre.co.uk` | 500 seats | **Score: 85** (Rail 4m walk; Parking Tariffs; High Capacity) | Harrogate station (4m walk) vs evening multi-storey parking charges |
+| **Belgrade Theatre** | Coventry | `belgrade.co.uk` | 858 seats | **Score: 85** (Rail 12m walk; Parking Tariffs; High Capacity) | Coventry station walk vs city centre evening parking tariffs |
+| **Sheffield Crucible / Lyceum** | Sheffield | `sheffieldtheatres.co.uk` | 980 seats | **Score: 90** (Rail 6m walk; Supertram; Sheffield CAZ) | Sheffield Clean Air Zone warnings & station footbridge link |
+| **Bush Hall** | London | `bushhallmusic.co.uk` | 400 seats | **Score: 85** (Rail 7m walk; London ULEZ; Parking Tariffs) | Shepherd's Bush transit vs street parking restrictions |
 
-### 6.2 Museums & Art Galleries
-| Venue Name | City / Region | Website / Domain | Est. Footfall | Recommended Tier | Tailored Angle |
+### 6.2 Regional Civic & University Museums & Galleries (Exceptional Fit)
+| Venue Name | Location | Domain | Est. Footfall | Fit Score & Multimodal Features | Tailored Email Hook Angle |
 |---|---|---|---|---|---|
-| **Bar Convent Museum** | York | `bar-convent.org.uk` | 80k | Growth (£49/mo) | Station walk (3 mins) vs Micklegate parking charges |
-| **Sharmanka Kinetic Theatre & Gallery** | Glasgow | `sharmanka.com` | 60k | Growth (£49/mo) | Trongate 103 access & weekend family visit queries |
-| **The Muckleburgh Military Collection** | Norfolk | `muckleburgh.co.uk` | 75k | Growth (£49/mo) | Rural coastal driving routes & on-site car park info |
-| **Imperial War Museum** | London | `iwm.org.uk` | 900k | Growth (£49/mo) | Bakerloo line transit, step-free access & parking |
-| **Royal Academy of Arts** | London | `royalacademy.org.uk` | 1.1M | Growth (£49/mo) | Piccadilly tube directions & accessibility guidance |
-| **Bowes Museum** | Barnard Castle | `thebowesmuseum.org.uk` | 120k | Growth (£49/mo) | County Durham rural car access & coach arrivals |
-| **Kelvingrove Art Gallery** | Glasgow | `glasgowlife.org.uk` | 1.2M | Growth (£49/mo) | Subway & bus links, low emission zone guidance |
-| **National Museum of the Royal Navy** | Portsmouth | `nmrn.org.uk` | 400k | Growth (£49/mo) | Portsmouth Historic Dockyard parking vs train arrival |
-| **Royal Armouries Museum** | Leeds | `royalarmouries.org` | 450k | Growth (£49/mo) | Leeds dock water taxi, Clarence Dock car park rates |
-| **Fitzwilliam Museum** | Cambridge | `fitzmuseum.cam.ac.uk` | 380k | Growth (£49/mo) | Cambridge Park & Ride routing vs historic town parking |
+| **Sharmanka Kinetic Theatre & Gallery** | Glasgow | `sharmanka.com` | 60k | **Score: 95** (Rail 4m walk; P&R; Glasgow LEZ; Parking) | Argyle Street station (4m walk) & reception desk call deflection |
+| **Royal Academy of Arts** | London | `royalacademy.org.uk` | 1.1M | **Score: 95** (Piccadilly Rail 16m; ULEZ; Parking; Transit) | Central London congestion charge & accessibility station walk |
+| **Peckham Platform** | London | `peckhamplatform.com` | 50k | **Score: 95** (Rail 7m walk; London ULEZ; Parking Tariffs) | Peckham Rye station (7m walk) vs South London parking stress |
+| **Bar Convent Museum** | York | `bar-convent.org.uk` | 80k | **Score: 90** (Rail 5m walk; 6 P&R hubs; Parking Tariffs) | 5-min walk from York station vs Micklegate parking fees |
+| **Sir John Soane's Museum** | London | `soane.org` | 130k | **Score: 95** (Rail 17m walk; Holborn Tube; London ULEZ) | Public transit guidance & Holborn parking restrictions |
+| **The Bowes Museum** | Barnard Castle | `thebowesmuseum.org.uk` | 120k | **Score: 80** (P&R; Verified Parking; Rural Transit Hub) | Coach drop-offs & designated car park guidance |
+| **Royal Armouries Museum** | Leeds | `royalarmouries.org` | 450k | **Score: 85** (Rail 14m walk; Water Taxi; Clarence Dock Parking) | Clarence Dock parking fees vs Leeds station walk/water taxi |
 
-### 6.3 Visitor Attractions & Heritage Destinations
-| Venue Name | City / Region | Website / Domain | Est. Footfall | Recommended Tier | Tailored Angle |
+### 6.3 Visitor Attractions & Heritage Destinations (Exceptional Fit)
+| Venue Name | Location | Domain | Est. Footfall | Fit Score & Multimodal Features | Tailored Email Hook Angle |
 |---|---|---|---|---|---|
-| **Prior Park Landscape Garden** | Bath | `nationaltrust.org.uk` | 150k | Growth (£49/mo) | Zero on-site parking notice; routing via Bath bus/walk |
-| **Parceval Hall Gardens** | Yorkshire Dales | `parcevallhallgardens.co.uk` | 50k | Growth (£49/mo) | Narrow Dales rural approach lanes & car park capacity |
-| **Jorvik DIG** | York | `digyork.com` | 140k | Growth (£49/mo) | Timed slot entry protection & York Park & Ride advice |
-| **Scott Monument** | Edinburgh | `edinburghmuseums.org.uk` | 200k | Growth (£49/mo) | Princes Street tram & Waverley station foot access |
-| **SS Great Britain** | Bristol | `ssgreatbritain.org` | 320k | Growth (£49/mo) | Bristol ferry link, Clean Air Zone & maritime parking |
-| **Black Country Living Museum** | Dudley | `bclm.com` | 350k | Growth (£49/mo) | Family arrival peaks, coach bays & overflow parking |
-| **Yorkshire Wildlife Park** | Doncaster | `yorkshirewildlifepark.com` | 750k | Scale (£119/mo) | Bank holiday highway tailbacks & electric vehicle charging |
-| **Eureka! The National Children's Museum** | Halifax | `eureka.org.uk` | 300k | Growth (£49/mo) | Halifax train station direct footbridge vs car park |
-| **Beamish Open Air Museum** | County Durham | `beamish.org.uk` | 800k | Scale (£119/mo) | Regional bus connections & massive car park flow |
-| **The Deep** | Hull | `thedeep.co.uk` | 400k | Growth (£49/mo) | Hull marina parking rates & accessibility arrivals |
-
-### 6.4 Universities & Higher Education Institutions
-| Institution Name | City / Campus | Website / Domain | Est. Visitor Base | Recommended Tier | Tailored Angle |
-|---|---|---|---|---|---|
-| **Royal Central School of Speech & Drama** | London | `cssd.ac.uk` | 40k | Scale (£119/mo) | Swiss Cottage tube vs London congestion charging |
-| **University of Derby** | Derby | `derby.ac.uk` | 120k | Scale (£119/mo) | Kedleston Road open day shuttle bus vs parking permits |
-| **Solent University** | Southampton | `solent.ac.uk` | 90k | Scale (£119/mo) | City centre campus parking constraints on open days |
-| **University of Leeds** | Leeds | `leeds.ac.uk` | 350k | Scale (£119/mo) | Open day Park & Stride routing; campus modal split |
-| **University of York** | York | `york.ac.uk` | 180k | Scale (£119/mo) | Heslington campus bus links vs Grimston Bar P&R |
-| **University of Bristol** | Bristol | `bristol.ac.uk` | 250k | Scale (£119/mo) | Clifton hill parking crisis & Temple Meads bus links |
-| **Manchester Metropolitan University** | Manchester | `mmu.ac.uk` | 300k | Scale (£119/mo) | Oxford Road transit spine vs city centre car parks |
-| **University of East Anglia (UEA)** | Norwich | `uea.ac.uk` | 150k | Scale (£119/mo) | Campus main car park saturation on open days |
-| **University of Sheffield** | Sheffield | `sheffield.ac.uk` | 280k | Scale (£119/mo) | Supertram links to campus & Clean Air Zone warnings |
-| **University of Exeter** | Exeter | `exeter.ac.uk` | 160k | Scale (£119/mo) | Streatham campus steep topography & rail station shuttles |
+| **SS Great Britain** | Bristol | `ssgreatbritain.org` | 320k | **Score: 90** (Bristol Ferry; Temple Meads bus; Bristol CAZ) | Bristol Clean Air Zone fees & ferry link vs harbour parking |
+| **Jorvik DIG** | York | `digyork.com` | 140k | **Score: 90** (Rail 10m walk; 6 P&R hubs; Timed Tickets) | Protecting timed entry slots by routing visitors to Park & Ride |
+| **Eureka! The National Children's Museum** | Halifax | `eureka.org.uk` | 300k | **Score: 90** (Direct Rail Station Footbridge; Parking) | Direct Halifax station footbridge arrival vs car park queues |
+| **Black Country Living Museum** | Dudley | `bclm.com` | 350k | **Score: 85** (Metro tram link; Coach bays; Overflow parking) | Family arrival peaks & overflow car park smoothing |
+| **The Clydeside Distillery** | Glasgow | `theclydeside.com` | 100k | **Score: 85** (Rail 10m walk; Glasgow LEZ; Parking Tariffs) | Exhibition Centre rail station (10m) & Glasgow Low Emission Zone |
+| **The Real Mary King's Close** | Edinburgh | `realmarykingsclose.com` | 250k | **Score: 90** (Waverley Rail 5m walk; Edinburgh LEZ; High Footfall) | Waverley station 5-min walk vs Old Town parking restrictions |
 
 ---
 
 ## 7. Next Actions & Daily Outbound Workflow
 
-1. **Pick an Archetype for the Day:** Focus on one archetype per batch (e.g. 20 regional independent theatres).
-2. **Review Target Website:** Open `{{domain}}/visiting` or `{{domain}}/getting-here` to confirm their current directions text and identify named local car parks.
-3. **Draft the 3-Touch Sequence:** Insert the venue's name, domain, and specific local parking reference into the template from Section 3.
-4. **Send from Personal Work Email:** Send plain-text (no HTML banners, no attachments, no tracking pixel bloat).
-5. **Log Outcomes & Objections:** Record replies and update Section 4 with any new friction points encountered.
+1. **Open the Sortable Excel Workbook:**
+   * Open `C:\Users\isaac\Downloads\endmile_widget_prospects.xlsx` in Microsoft Excel.
+   * Native **Excel Table (`ProspectTable`)** is pre-configured with filter dropdown arrows on every single column header.
+2. **Sort or Filter in 1 Click:**
+   * Click the dropdown arrow on `OwnershipType` &rarr; Filter to `Independent Single/Dual-Site`.
+   * Click the dropdown arrow on `WidgetFit` &rarr; Filter to `Exceptional Fit` (810 top targets).
+   * Sort by `WidgetFitScore` descending.
+3. **1-Click Deep-Linked Contact Search:**
+   * In Column `S` (`DeepLinkGoogleSearch`), click the hyperlink to immediately open Google Search pre-populated with your search dork to find the Visitor Experience, Operations, or Front of House Manager.
+4. **1-Click Live Widget Preview:**
+   * In Column `T` (`EndMileGuideUrl`), click the hyperlink to inspect the live EndMile guide and test how the widget renders for that specific venue.
+5. **Send Personalized Outreach:**
+   * Copy the tailored opening line from Column `U` (`EmailHook`) directly into the Touch 1 cold email template.
+   * Log responses or emails found directly in Column `Q` (`Column 1 (Notes & Contacts)`).

@@ -26,9 +26,9 @@ You are the **Business Brain & Commercial Heart** of **EndMile** (`endmileroutin
 # Run analytics test suite
 npm run test:analytics
 
-# Run Guide analytics (last 28 days)
-node scripts/analytics/guide-performance.mjs --days 28 --surface guide --markdown
+# Run Guide analytics (last 28 days) with live remote Postgres and ADC
+node scripts/analytics/guide-performance.mjs --days 28 --surface guide --ssh-db deploy@155.133.23.54 --gsc-google-cloud-config C:\Users\isaac\.gcloud-endmile-gsc --ga4-google-cloud-config C:\Users\isaac\.gcloud-endmile-analytics --markdown
 
-# Run App channel and corridor analytics
-node scripts/analytics/app-performance.mjs --days 28 --markdown
+# Run App channel, corridor, and user analytics with live remote Postgres and ADC
+node scripts/analytics/app-performance.mjs --days 7 --ssh-db deploy@155.133.23.54 --gsc-google-cloud-config C:\Users\isaac\.gcloud-endmile-gsc --ga4-google-cloud-config C:\Users\isaac\.gcloud-endmile-analytics --markdown
 ```

@@ -55,11 +55,15 @@ When business, commercial, or marketing strategies in this repository require co
 
 | Business Need | Where to Implement in Code (`../endmile-1`) | Key Files |
 |---|---|---|
-| **Update SaaS Pricing or Tiers** | `packages/landing/`, `packages/app/` | `packages/landing/src/pages/pricing.astro`, `packages/app/lib/features/subscription/` |
-| **Modify Venue Widget Embed Code** | `packages/b2c_site/` | `packages/b2c_site/src/components/b2c/LiveWidget.astro` |
-| **Tweak Pre-Trip Cost Justification PDF** | `packages/server/`, `packages/app/` | `packages/server/src/application/use-cases/generate-trip-pdf.ts`, `packages/app/lib/features/reports/` |
+| **Update Venue Widget SaaS Pricing** | `packages/landing/` | `packages/landing/src/pages/venue-widget.astro` |
+| **Update Public Marketing Copy & Sections** | `packages/landing/` | `packages/landing/src/pages/index.astro`, `packages/landing/src/pages/platform.astro` |
+| **Publish Thought Leadership Blog Posts** | `packages/landing/` | `packages/landing/src/pages/blog/` (`index.astro`, `[slug].astro`) |
+| **Modify Venue Widget Embed & Mode Selector** | `packages/b2c_site/` | `packages/b2c_site/src/pages/embed/[embed_id].astro`, `packages/b2c_site/src/components/b2c/LiveWidget.astro` |
+| **Tweak Pre-Trip Cost Justification PDF & Audit** | `packages/app/` | `packages/app/lib/features/reports/pre_trip_pdf_audit_page.dart`, `packages/app/lib/features/reports/export_report_dialog.dart` |
+| **Update Digital Itinerary Share Link / QR** | `packages/app/` | `packages/app/lib/features/journey/journey_share_formatter.dart`, `packages/app/lib/core/router.dart` |
+| **Run or Update Venue Prospect Generator** | `scripts/scrapers/` | `scripts/scrapers/generate-unserved-prospects.mjs`, `generate-unserved-prospects.test.mjs` |
 | **Add New Venue or Regenerate Matrix** | `scripts/batch-router/` | `scripts/batch-router/generate-venue-matrix.mjs` |
-| **Update HMRC AMAP Mileage Rates** | `packages/server/` | `packages/server/src/domain/entities/tco-policy.ts` |
+| **Update HMRC AMAP Mileage Rates** | `packages/server/`, `packages/app/` | `packages/server/src/domain/entities/tco-policy.ts`, `packages/app/lib/features/reports/pre_trip_pdf_audit_page.dart` |
 | **Adjust OJP API Concurrency or Cache** | `packages/server/` | `packages/server/src/infrastructure/external/national-rail/cached-train-planner.ts` |
 | **Update Scope 3 DEFRA Carbon Factors** | `data/` | `data/defra-emission-factors-2026.json` |
 

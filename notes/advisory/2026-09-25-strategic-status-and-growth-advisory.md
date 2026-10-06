@@ -22,10 +22,10 @@ This memo establishes our commercial baseline, summarizes key risks and immediat
 ## 2. Strategic Wedge Health Check
 
 ### Wedge 1: Mid-Market Cultural Venue Widget SaaS (£19–£49/mo)
-- **Market Opportunity:** 4,992 UK cultural institutions and independent venues (theatres, museums, heritage sites, regional arenas) have zero multimodal travel widgets.
+- **Market Opportunity:** 4,992 UK cultural institutions in total, audited and filtered down to **~400 high-ROI Independent Single/Dual-Site target venues** (theatres, independent museums, cultural trusts) where decision-makers have direct procurement authority. Corporate chains and municipal councils have been separated.
 - **Competitor Flank (You. Smart. Thing.):** YST charges £2,250 minimum setup on G-Cloud 14 plus £750/day dev rates, pricing out 99% of UK venues. YST's heavy iframe embeds caused major clients like Ashmolean and Pitt Rivers to abandon them for simple hyperlinks.
 - **EndMile Advantage:** 1-line script embed, zero setup fee, £19–£49/mo corporate card subscription, mobile-optimized drawer, and automated Julie's Bicycle Scope 3 carbon compliance reporting for Arts Council England (ACE) funded venues.
-- **Current Bottleneck:** Scaling outbound sniper outreach (10–15 personalized emails/day) from `data/venues/unserved_prospects.csv`.
+- **Current Bottleneck:** Executing daily outbound sniper outreach (5–10 personalized emails/day) from the ~400 audited independent venues pool (`endmile widget v3.xlsx`).
 
 ### Wedge 2: B2B Consultant Pre-Trip Justification & Dispatch ("Paul Hardy" Persona)
 - **Market Opportunity:** UK IT and professional services consultancies lose 1%–5% of EBTA when client accounts payable teams reject HMRC 55p/mi car mileage or taxi claims based on superficial Trainline ticket searches.

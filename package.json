@@ -7,7 +7,19 @@
     "test:analytics": "node --test scripts/analytics/*.test.mjs",
     "analytics:guide": "node scripts/analytics/guide-performance.mjs",
     "analytics:app": "node scripts/analytics/app-performance.mjs",
-    "analytics:indexnow": "node scripts/analytics/submit-indexnow.mjs"
+    "pipeline:open": "python scripts/outreach/open_pipeline.py",
+    "outreach:open": "python scripts/outreach/open_pipeline.py",
+    "outreach:preview": "python scripts/outreach/send_app_outreach.py --dry-run --limit 5",
+    "outreach:send": "python scripts/outreach/send_app_outreach.py --limit 5",
+    "outreach:app:preview": "python scripts/outreach/send_app_outreach.py --dry-run --limit 5",
+    "outreach:app:test": "python scripts/outreach/send_app_outreach.py --test-to isaac.willoughby@croda.com",
+    "outreach:app:send": "python scripts/outreach/send_app_outreach.py --limit 5",
+    "outreach:widget:preview": "python scripts/outreach/send_venue_outreach.py --dry-run --limit 5",
+    "outreach:widget:send": "python scripts/outreach/send_venue_outreach.py --limit 5",
+    "outreach:mine": "python scripts/outreach/mine_verified_leads.py --target-verified 500",
+    "outreach:report": "python scripts/outreach/track_outreach_replies.py --report",
+    "outreach:sync": "python scripts/outreach/build_prospect_management_workbook.py",
+    "outreach:check-inbox": "python scripts/outreach/track_outreach_replies.py --check-inbox"
   },
   "keywords": [
     "endmile",
