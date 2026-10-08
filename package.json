@@ -19,7 +19,9 @@
     "outreach:mine": "python scripts/outreach/mine_verified_leads.py --target-verified 500",
     "outreach:report": "python scripts/outreach/track_outreach_replies.py --report",
     "outreach:sync": "python scripts/outreach/build_prospect_management_workbook.py",
-    "outreach:check-inbox": "python scripts/outreach/track_outreach_replies.py --check-inbox"
+    "outreach:check-inbox": "python scripts/outreach/track_outreach_replies.py --check-inbox",
+    "outreach:screenshot": "python scripts/outreach/generate_venue_mock_screenshot.py",
+    "outreach:dispatch": "python scripts/outreach/send_staged_emails.py"
   },
   "keywords": [
     "endmile",

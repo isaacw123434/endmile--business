@@ -1,0 +1,2 @@
+Date,Time,Organization,ContactName,Recipient,Subject,Template,ScreenshotAttached,Status,Notes
+2026-10-08,17:09:03,"Oxford Playhouse","Emma",emma.jones@26pmx.com,"Visitor directions for Oxford Playhouse",VENUE_VISIT_A (Example Placement Mock),True,Sent,"Partner work email test - inbox/spam verification with inline CID image"

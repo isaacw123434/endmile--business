@@ -1,5 +1,28 @@
 # Architectural and Implementation Decisions
 
+## 2026-10-08 — Human-in-the-Loop Outbound Staging: Decoupling from Rigid Excel Python Scripts to Online Google Sheets & AI Chat Staging
+- **Problem**:
+  1. The legacy monolithic Python outbound scripts (`send_venue_outreach.py`, `send_app_outreach.py`, `send_daily_batch.bat`) were excessively rigid: tied to local Excel workbook schemas, attempting to automate end-to-end sending without human visual review of email text or generated screenshots, and prone to silent failures.
+  2. Programmatic email dispatch risked formatting errors: un-dedented Python strings, 76-character soft wraps in quoted-printable encoding breaking sentences mid-line, and erratic paragraph spacing in Outlook and mobile clients.
+  3. The founder operates primarily in **Google Sheets online** (browser) using **Google Gemini in Google Sheets** to explore, enrich, filter, and curate leads. Monolithic local scripts failed to accommodate this fluid workflow.
+  4. The founder specifically requested that all mock widget screenshots be manually reviewed and approved *before* sending, rather than blindly generated and attached in a black box.
+- **Decision**:
+  1. **Decouple Screenshot Generation (`scripts/outreach/generate_venue_mock_screenshot.py`)**:
+     - Stripped mandatory local Excel dependencies so the Playwright screenshot tool can be executed standalone on any URL and venue name on demand.
+     - Verified working: successfully captures retina 1.5x injected widget previews with zero dependencies on legacy pipelines.
+  2. **Adopt the Collaborative 5-Step AI Staging Loop**:
+     - *Step 1 (Founder Lead Drop)*: Founder pastes ~5 target leads from Google Sheets into the chat with URLs, emails, and optional template codes.
+     - *Step 2 (AI Staging & Screenshot Generation)*: AI identifies the archetype, selects/recommends the best template, generates the mock screenshot, formats pristine email copy, and presents a complete visual review in chat.
+     - *Step 3 (Founder Review Gate)*: Founder inspects drafts and screenshots directly, approving, tweaking, or denying leads. No email is dispatched without explicit founder approval.
+     - *Step 4 (Scheduled Pacing)*: Approved emails are dispatched across UK business hours (10–20 min intervals) using a lightweight queue runner (`scripts/outreach/send_staged_emails.py`).
+     - *Step 5 (Sync Back)*: AI logs dispatched emails to `data/outreach/sent_log.csv` and `traction/outreach-tracker.md`, and outputs a formatted table for the founder to copy into Google Sheets (or update via Gemini in Sheets).
+  3. **Permanent Fix for Email Formatting**:
+     - Implemented dual multipart MIME (clean UTF-8 plain text with strict paragraph spacing + semantic inline `<p style="...">` HTML fallback).
+     - Screenshots attached strictly as `Content-Disposition: attachment` to prevent inline rendering corruption in Outlook.
+- **Consequence**:
+  1. Eliminates rigid pipeline friction; empowers the founder to curate leads in Google Sheets in the browser while leveraging the AI assistant for copywriting, screenshot generation, and execution.
+  2. Zero risk of embarrassing email formatting glitches or unwanted screenshots being sent blindly.
+
 ## 2026-10-05 — DevTools Mock Widget Injection & Screenshot Outbound Engine: Automated Playwright Capture & Email Attachment
 - **Problem**:
   1. Even with punchy, lower-case outbound emails and dynamic interactive staging links (`https://endmilerouting.co.uk/venue-widget/?url=...`), cold venue managers and operations directors often hesitate to click external links from unfamiliar senders.

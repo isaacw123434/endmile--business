@@ -18,29 +18,28 @@
 
 ---
 
-## 2. Active Outbound Campaign Batches & Workflow
+## 2. Operating Model: AI-Assisted Google Sheets & Chat Staging
+
+> [!TIP]
+> **Workflow Evolution (2026-10-08):**
+> Monolithic automated Python dispatch scripts have been archived because they were too rigid and did not allow human visual inspection of email drafts and mock widget screenshots.
+> The active operating model is **Human-in-the-Loop AI Collaboration**:
+> 1. **Lead Sourcing & Curation**: Founder manages and edits master leads in **Google Sheets online**, using Google Gemini in Google Sheets for quick web lookups, categorization, and filtering.
+> 2. **Batch Drop in Chat**: Founder pastes ~5 target leads into the Antigravity chat window with URLs, emails, and desired template codes (or asks for recommendations).
+> 3. **AI Staging & Screenshot Generation**: Antigravity generates pixel-perfect mock screenshots using standalone Playwright (`generate_venue_mock_screenshot.py`), drafts the exact email text with formatting verified (clean paragraph breaks, no 76-character wrapping glitches, zero links), and presents a full preview in chat.
+> 4. **Founder Review Gate**: Founder reviews each draft and screenshot, approves, tweaks, or skips.
+> 5. **Paced Scheduling**: Antigravity dispatches approved emails spaced 10–20 minutes apart during UK business hours using `scripts/outreach/send_staged_emails.py`.
+> 6. **Feedback Loop**: Sent details are logged to `data/outreach/sent_log.csv` and `traction/outreach-tracker.md`, providing a clean copy-paste block for the founder to sync back into Google Sheets.
 
 ### Batch 2 (Consultancies — "Paul Profile"): ACTIVE PRIORITY
-- **Master Workbook:** `C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx` (Sheet 1: `App Prospects Pipeline`).
-- **Verified Pipeline:** **1,351 active verified leads** with live DNS MX servers (384 Microsoft 365, 216 Google Workspace, 701 Hosting MX, 50 Enterprise Gateways).
-- **Founder Manual Project Management Gate:**
-  - Isaac reviews leads in Excel tab `App Prospects Pipeline`.
-  - Column B: `ManualApproval` (`Approved`, `Pending Review`, `Hold`, `Skip`, `Sent`).
-  - Column C: `AssignedTemplate` (`AUTO`, `DIRECT_SCRATCHPAD`, `INFO_REF_A`, `INFO_REF_B`, `INFO_REF_C`, `INFO_REF_D`, `DIRECT_RECHARGE`).
-  - Column D: `FounderNotes`.
-  - `send_app_outreach.py` by default strictly dispatches **only leads marked `Approved`**.
-- **A/B Testing Framework:**
-  - `INFO_REF_A`: Founder Discovery Ask (38 words, authentic software engineer persona).
-  - `INFO_REF_B`: Multi-Tab Time Saver (50 words, operational time-saving angle).
-  - `INFO_REF_C`: 55p Mileage Dispute (45 words, client expense pushback angle).
-  - `INFO_REF_D`: Gatekeeper Ultra-Short (28 words, frictionless forwarding request).
-  - `DIRECT_SCRATCHPAD`: 10-Minute Travel Juggling (85 words, direct to ops / named staff).
-  - `DIRECT_RECHARGE`: Pre-Trip PDF & Recharges (95 words, direct to finance / commercial).
+- **Master Sheet**: Online Google Sheet (Consultancy Prospects).
+- **Verified Pipeline**: **1,351 active verified leads** with live DNS MX servers.
+- **Outreach Angles**: `INFO_REF_A` (Founder Discovery Ask), `INFO_REF_B` (Multi-Tab Time Saver), `DIRECT_SCRATCHPAD` (Pre-Trip Comparison), `DIRECT_RECHARGE` (Pre-Trip PDF & AP Recharges).
 
-### Batch 1 (B2B Venue Widget — Cultural Venues): CONFIRMED PIPELINE
-- **Master Workbook:** `C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx` (Sheet 2: `Venue Widget Pipeline`).
-- **Status:** **4,992 unserved UK cultural venues**. 59 founder-confirmed direct contacts pre-approved in Sheet 2.
-- **Outreach Status:** Modular CLI `send_venue_outreach.py` ready for founder-approved dispatch.
+### Batch 1 (B2B Venue Widget — Cultural Venues): ACTIVE PRIORITY
+- **Master Sheet**: Online Google Sheet (Venue Widget Pipeline — 4,992 unserved UK cultural venues).
+- **Outreach Angles**: `VENUE_VISIT_A` (Interactive Visit Planner), `GIG_CURFEW_A` (Late-Night Curfew), `MUSEUM_PLANNER_A` (City Transit vs Car), `THEATRE_SCOPE3_A` (Julie's Bicycle Scope 3 Carbon), `VENUE_INFO_REFERRAL` (Disarming Reception Ask).
+
 
 ---
 
@@ -50,6 +49,7 @@
 
 | Date Sent | Organization | Contact Name & Title | Segment | Channel | Angle / Template | Status | Next Follow-Up | Notes / Response |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-08 | Oxford Playhouse | Emma | Lead | Email (emma.jones@26pmx.com) | VENUE_VISIT_A (Example Placement Mock) | Sent | +3 Days | Partner work email test - inbox/spam verification with inline CID image |
 | *YYYY-MM-DD* | *Sample Practice* | *Operations Lead* | *Consultancy* | *Email* | *DIRECT_SCRATCHPAD* | *Sent* | *+3 Days* | *Initial outreach sent* |
 
 ---
