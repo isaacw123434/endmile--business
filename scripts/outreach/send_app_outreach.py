@@ -66,6 +66,10 @@ CSV_PATH = REPO_ROOT / "data" / "consultancies" / "app_prospects_v1.csv"
 EXCEL_PATH = get_master_pipeline_path()
 TRACKER_PATH = REPO_ROOT / "traction" / "outreach-tracker.md"
 
+# SAFETY LOCK: Live automated dispatch temporarily disabled by founder.
+# All outreach is managed manually by Isaac using the Master Excel Tracker.
+PIPELINE_LOCKED = True
+
 EXCLUDED_COMPANIES = ["DORSET SOFTWARE SERVICES", "DORSET SOFTWARE"]
 EXCLUDED_DOMAINS = ["dorsetsoftware.com"]
 
@@ -420,6 +424,10 @@ def save_pipeline_updates(df: pd.DataFrame, sent_records: list[dict]):
 
 def send_via_resend(api_key: str, sender_email: str, recipient: str, subject: str, body: str) -> dict:
     """Sends a plain-text email using Resend API with 2048-bit DKIM signature."""
+    if PIPELINE_LOCKED:
+        print(f"  [SAFETY LOCK] Live sending paused by founder. Resend dispatch to {recipient} blocked.")
+        return {"id": "blocked_by_safety_lock"}
+
     import requests
     payload = {
         "from": f"Isaac Willoughby <{sender_email}>",
@@ -438,6 +446,9 @@ def send_via_resend(api_key: str, sender_email: str, recipient: str, subject: st
 
 def send_via_smtp(smtp_server, sender_email, recipient, subject, body):
     """Sends a plain-text email using an active SMTP connection with RFC headers."""
+    if PIPELINE_LOCKED:
+        print(f"  [SAFETY LOCK] Live sending paused by founder. SMTP dispatch to {recipient} blocked.")
+        return None
     import email.utils
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
@@ -476,6 +487,14 @@ def main():
     print(f" Batch Limit: {args.limit} | Template Override: {args.template or 'Row-Level / Auto'}")
     print(f" Human Pacing: {round(args.delay_min/60, 1)}–{round(args.delay_max/60, 1)} mins between sends")
     print("=" * 70)
+
+    if PIPELINE_LOCKED and not args.dry_run:
+        print("\n" + "=" * 70)
+        print(" [SAFETY LOCK ENGAGED] AUTOMATED PIPELINE DISPATCH IS TEMPORARILY DISABLED.")
+        print(" Per founder instructions, all outreach is currently conducted manually.")
+        print(" Run with --dry-run to preview emails in the console.")
+        print("=" * 70 + "\n")
+        return
 
     if not args.dry_run and not args.ignore_business_hours:
         if not is_uk_business_hours():

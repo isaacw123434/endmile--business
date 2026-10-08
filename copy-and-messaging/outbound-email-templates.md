@@ -82,14 +82,14 @@ No worries at all if this isn't relevant to your team.
 
 Just following up on this — know you're busy coordinating client dispatches.
 
-We set up a quick 1-click test link with {HQCity} corridors pre-configured: https://endmilerouting.co.uk
-
-No login or download needed — feel free to test your team's next client route and see if it cuts your planning time down from 15 minutes to 30 seconds.
+We set up a quick preview with {HQCity} corridors pre-configured. No login or sign-up needed — happy to send over the preview link or run a couple of sample client routes for your team if helpful.
 
 Best,
 Isaac
 Founder, EndMile
 isaacw@endmilerouting.co.uk
+
+No worries at all if this isn't relevant to your team.
 ```
 
 ---
@@ -100,7 +100,7 @@ isaacw@endmilerouting.co.uk
 > **Salutation & Formatting Rules:**
 > 1. **Time-Aware Salutation:** Use `Good morning,` (before 12:00) or `Good afternoon,` (after 12:00). Never use informal "Hi team," or "Hi there,".
 > 2. **Capitalized Subject Lines:** NEVER start subject lines in lowercase. Always capitalize the first word (e.g. `Quick question - travel coordination`).
-> 3. **Zero Links in Email 1:** Omit raw `https://` URLs from Email 1 to ensure 100% spam inbox deliverability without triggering ATP Safe Links scanner.
+> 3. **Zero Links in All Outreach:** Omit raw `https://` URLs completely from all outreach emails (Touch 1 and follow-ups) to ensure 100% spam inbox deliverability without triggering Microsoft ATP Safe Links scanners or spam heuristics.
 > 4. **Natural Human Opt-Out:** Always use natural conversational sign-offs (e.g. `No worries at all if this isn't relevant to your team.`) instead of robotic `reply 'unsubscribe'` keywords.
 
 ### `INFO_REF_A` (Variant A: Founder Discovery Ask)
@@ -199,6 +199,8 @@ Much appreciated,
 Isaac
 Founder, EndMile
 isaacw@endmilerouting.co.uk
+
+No worries at all if this isn't relevant to your team.
 ```
 
 ---

@@ -75,6 +75,10 @@ FALLBACK_EXCEL = Path(r"C:\Users\isaac\Downloads\endmile widget v4.xlsx")
 TRACKER_PATH = REPO_ROOT / "traction" / "outreach-tracker.md"
 SCREENSHOTS_DIR = REPO_ROOT / "screenshots" / "venues"
 
+# SAFETY LOCK: Live automated dispatch temporarily disabled by founder.
+# All outreach is managed manually by Isaac using the Master Excel Tracker.
+PIPELINE_LOCKED = True
+
 EXCLUDED_CHAINS = [
     "NATIONAL TRUST", "MERLIN", "AMBASSADOR THEATRE GROUP", "ATG TICKETS",
     "LIVE NATION", "ACADEMY MUSIC GROUP", "ROYAL COLLECTION TRUST"
@@ -497,8 +501,7 @@ No worries at all if this isn't relevant to your team."""
         subject = f"Re: {venue_name}'s travel planning"
         body = f"""{salutation}
 
-Following up briefly on this — I went ahead and mocked up a quick preview of how the planner would look embedded directly on your site:
-{preview_url}
+Following up briefly on this — I went ahead and mocked up a quick preview showing how the journey planner would look embedded directly on your website.
 
 Unlike traditional transit software with £2,000+ setup hurdles, EndMile embeds directly onto your website with £0 setup and runs from £19/month on a 14-day free pilot.
 
@@ -507,7 +510,9 @@ Happy to share the staging preview or test embed for your site if helpful?
 Best,
 {founder_name}
 Founder, EndMile
-{sender_email}"""
+{sender_email}
+
+No worries at all if this isn't relevant to your team."""
         return subject, body, "VENUE_FOLLOWUP_PREVIEW", preview_url
 
     else:
@@ -627,6 +632,10 @@ def send_smtp_email(
     venue_name: str = "venue"
 ) -> bool:
     """Dispatches email via secure SMTP with optional screenshot attachment."""
+    if PIPELINE_LOCKED:
+        print(f"  [SAFETY LOCK] Automated sending is temporarily disabled. Transmission to {to_email} blocked.")
+        return False
+
     smtp_host = os.getenv("SMTP_HOST", "smtp.stackmail.com")
     smtp_port = int(os.getenv("SMTP_PORT", 587))
     smtp_user = os.getenv("SMTP_USER", sender_email)
@@ -693,6 +702,14 @@ def main():
     print(f" Screenshots: {'ATTACH TO EMAIL' if args.attach_screenshot else ('GENERATE / PREVIEW' if args.screenshot else 'DISABLED')}")
     print(f" Approval Filter: {'ALL Venues' if args.all else 'Approved by Isaac in Excel only'}")
     print("=" * 70)
+
+    if PIPELINE_LOCKED and not args.dry_run:
+        print("\n" + "=" * 70)
+        print(" [SAFETY LOCK ENGAGED] AUTOMATED PIPELINE DISPATCH IS TEMPORARILY DISABLED.")
+        print(" Per founder instructions, all outreach is currently conducted manually.")
+        print(" Run with --dry-run to preview templates in the console.")
+        print("=" * 70 + "\n")
+        return
 
     if not args.dry_run and not args.ignore_hours and not is_uk_business_hours():
         print("[GUARD] Outside UK business hours (08:30-17:30 Mon-Fri). Use --ignore-hours or --dry-run.")
