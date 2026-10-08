@@ -11,7 +11,18 @@ import os
 import sys
 from pathlib import Path
 
-MASTER_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
+MASTER_PATH = get_master_pipeline_path()
 
 def open_pipeline():
     if not MASTER_PATH.exists():

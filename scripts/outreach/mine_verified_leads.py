@@ -24,9 +24,20 @@ import requests
 import pandas as pd
 import dns.resolver
 
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 CSV_PATH = REPO_ROOT / "data" / "consultancies" / "app_prospects_v1.csv"
-EXCEL_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+EXCEL_PATH = get_master_pipeline_path()
 
 API_KEY = "2f9f5eed-3be4-43aa-9761-353d9067fdc1"
 BASE_URL = "https://api.company-information.service.gov.uk/advanced-search/companies"

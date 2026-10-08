@@ -58,8 +58,19 @@ load_dotenv()
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-EXCEL_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+EXCEL_PATH = get_master_pipeline_path()
 FALLBACK_EXCEL = Path(r"C:\Users\isaac\Downloads\endmile widget v4.xlsx")
 TRACKER_PATH = REPO_ROOT / "traction" / "outreach-tracker.md"
 SCREENSHOTS_DIR = REPO_ROOT / "screenshots" / "venues"
@@ -150,29 +161,26 @@ def build_venue_email(
             if any(k in venue_lower for k in ["opera", "ballet", "npo", "trust"]):
                 tpl_choice = "THEATRE_GREENBOOK_B" if use_b else "THEATRE_SCOPE3_A"
             elif any(k in venue_lower for k in ["music", "gig", "hall", "academy", "o2"]):
-                tpl_choice = "GIG_DISPERSAL_B" if use_b else "GIG_EGRESS_A"
+                tpl_choice = "GIG_CURFEW_A"
             else:
-                tpl_choice = "THEATRE_ACCESS_B" if use_b else "THEATRE_JOURNEY_A"
+                tpl_choice = "VENUE_VISIT_A"
         elif "museum" in archetype or "gallery" in archetype or "museum" in venue_lower or "gallery" in venue_lower:
             if any(k in venue_lower for k in ["castle", "hall", "manor", "house", "gardens", "park", "estate"]):
-                tpl_choice = "HERITAGE_LANES_B" if use_b else "HERITAGE_CATCHMENT_A"
+                tpl_choice = "HERITAGE_RURAL_B"
             else:
-                tpl_choice = "MUSEUM_ACCESS_B" if use_b else "MUSEUM_CAZ_A"
+                tpl_choice = "MUSEUM_PLANNER_A" if use_b else "MUSEUM_CAZ_A"
         elif "attraction" in archetype or "zoo" in archetype or "wildlife" in archetype or "zoo" in venue_lower or "safari" in venue_lower:
-            if any(k in venue_lower for k in ["railway", "steam", "outdoor", "farm", "adventure"]):
-                tpl_choice = "ATTRACT_GREEN_B" if use_b else "ATTRACT_HIGHWAY_A"
-            else:
-                tpl_choice = "ATTRACT_COST_B" if use_b else "ATTRACT_INGRESS_A"
+            tpl_choice = "ATTRACT_FAMILY_A"
         elif "university" in archetype or "campus" in archetype or "college" in venue_lower:
             tpl_choice = "UNI_CAMPUS_B" if use_b else "UNI_OPENDAY_A"
         else:
-            tpl_choice = "THEATRE_ACCESS_B" if use_b else "THEATRE_JOURNEY_A"
+            tpl_choice = "VENUE_VISIT_A"
 
     time_greeting = "Good morning," if datetime.now().hour < 12 else "Good afternoon,"
     salutation = f"{time_greeting[:-1]} {first_name}," if first_name else time_greeting
 
     # 1. THEATRES & PERFORMING ARTS
-    if tpl_choice in ["THEATRE_VISIT_A", "THEATRE_JOURNEY_A"]:
+    if tpl_choice in ["VENUE_VISIT_A", "THEATRE_VISIT_A", "THEATRE_JOURNEY_A"]:
         subject = f"Visitor directions for {venue_name}"
         cta = (
             f"I went ahead and mocked up how this looks on your actual visit page (see attached screenshot).\n\nWould you be open to trying a live preview?"
@@ -181,9 +189,9 @@ def build_venue_email(
         )
         body = f"""{salutation}
 
-Looking at {venue_name}'s "Getting Here" page, visitors planning their trip currently have to read through static text and jump between map apps and train timetables to figure out their route.
+Taking a look at the "Getting Here" page on {venue_name}'s website, visitors planning their trip currently have to sort through static bullet points to compare driving, parking, and public transit.
 
-We built EndMile as a lightweight, 1-line trip planner for UK venues. Ticket holders simply type their postcode and instantly get door-to-door transit times, station walks, and car parks directly on your page.
+We built EndMile as an interactive visit planner that embeds directly onto your website with zero technical setup. Visitors simply enter their home postcode and get live train times, walking routes, and official car parks side-by-side.
 
 {cta}
 
@@ -193,7 +201,7 @@ Founder, EndMile
 {sender_email}
 
 No worries at all if this isn't relevant to your team."""
-        return subject, body, "THEATRE_VISIT_A", preview_url
+        return subject, body, "VENUE_VISIT_A", preview_url
 
     elif tpl_choice == "THEATRE_ACCESS_B":
         subject = f"Accessible travel to {venue_name}"
@@ -208,7 +216,7 @@ When patrons with access requirements plan a visit to {venue_name}, how easy is 
 
 Over 10% of cultural attendees require step-free transit, and uncertainty around station walking links or Blue Badge bays often creates booking hesitation.
 
-We built EndMile to provide verified step-free rail routes, accessible station walking paths, and Blue Badge parking directly on your visit page in one line of code.
+We built EndMile to embed a clean trip planner on your visit page, highlighting verified step-free transit routes and Blue Badge parking in one place.
 
 {cta}
 
@@ -229,9 +237,9 @@ No worries at all if this isn't relevant to your team."""
         )
         body = f"""{salutation}
 
-For evening gigs finishing after 10:30 PM at {venue_name}, do attendees travelling in from surrounding towns often struggle to check return train and bus times in advance?
+For evening shows finishing after 10:30 PM at {venue_name}, do gig-goers travelling in from surrounding towns often struggle to check return train and bus times in advance?
 
-We built EndMile as a simple, 1-line trip planner for UK live venues. It lets ticket buyers check their exact route home—including last rail departures and station walking times—right on your event pages.
+We built EndMile as an interactive travel planner that embeds directly into your event pages. It lets fans check their exact route home—including last rail departures and station walking times—without having to leave your website.
 
 {cta}
 
@@ -254,9 +262,9 @@ No worries at all if this isn't relevant to your team."""
 
 For {venue_name}'s annual Julie's Bicycle environmental reporting, how does your team currently measure audience travel carbon?
 
-Audience travel typically represents over 80% of a cultural venue's footprint, yet most venues have to rely on post-show email surveys with 3–4% response rates and rough estimations.
+Audience travel usually represents over 80% of a cultural venue's footprint, yet most venues have to rely on post-show email surveys with 3–4% response rates and rough estimations.
 
-We built EndMile to automate this. It embeds as a 1-line journey planner on your visit page, generating verified DEFRA Scope 3 carbon telemetry directly from real visitor journey queries.
+EndMile embeds directly on your visit page, giving audience members live journey directions while passively logging verified travel modal splits and passenger mileage in the background.
 
 {cta}
 
@@ -307,7 +315,7 @@ With regional Clean Air Zones and city centre multi-storey parking tariffs climb
 
 Unclear parking guidance often leads to driver frustration before visitors even step through the doors.
 
-We built EndMile as a 1-line embed that alerts visiting drivers to Clean Air Zones and points them directly to suburban Park & Ride hubs or direct rail connections, with live tariff comparisons.
+We built EndMile as an interactive visit planner that embeds directly onto your website. It alerts visiting drivers to Clean Air Zones and points them directly to suburban Park & Ride hubs or direct rail connections, with live tariff comparisons.
 
 {cta}
 
@@ -346,17 +354,17 @@ No worries at all if this isn't relevant to your team."""
     elif tpl_choice in ["HERITAGE_RURAL_B", "HERITAGE_CATCHMENT_A", "HERITAGE_LANES_B"]:
         subject = f"Car-free visitor routes to {venue_name}"
         cta = (
-            f"Attached is a quick mockup of how it looks. Would a preview be of interest?"
+            f"Attached is a quick mockup of how it looks on your site. Would a preview link be of interest?"
             if screenshot_attached else
-            f"Would it be helpful to see a 30-second preview for {venue_name}?"
+            f"Would a preview link for {venue_name} be of interest?"
         )
         body = f"""{salutation}
 
-For tourists and visitors without a car, how easily can they work out how to reach {venue_name} via public transport from the nearest train station?
+For tourists and visitors without a car, how easily can they work out how to reach {venue_name} via public transport from the nearest mainline station?
 
-Many visitors assume historic sites are inaccessible without driving unless connecting bus routes or station taxis are clearly laid out.
+Many visitors assume historic sites are inaccessible without driving unless connecting bus routes and station taxis are clearly laid out.
 
-EndMile embeds a 1-line route planner connecting mainline rail arrivals with local onward travel directly on your website.
+EndMile embeds directly onto your visit page with zero technical setup, showing door-to-door transit routes that link mainline rail arrivals with local onward travel.
 
 {cta}
 
@@ -378,9 +386,9 @@ No worries at all if this isn't relevant to your team."""
         )
         body = f"""{salutation}
 
-Looking at the arrival advice on {venue_name}'s website, families planning a day out currently have to manually cross-reference driving routes, parking advice, and train connections across different tabs.
+Looking at the arrival advice on {venue_name}'s website, families planning a day out currently have to cross-reference driving routes, parking charges, and family train fares across different tabs to work out the fastest and cheapest option.
 
-We built EndMile as an embeddable visit planner. Families simply enter their home town or postcode to see their exact driving time, car park locations, or public transit options in one place.
+We built EndMile as an interactive visit planner that plugs directly into your website. Families simply enter their home postcode to instantly compare driving and parking costs side-by-side with rail and transit fares in one view.
 
 {cta}
 
@@ -470,12 +478,12 @@ No worries at all if this isn't relevant to your team."""
 
     # 5. UNIVERSAL GATEKEEPER & FOLLOW-UP
     elif tpl_choice == "VENUE_INFO_REFERRAL":
-        subject = "Quick question - visitor travel"
+        subject = "Quick question - visitor directions"
         body = f"""{salutation}
 
-Could you point me to whoever looks after visitor operations, guest experience, or transport planning at {venue_name}?
+Could you point me to whoever looks after visitor operations or manages the website at {venue_name}?
 
-I'm an independent UK software engineer building an embeddable journey planner to help UK destinations manage visitor arrivals and transport clarity. Just wanted to ask them 2 quick questions about how they currently handle visit pages.
+I'm an independent UK software developer who built an interactive visit planner for UK venues, and wanted to share a 30-second preview of how it looks on {venue_name}'s site.
 
 Best,
 {founder_name}
@@ -492,9 +500,9 @@ No worries at all if this isn't relevant to your team."""
 Following up briefly on this — I went ahead and mocked up a quick preview of how the planner would look embedded directly on your site:
 {preview_url}
 
-Unlike traditional transit consultancy software (which usually carries £2,000+ setup fees), EndMile embeds via a single script tag with £0 setup and runs for £19/mo on a 14-day free pilot.
+Unlike traditional transit software with £2,000+ setup hurdles, EndMile embeds directly onto your website with £0 setup and runs from £19/month on a 14-day free pilot.
 
-Happy to send over the test snippet for your staging site if helpful?
+Happy to share the staging preview or test embed for your site if helpful?
 
 Best,
 {founder_name}
@@ -504,7 +512,7 @@ Founder, EndMile
 
     else:
         # Fallback default
-        return build_venue_email(row, template_override="THEATRE_JOURNEY_A", variant_override=variant_override, screenshot_attached=screenshot_attached, founder_name=founder_name, sender_email=sender_email)
+        return build_venue_email(row, template_override="VENUE_VISIT_A", variant_override=variant_override, screenshot_attached=screenshot_attached, founder_name=founder_name, sender_email=sender_email)
 
 def is_uk_business_hours() -> bool:
     """Check if current time is Monday-Friday between 08:30 and 17:30 UK time."""

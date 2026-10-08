@@ -195,9 +195,10 @@ Use this modular matrix to compose customized emails in seconds:
 - **Live Music Hook:** `For evening gigs finishing after 10:30 PM at {{venue_name}}, out-of-town attendees often struggle to check return train and bus times in advance.`
 
 #### Slot 3: The Credibility / Solution Drop (Choose One)
-- **General / Travel Solution:** `We built EndMile as a lightweight, 1-line trip planner for UK venues. Ticket holders simply type their postcode and instantly get door-to-door transit times, station walks, and car parks directly on your page.`
-- **The Rural Transit Angle:** `EndMile embeds a 1-line route planner connecting mainline rail arrivals with local onward travel and station taxis directly on your website.`
-- **The Arts / Julie's Bicycle Angle (NPOs Only):** `It embeds in one line, guides audiences to direct transit or preferred car parks, and passively logs Scope 3 audience travel carbon data for Julie's Bicycle reporting.`
+- **Universal Flagship:** `We built EndMile as an interactive visit planner that embeds directly onto your website with zero technical setup. Visitors simply enter their home postcode and get live train times, walking routes, and official car parks side-by-side.`
+- **The Rural Transit Angle:** `EndMile embeds directly onto your visit page with zero technical setup, showing door-to-door transit routes that link mainline rail arrivals with local onward travel.`
+- **The Family Cost Angle:** `We built EndMile as an interactive visit planner that plugs directly into your website. Families simply enter their home postcode to instantly compare driving and parking costs side-by-side with rail and transit fares in one view.`
+- **The Arts / Julie's Bicycle Angle (NPOs Only):** `EndMile embeds directly on your visit page, giving audience members live journey directions while passively logging verified travel modal splits and passenger mileage in the background.`
 
 #### Slot 4: The Low-Friction Ask CTA (Referencing the Visual Mockup)
 - `I went ahead and mocked up how this looks on your actual visit page (see attached screenshot). Would you be open to trying a live preview?`
@@ -207,13 +208,14 @@ Use this modular matrix to compose customized emails in seconds:
 ---
 
 #### The Core Outbound Campaigns:
-- **Campaign 1 (`THEATRE_VISIT_A`):** Theatres & Arts Centres — Interactive Trip Planning vs Static Text.
-- **Campaign 2 (`THEATRE_ACCESS_B`):** Cultural Venues — Step-Free Transit & Accessible Arrival Clarity.
-- **Campaign 3 (`GIG_CURFEW_A`):** Music Venues & Concert Halls — Post-Gig Public Transit & Last Train Timing.
-- **Campaign 4 (`MUSEUM_PLANNER_A`):** Urban Museums & Galleries — Transit vs Driving Clarity on Mobile.
-- **Campaign 5 (`HERITAGE_RURAL_B`):** Rural Heritage & Historic Estates — Connecting Mainline Rail to Rural Venues.
-- **Campaign 6 (`ATTRACT_FAMILY_A`):** Family Attractions & Zoos — Instant Home-to-Gate Trip & Parking Planning.
-- **Campaign 7 (`THEATRE_SCOPE3_A`):** Arts Council NPOs — Replacing 3-4% Post-Show Survey Guesswork with Passive Telemetry.
+- **Campaign 1 (`VENUE_VISIT_A`):** Universal Flagship (All Cultural Venues) — Replacing Static Transport Bullet Points with Interactive Door-to-Door Planner.
+- **Campaign 2 (`GIG_CURFEW_A`):** Music Venues & Concert Halls — Post-Gig Public Transit & Last Train Timing.
+- **Campaign 3 (`MUSEUM_PLANNER_A`):** Urban Museums & Galleries — Transit vs Driving Clarity & Live Parking.
+- **Campaign 4 (`HERITAGE_RURAL_B`):** Rural Heritage & Historic Estates — Connecting Mainline Rail to Rural Heritage & Local Shuttles.
+- **Campaign 5 (`ATTRACT_FAMILY_A`):** Family Attractions & Zoos — Driving & Parking Costs vs Family Rail Fares Price Transparency.
+- **Campaign 6 (`THEATRE_SCOPE3_A`):** Arts Council England (ACE) NPOs — Replacing Low-Response Survey Guesswork with Passive Scope 3 Telemetry.
+- **Universal Gatekeeper (`VENUE_INFO_REFERRAL`):** Reception / Info Desks — Disarming Founder Ask for Website or Visitor Ops Lead.
+- **Dormant Draft (`THEATRE_ACCESS_B`):** Accessibility & Step-Free Transit — Held in reserve pending algorithm verification.
 
 ---
 

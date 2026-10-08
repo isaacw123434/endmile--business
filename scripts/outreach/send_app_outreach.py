@@ -50,9 +50,20 @@ load_dotenv()
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 CSV_PATH = REPO_ROOT / "data" / "consultancies" / "app_prospects_v1.csv"
-EXCEL_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+EXCEL_PATH = get_master_pipeline_path()
 TRACKER_PATH = REPO_ROOT / "traction" / "outreach-tracker.md"
 
 EXCLUDED_COMPANIES = ["DORSET SOFTWARE SERVICES", "DORSET SOFTWARE"]

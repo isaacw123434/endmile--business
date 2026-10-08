@@ -28,6 +28,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 CSV_PATH = REPO_ROOT / "data" / "consultancies" / "app_prospects_v1.csv"
 DOCS_DIR = Path(r"C:\Users\isaac\Documents\endmile")
 EXCEL_PATH = DOCS_DIR / "endmile_master_pipeline.xlsx"
+ONEDRIVE_DOCS_DIR = Path(r"C:\Users\isaac\OneDrive\Documents\EndMile")
+ONEDRIVE_DOCS_PATH = ONEDRIVE_DOCS_DIR / "endmile_master_pipeline.xlsx"
+ONEDRIVE_DESKTOP_DIR = Path(r"C:\Users\isaac\OneDrive\Desktop")
+ONEDRIVE_DESKTOP_PATH = ONEDRIVE_DESKTOP_DIR / "endmile_master_pipeline.xlsx"
 WIDGET_PATH = Path(r"C:\Users\isaac\Downloads\endmile widget v4.xlsx")
 
 # Styling constants
@@ -95,254 +99,340 @@ def extract_venue_contact_info(raw_text: str) -> tuple[str, str, str]:
 def get_templates_data():
     """Returns the structured list of all email templates, info desk referral variations, and follow-ups."""
     return [
-        # APP TEMPLATES
+        # APP TEMPLATES (Consultancy Travel Scratchpad & Cost Justification)
         {
             "Product": "Consultancy App",
             "TemplateCode": "DIRECT_SCRATCHPAD",
             "TemplateName": "Direct Operations Scratchpad Pitch",
             "TargetInbox": "Direct Operations & Discovered Named Contacts (operations@, projects@, travel@, named lead)",
-            "Subject": "{Company}'s travel planning",
+            "Subject": "{CompanyClean}'s travel planning",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "When your consultants head out to client sites (like {TravelCorridor}), does someone on operations still spend 10 minutes juggling Google Maps, Trainline, and station parking to find the fastest and cheapest door-to-door route?\n\n"
-                "I built EndMile (https://endmilerouting.co.uk) as a quick scratchpad for UK consultancies. It stacks up driving (at HMRC 55p/mile) against train fares, station parking, and destination taxis side-by-side in 10 seconds.\n\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "When your consultants head out to client sites (like {Corridor}), does someone on operations still spend 10 minutes juggling Google Maps, Trainline, and station parking to find the fastest and cheapest door-to-door route?\n\n"
+                "I built EndMile as a quick scratchpad for UK consultancies. It stacks up driving (at HMRC 55p/mile) against train fares, station parking, and destination taxis side-by-side in 10 seconds.\n\n"
                 "Happy to send over a 30-second preview of how it works for {HQCity} corridors if helpful?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Multi-Tab Friction (10-minute booking headache vs 10-second multimodal scratchpad)",
+            "Angle": "10-Second Door-to-Door TCO Comparison (Stops multi-tab spreadsheet chaos)",
             "WordCount": 85,
-            "WhenToUse": "Use when reaching named practice leads, travel coordinators, or specific operations/delivery inboxes."
+            "WhenToUse": "Direct outreach to operations leads, project coordinators, or practice directors."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "DIRECT_RECHARGE",
             "TemplateName": "Direct Project Recharges & Margin Defense",
             "TargetInbox": "Finance, Commercial Leads, Project Directors (finance@, commercial@, projects@)",
-            "Subject": "client travel recharges",
+            "Subject": "Client travel recharges",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "When {Company}'s consultants travel to client sites, do your finance or project leads ever run into pushback from client accounts payable over HMRC 55p mileage or taxi expenses?\n\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "When {CompanyClean}'s consultants travel to client sites, do your finance or project leads ever run into pushback from client accounts payable over HMRC 55p mileage or taxi expenses?\n\n"
                 "We've found many UK consultancies lose 1–5% of travel recharges simply because clients look up a superficial £50 train ticket and dispute a £110 car journey, ignoring station parking and taxi legs.\n\n"
-                "We built EndMile (https://endmilerouting.co.uk) to calculate the true door-to-door comparison before consultants travel, generating a 1-page Pre-Trip Cost Justification PDF to attach directly to client invoices.\n\n"
+                "We built EndMile to calculate the true door-to-door comparison before consultants travel, generating a 1-page Pre-Trip Cost Justification PDF to attach directly to client invoices.\n\n"
                 "Would it be helpful to see a sample justification report for {HQCity} routes?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Client Invoice Dispute Defense (Defending 55p mileage claims against accounts payable pushback)",
-            "WordCount": 95,
-            "WhenToUse": "Use when targeting cost consultants, project managers, or finance contacts managing client recharges."
+            "Angle": "Pre-Trip Cost Justification PDF (Defends billable margin against client pushback)",
+            "WordCount": 98,
+            "WhenToUse": "Direct touch to finance directors, practice heads, or billable engagement managers."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "INFO_REF_A",
             "TemplateName": "Info Desk Referral A (Founder Discovery Ask)",
             "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "quick question - travel coordination",
+            "Subject": "Quick question - travel coordination",
             "Body": (
-                "Hi team,\n\n"
-                "Could you point me to whoever looks after consultant travel or expenses at {Company}?\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Could you point me to whoever looks after consultant travel or expenses at {CompanyClean}?\n\n"
                 "I'm an independent UK software engineer building a tool to cut down the time consultancies spend planning client travel and comparing HMRC 55p mileage. Just wanted to ask them 2 quick questions about how they currently handle it.\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Pre-Revenue Founder Discovery Ask (Authentic engineer persona asking 2 quick questions)",
-            "WordCount": 38,
-            "WhenToUse": "Default A/B test variant. Extremely disarming; gatekeepers forward directly to Ops."
+            "Angle": "Disarming Founder Discovery Question (Highest response rate)",
+            "WordCount": 54,
+            "WhenToUse": "Default / primary angle for all general inbox outreach."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "INFO_REF_B",
             "TemplateName": "Info Desk Referral B (Multi-Tab Time Saver)",
             "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "{Company}'s travel planning",
+            "Subject": "{CompanyClean}'s travel planning",
             "Body": (
-                "Hi there,\n\n"
-                "Quick question — who at {Company} coordinates travel when consultants head out to client sites (like {TravelCorridor})?\n\n"
-                "I put together a simple tool (https://endmilerouting.co.uk) that works out driving mileage against train fares, parking, and taxis in 10 seconds, instead of jumping between 3 tabs.\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Quick question — who at {CompanyClean} coordinates travel when consultants head out to client sites (like {Corridor})?\n\n"
+                "I put together a simple tool for UK consultancies that works out driving mileage against train fares, parking, and taxis in 10 seconds, instead of jumping between 3 tabs.\n\n"
                 "Worth passing this over to whoever handles travel for your team?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Operational Time Saver (Helps receptionist pass a tangible utility to the travel planner)",
-            "WordCount": 50,
-            "WhenToUse": "Best for firms where regional office travel corridor is known."
+            "Angle": "Operational Productivity & Eliminating 3 Tabs",
+            "WordCount": 58,
+            "WhenToUse": "Secondary A/B rotation for consultancies with explicit known regional corridors."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "INFO_REF_C",
             "TemplateName": "Info Desk Referral C (55p Mileage Dispute)",
             "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "consultant travel expenses",
+            "Subject": "Consultant travel expenses",
             "Body": (
-                "Hi team,\n\n"
-                "Could you point me to whoever manages travel expenses or project recharges at {Company}?\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Could you point me to whoever manages travel expenses or project recharges at {CompanyClean}?\n\n"
                 "I put together a simple tool for UK consultancies to help back up HMRC 55p mileage against rail costs when clients question travel invoices.\n\n"
                 "Who would be best to speak with about that?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Commercial Expense Routing (Routes to Accounts/Finance or Practice Lead)",
-            "WordCount": 45,
-            "WhenToUse": "Great for quantity surveyors, engineering practices, and advisory firms with heavy billing."
+            "Angle": "Defending HMRC Mileage Recharges via Client Invoicing PDF",
+            "WordCount": 52,
+            "WhenToUse": "Targeting finance-leaning or commercial consultancies."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "INFO_REF_D",
             "TemplateName": "Info Desk Referral D (Ultra-Short Gatekeeper Forward)",
             "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "quick referral - operations / travel",
+            "Subject": "Quick referral - operations / travel",
             "Body": (
-                "Hi team,\n\n"
-                "Could you point me in the right direction? Who at {Company} coordinates travel planning or expenses for consultants travelling to client sites?\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Could you point me in the right direction? Who at {CompanyClean} coordinates travel planning or expenses for consultants travelling to client sites?\n\n"
                 "Thanks so much,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK travel planning, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Frictionless Forward Request (Zero pitch, pure routing request)",
-            "WordCount": 28,
-            "WhenToUse": "High-volume reception inboxes where lengthy messages get instantly archived."
+            "Angle": "Ultra-Low Friction Forward Request (<35 words)",
+            "WordCount": 35,
+            "WhenToUse": "Fast forwarding by administrative staff."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "FOLLOWUP_DIRECT_1",
             "TemplateName": "Direct Follow-Up (+3 to 4 Days)",
             "TargetInbox": "Direct Operations & Named Contacts",
-            "Subject": "re: {Company}'s travel planning",
+            "Subject": "Re: {CompanyClean}'s travel planning",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "Just following up on this — know you're busy coordinating client dispatches.\n\n"
-                "We set up a quick 1-click test link with {HQCity} corridors pre-configured: https://endmilerouting.co.uk\n\n"
-                "No login or download needed — feel free to test your team's next client route and see if it cuts your planning time down from 15 minutes to 30 seconds.\n\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "Following up briefly on my earlier note — did you want to take a quick look at the 10-second multimodal scratchpad for {CompanyClean}?\n\n"
+                "Happy to run a couple of sample routes for your team if helpful.\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Zero-Friction Sandbox Link (No sign-up, instant gratification)",
+            "Angle": "Polite Bump (Zero friction preview offer)",
             "WordCount": 55,
-            "WhenToUse": "Send 3-4 days after DIRECT_SCRATCHPAD if no response."
+            "WhenToUse": "Send 3-4 business days after DIRECT_SCRATCHPAD if no response."
         },
         {
             "Product": "Consultancy App",
             "TemplateCode": "FOLLOWUP_INFO_1",
             "TemplateName": "Info Desk Referral Follow-Up (+4 Days)",
             "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@)",
-            "Subject": "re: quick question - travel coordination",
+            "Subject": "Re: Quick question - travel coordination",
             "Body": (
-                "Hi team,\n\n"
-                "Following up briefly on this — did you know who would be the best person to speak with regarding consultant travel or operations at {Company}?\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Following up briefly on this — did you know who would be the best person to speak with regarding consultant travel or operations at {CompanyClean}?\n\n"
                 "Much appreciated,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Polite Nudge (Ensures email didn't get buried in morning reception rush)",
-            "WordCount": 32,
+            "Angle": "Polite Nudge (Ensures email didn't get buried)",
+            "WordCount": 34,
             "WhenToUse": "Send 4 business days after INFO_REF_A/B/C/D if no reply."
         },
-        # VENUE WIDGET TEMPLATES
+        # VENUE WIDGET TEMPLATES (B2B Travel Planner Embed)
         {
             "Product": "Venue Travel Widget",
-            "TemplateCode": "VENUE_DWELL_TIME",
-            "TemplateName": "Venue Pre-Show Arrival & Dwell Time",
-            "TargetInbox": "General Managers, Commercial Directors, Operations Leads",
-            "Subject": "{VenueName}'s visitor arrivals",
+            "TemplateCode": "VENUE_VISIT_A",
+            "TemplateName": "Universal Flagship (Static Bullet Points vs Interactive Planner)",
+            "TargetInbox": "Visitor Services, Operations Directors, Commercial Leads, General Managers",
+            "Subject": "Visitor directions for {VenueName}",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "When ticket holders head to {VenueName}, do you ever find that last-mile driving traffic and city centre parking searches leave audiences rushing through the doors right at the 2-minute bell?\n\n"
-                "Beyond auditorium disruptions, when guests arrive flustered they skip the bar, programmes, and catering—which is where venues protect their operating margins.\n\n"
-                "We built EndMile (https://endmilerouting.co.uk/venue-widget) as a 1-line travel planner that embeds directly on your visit page. It compares door-to-door rail against driving and verified parking tariffs in 10 seconds, encouraging visitors to plan ahead and arrive 30–45 minutes earlier.\n\n"
-                "Would it be helpful to see a 30-second preview of how it looks on {VenueName}'s website?\n\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "Taking a look at the \"Getting Here\" page on {VenueName}'s website, visitors planning their trip currently have to sort through static bullet points to compare driving, parking, and public transit.\n\n"
+                "We built EndMile as an interactive visit planner that embeds directly onto your website with zero technical setup. Visitors simply enter their home postcode and get live train times, walking routes, and official car parks side-by-side.\n\n"
+                "I went ahead and mocked up how this looks on your actual visit page (see attached screenshot).\n\n"
+                "Would you be open to trying a live preview?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK venue travel, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Protecting Bar & Concession Margins via Pre-Show Arrival Planning",
-            "WordCount": 95,
-            "WhenToUse": "Primary pitch for theatres, concert halls, and independent arts centres."
+            "Angle": "Universal Flagship: Replaces static transport bullet points with 1-click door-to-door transit & parking comparison",
+            "WordCount": 85,
+            "WhenToUse": "Flagship template for theatres, concert halls, civic arts centres, and cultural destinations."
         },
         {
             "Product": "Venue Travel Widget",
-            "TemplateCode": "VENUE_SCOPE3_GREENBOOK",
-            "TemplateName": "Venue Carbon Reporting (Julie's Bicycle & Green Book)",
-            "TargetInbox": "Executive Directors, Sustainability Leads, Civic Venue Ops",
-            "Subject": "audience travel reporting",
+            "TemplateCode": "GIG_CURFEW_A",
+            "TemplateName": "Music Venues & Arenas (Post-Gig Public Transit & Last Trains)",
+            "TargetInbox": "Operations Managers, Venue Promoters, General Managers",
+            "Subject": "Getting home from {VenueName}",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "For {VenueName}'s environmental reporting (such as Julie's Bicycle or the Theatre Green Book), how does your team currently measure audience travel emissions?\n\n"
-                "Audience travel typically represents over 80% of a cultural venue's carbon footprint, but most venues have to rely on post-show email surveys with 3–4% response rates and rough estimations.\n\n"
-                "We built EndMile (https://endmilerouting.co.uk/venue-widget) to automate this. It embeds as a 1-line journey planner on your visit page, giving visitors live rail, bus, and parking options while generating verified DEFRA Scope 3 carbon telemetry directly from actual journey searches.\n\n"
-                "Would you be open to seeing a sample travel carbon export for {VenueName}?\n\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "For evening shows finishing after 10:30 PM at {VenueName}, do gig-goers travelling in from surrounding towns often struggle to check return train and bus times in advance?\n\n"
+                "We built EndMile as an interactive travel planner that embeds directly into your event pages. It lets fans check their exact route home—including last rail departures and station walking times—without having to leave your website.\n\n"
+                "I attached a mockup showing how it looks on your site. Happy to share a 30-second live preview if helpful?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK venue travel, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
-            "Angle": "Automating Arts Council Julie's Bicycle Scope 3 Carbon Reporting",
-            "WordCount": 105,
-            "WhenToUse": "NPO theatres, civic museums, and heritage venues with grant reporting."
+            "Angle": "Nightlife & Curfew Egress: Solves post-10:30 PM last train anxiety directly on event/lineup pages",
+            "WordCount": 81,
+            "WhenToUse": "Music halls, live music venues, comedy clubs, and late-night performing arts venues."
+        },
+        {
+            "Product": "Venue Travel Widget",
+            "TemplateCode": "MUSEUM_PLANNER_A",
+            "TemplateName": "Urban Museums & Galleries (Transit vs Driving Clarity)",
+            "TargetInbox": "Head of Visitor Experience, Commercial Directors, Operations Managers",
+            "Subject": "Travel directions for {VenueName}",
+            "Body": (
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "Taking a look at the visitor guide on {VenueName}'s website, day visitors currently have to sort through multiple transport bullet points to compare driving vs public transit.\n\n"
+                "We built EndMile to give visitors an interactive door-to-door trip planner directly on your \"Visit\" page. Visitors enter their starting point and get live train times, walking routes, and official car parks side-by-side.\n\n"
+                "I mocked up how this looks on {VenueName}'s visit page (attached). Worth sending over a quick preview link to test?\n\n"
+                "Best,\n"
+                "Isaac\n"
+                "Founder, EndMile\n"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
+            ),
+            "Angle": "Museums & Galleries: Door-to-door arrival clarity, driving vs rail comparison on mobile",
+            "WordCount": 83,
+            "WhenToUse": "Urban museums, civic art galleries, science discovery centres, and exhibition halls."
+        },
+        {
+            "Product": "Venue Travel Widget",
+            "TemplateCode": "HERITAGE_RURAL_B",
+            "TemplateName": "Rural Heritage & Historic Sites (Mainline Rail to Rural Transport)",
+            "TargetInbox": "Commercial Directors, Head of Visitor Services, Operations",
+            "Subject": "Car-free visitor routes to {VenueName}",
+            "Body": (
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "For tourists and visitors without a car, how easily can they work out how to reach {VenueName} via public transport from the nearest mainline station?\n\n"
+                "Many visitors assume historic sites are inaccessible without driving unless connecting bus routes and station taxis are clearly laid out.\n\n"
+                "EndMile embeds directly onto your visit page with zero technical setup, showing door-to-door transit routes that link mainline rail arrivals with local onward travel.\n\n"
+                "Attached is a quick mockup of how it looks on your site. Would a preview link be of interest?\n\n"
+                "Best,\n"
+                "Isaac\n"
+                "Founder, EndMile\n"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
+            ),
+            "Angle": "Car-Free Tourism: Bridges mainline rail stations to rural buses, taxis, and walking trails",
+            "WordCount": 79,
+            "WhenToUse": "Castles, historic houses, country parks, abbeys, and rural visitor destinations."
+        },
+        {
+            "Product": "Venue Travel Widget",
+            "TemplateCode": "ATTRACT_FAMILY_A",
+            "TemplateName": "Visitor Attractions & Zoos (Family Cost Transparency: Fuel/Parking vs Rail)",
+            "TargetInbox": "Head of Visitor Operations, General Managers, Marketing Leads",
+            "Subject": "Visitor trip planning for {VenueName}",
+            "Body": (
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "Looking at the arrival advice on {VenueName}'s website, families planning a day out currently have to cross-reference driving routes, parking charges, and family train fares across different tabs to work out the fastest and cheapest option.\n\n"
+                "We built EndMile as an interactive visit planner that plugs directly into your website. Families simply enter their home postcode to instantly compare driving and parking costs side-by-side with rail and transit fares in one view.\n\n"
+                "I went ahead and mocked up how it looks on your visit page (attached). Worth seeing a 30-second live preview?\n\n"
+                "Best,\n"
+                "Isaac\n"
+                "Founder, EndMile\n"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
+            ),
+            "Angle": "Family Cost Equation: Solves driving + parking tariff vs rail fare confusion to prevent booking drop-off",
+            "WordCount": 85,
+            "WhenToUse": "Zoos, theme parks, farm parks, safari parks, and family attraction destinations."
+        },
+        {
+            "Product": "Venue Travel Widget",
+            "TemplateCode": "THEATRE_SCOPE3_A",
+            "TemplateName": "ACE NPOs & Theatres (Scope 3 Audience Carbon Reporting)",
+            "TargetInbox": "Sustainability Leads, Operations Directors, Executive Directors (NPOs)",
+            "Subject": "Audience travel reporting for {VenueName}",
+            "Body": (
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "For {VenueName}'s annual Julie's Bicycle environmental reporting, how does your team currently collect audience travel data?\n\n"
+                "Audience travel usually represents over 80% of a cultural venue's footprint, yet most venues have to rely on post-show surveys with 3–4% response rates.\n\n"
+                "EndMile embeds directly on your visit page, giving audience members live journey directions while passively logging verified travel modal splits and passenger mileage in the background.\n\n"
+                "Would you be open to seeing a sample data export for {VenueName}?\n\n"
+                "Best,\n"
+                "Isaac\n"
+                "Founder, EndMile\n"
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
+            ),
+            "Angle": "Arts Council England (ACE) Scope 3 Reporting: Passive journey queries replace 3% survey response rates",
+            "WordCount": 86,
+            "WhenToUse": "NPO theatres, civic arts trusts, and Green Book cultural venues with grant reporting."
         },
         {
             "Product": "Venue Travel Widget",
             "TemplateCode": "VENUE_INFO_REFERRAL",
-            "TemplateName": "Venue Front-Desk Referral Inquiry",
-            "TargetInbox": "Box Office & Front Desk (info@, hello@, boxoffice@)",
-            "Subject": "quick question - visitor travel",
+            "TemplateName": "Universal Gatekeeper & Front-Desk Referral Inquiry",
+            "TargetInbox": "Box Office & Front Desk (info@, hello@, boxoffice@, enquiries@)",
+            "Subject": "Quick question - visitor directions",
             "Body": (
-                "Hi team,\n\n"
-                "Could you point me to whoever looks after visitor operations, guest experience, or sustainability at {VenueName}?\n\n"
-                "I'm an independent UK software engineer building an embeddable journey planner to help UK venues improve pre-show arrival dwell times and automate audience travel carbon reporting. Just wanted to ask them 2 quick questions about how they currently handle arrival planning.\n\n"
+                "{Good morning / Good afternoon},\n\n"
+                "Could you point me to whoever looks after visitor operations or manages the website at {VenueName}?\n\n"
+                "I'm an independent UK software developer who built an interactive visit planner for UK venues, and wanted to share a 30-second preview of how it looks on {VenueName}'s site.\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk\n\n"
-                "PS: If you'd rather not hear about UK venue travel, reply 'unsubscribe' and I'll remove you immediately."
+                "isaacw@endmilerouting.co.uk\n\n"
+                "No worries at all if this isn't relevant to your team."
             ),
             "Angle": "Disarming Engineer Referral Ask to Box Office / Gatekeeper",
-            "WordCount": 48,
+            "WordCount": 44,
             "WhenToUse": "Default when targeting info@, hello@, or boxoffice@ inboxes."
         },
         {
             "Product": "Venue Travel Widget",
             "TemplateCode": "VENUE_FOLLOWUP_PREVIEW",
-            "TemplateName": "Venue Interactive Preview Follow-Up (+3 Days)",
+            "TemplateName": "Interactive Staging Preview Follow-Up (+3 Days)",
             "TargetInbox": "General Managers, Ops Directors, Box Office Leads",
-            "Subject": "re: {VenueName}'s visitor arrivals",
+            "Subject": "Re: {VenueName}'s visitor arrivals",
             "Body": (
-                "Hi {ContactName},\n\n"
-                "Following up briefly on this — I went ahead and mocked up a quick interactive preview of how the planner would look embedded directly on your site:\n"
+                "{Good morning / Good afternoon} {ContactName},\n\n"
+                "Following up briefly on this — I went ahead and mocked up a quick preview of how the planner would look embedded directly on your site:\n"
                 "{PreviewUrl}\n\n"
-                "Unlike traditional transit consultancy software (which usually carries £2,000+ setup fees), EndMile embeds via a single script tag with £0 setup and runs for £19/mo on a 14-day free pilot.\n\n"
-                "Happy to send over the test snippet for your staging site if helpful?\n\n"
+                "Unlike traditional transit software with £2,000+ setup hurdles, EndMile embeds directly onto your website with £0 setup and runs from £19/month on a 14-day free pilot.\n\n"
+                "Happy to share the staging preview or test embed for your site if helpful?\n\n"
                 "Best,\n"
                 "Isaac\n"
                 "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk | https://endmilerouting.co.uk"
+                "isaacw@endmilerouting.co.uk"
             ),
             "Angle": "Zero Dev Friction (£0 setup, £19/mo, live interactive preview link)",
             "WordCount": 65,
-            "WhenToUse": "Send 3 business days after initial venue touch."
+            "WhenToUse": "Send 3 business days after initial venue touch if no reply."
         }
     ]
 
@@ -623,7 +713,7 @@ def build_workbook():
         ws_venue.add_data_validation(v_appr_dv)
         v_appr_dv.add(f"B2:B{venue_rows_count+1}")
 
-        v_tpl_dv = DataValidation(type="list", formula1='"AUTO,VENUE_DWELL_TIME,VENUE_SCOPE3_GREENBOOK,VENUE_VISITOR_JOURNEY,VENUE_INFO_REFERRAL,VENUE_FOLLOWUP_PREVIEW"', allow_blank=True)
+        v_tpl_dv = DataValidation(type="list", formula1='"AUTO,VENUE_VISIT_A,GIG_CURFEW_A,MUSEUM_PLANNER_A,HERITAGE_RURAL_B,ATTRACT_FAMILY_A,THEATRE_SCOPE3_A,VENUE_INFO_REFERRAL,VENUE_FOLLOWUP_PREVIEW"', allow_blank=True)
         ws_venue.add_data_validation(v_tpl_dv)
         v_tpl_dv.add(f"C2:C{venue_rows_count+1}")
 
@@ -876,9 +966,19 @@ def build_workbook():
     ws_dash.column_dimensions["F"].width = 12
     ws_dash.column_dimensions["G"].width = 24
 
-    # Save to C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx
+    # Save to C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx and sync
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    ONEDRIVE_DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    ONEDRIVE_DESKTOP_DIR.mkdir(parents=True, exist_ok=True)
+
     wb.save(EXCEL_PATH)
     print(f"\n[SUCCESS] Successfully saved Master Multi-Product Workbook to:\n  {EXCEL_PATH}")
+
+    import shutil
+    shutil.copy2(EXCEL_PATH, ONEDRIVE_DOCS_PATH)
+    print(f"[SYNC] Copied to OneDrive Documents: {ONEDRIVE_DOCS_PATH}")
+    shutil.copy2(EXCEL_PATH, ONEDRIVE_DESKTOP_PATH)
+    print(f"[SYNC] Copied to Desktop: {ONEDRIVE_DESKTOP_PATH}")
     print(f"Total sheets: {wb.sheetnames}")
 
 if __name__ == "__main__":

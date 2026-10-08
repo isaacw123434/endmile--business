@@ -16,14 +16,14 @@
 | **`INFO_REF_D`** | Info Desk Referral D (Gatekeeper Forward) | High-volume busy reception inboxes (`info@`, `hello@`) | Frictionless forward request (Zero pitch) | 28 words |
 | **`FOLLOWUP_DIRECT_1`** | Direct Follow-Up (+3 to 4 Days) | Direct Operations & Named Leads | Zero-friction sandbox link pre-configured for their HQ corridor | 55 words |
 | **`FOLLOWUP_INFO_1`** | Info Desk Follow-Up (+4 Days) | General Front Desk / Triage | Polite reminder / routing request | 32 words |
-| **`THEATRE_VISIT_A`** | Theatre Variant A: Interactive Visit Planner | General Managers, Marketing, Visitor Services | Replaces static paragraphs with 1-line interactive trip planner + visual mockup | 82 words |
-| **`THEATRE_ACCESS_B`** | Theatre Variant B: Step-Free Transit Clarity | Box Office, Access Officers, Visitor Experience | Step-free rail routes and Blue Badge parking certainty | 80 words |
-| **`GIG_CURFEW_A`** | Live Music Variant A: Post-Curfew Return Transit | Operations Managers, Venue Promoters | Out-of-town fans checking last train/bus departures home before traveling | 81 words |
+| **`VENUE_VISIT_A`** | Universal Flagship: Interactive Visit Planner | General Managers, Marketing, Visitor Services | Pointing out static bullet points; interactive door-to-door trip planner | 82 words |
+| **`GIG_CURFEW_A`** | Live Music Variant A: Post-Curfew Return Transit | Operations Managers, Venue Promoters | Helping out-of-town gig-goers check last train/transit home without leaving site | 81 words |
 | **`MUSEUM_PLANNER_A`** | Urban Museum Variant A: Transit vs Driving Clarity | Visitor Services, Operations Managers | Comparing driving + parking against direct train routes on mobile | 83 words |
 | **`HERITAGE_RURAL_B`** | Rural Heritage Variant B: Mainline Rail-to-Gate Links | Commercial Directors, Head of Visitor Services | Connecting mainline rail with local buses/taxis for car-free tourists | 79 words |
-| **`ATTRACT_FAMILY_A`** | Family Attraction Variant A: Instant Trip & Parking Planning | Operations Directors, Visitor Operations | Instant home-to-gate driving times, parking, and transit in one tool | 84 words |
+| **`ATTRACT_FAMILY_A`** | Family Attraction Variant A: Motoring vs Rail Price Transparency | Operations Directors, Visitor Operations | Comparing driving + parking charges against family rail fares | 85 words |
 | **`THEATRE_SCOPE3_A`** | Arts NPO Variant A: Passive Julie's Bicycle Scope 3 | Sustainability Officers, Operations Directors | Replacing 3-4% post-show survey guesswork with real trip query telemetry | 86 words |
-| **`VENUE_INFO_REFERRAL`** | Venue Front-Desk Disarming Referral | General Venue Inboxes (`info@`, `hello@`, `boxoffice@`) | Disarming engineer ask pointing to visitor ops or website manager | 44 words |
+| **`VENUE_INFO_REFERRAL`** | Universal Venue Reception / Gatekeeper Referral | General Venue Inboxes (`info@`, `hello@`, `boxoffice@`) | Disarming developer ask pointing to visitor ops or website manager | 44 words |
+| **`THEATRE_ACCESS_B`** *(Dormant)* | Accessible Arrival Clarity *(Dormant Draft)* | Access Officers, Box Office Managers | Held in reserve pending verified accessibility routing | 80 words |
 
 ---
 
@@ -209,56 +209,31 @@ isaacw@endmilerouting.co.uk
 > 1. **Never use the "parking tickets" or "box office parking questions" angle:** Visitors don't email box offices asking about parking, and venues don't care if someone gets a parking fine on a public street. It is an artificial, unconvincing pitch.
 > 2. **Never claim complex enterprise features we don't have:** We don't have EV charger reservation systems or direct municipal grant integrations like YST. Don't pretend to be an enterprise mobility consultant.
 > 3. **The Real Value Proposition:** 
->    - Most visitors check directions on a phone. Current venue visit pages are walls of static text that force visitors to copy postcodes, bounce to Google Maps, check Trainline, and leave the venue's site.
->    - EndMile is a **clean, 1-line embedded trip planner** that lets visitors enter their origin and instantly see their exact options (train timetables, station walking routes, driving times, and verified local car parks) directly on the venue's visit page.
+>    - Most visitors check directions on a phone. Current venue visit pages are walls of static bullet points that force visitors to copy postcodes, bounce to Google Maps, check Trainline, and leave the venue's site.
+>    - EndMile is an **interactive visit planner that embeds directly onto the venue's website with zero technical setup**. Visitors enter their origin and instantly see their exact options (train timetables, station walking routes, driving times, and official local car parks) side-by-side.
 >    - The **Playwright mock screenshot** of *their own website* is our greatest sales asset. It proves personal founder effort and lets the prospect immediately see how seamless it looks.
-> 4. **Tone & Constraints:** Under 90 words, natural British phrasing, time-sensitive salutations (`Good morning,` / `Good afternoon,`), sentence-case subject lines, and disarming interest-based asks.
+> 4. **Tone & Constraints:** Under 90 words, natural British phrasing, time-sensitive salutations (`Good morning,` / `Good afternoon,`), sentence-case subject lines, plain English benefits (NO developer jargon like "1-line"), and disarming interest-based asks.
 
 ---
 
 ### 4.1 The Core Tested Templates (By Sector & Use Case)
 
-#### Subtype 1A: Theatres, Arts Centres & Concert Halls
+#### Subtype 1A: Universal Flagship (Theatres, Arts Centres & Civic Venues)
 
-##### `THEATRE_VISIT_A` (Variant A: Interactive Trip Planning vs Static Text)
+##### `VENUE_VISIT_A` (Variant A: Interactive Visit Planner vs Static Bullet Points)
 **Subject:** `Visitor directions for {VenueName}`  
 **Word Count:** 82 words  
 **Target:** General Managers, Marketing Directors, Visitor Services Managers.  
-**Strategy:** Addresses the mobile visitor experience where patrons have to read through static paragraphs and jump between navigation apps to plan arrival times.
+**Strategy:** Points out the universal flaw of static transport bullet points on their visit page and shows how an embedded planner lets visitors plan door-to-door without bouncing.
 
 ```text
 {Good morning / Good afternoon} {ContactName},
 
-Looking at {VenueName}'s "Getting Here" page, visitors planning their trip currently have to read through static text and jump between map apps and train timetables to figure out their route.
+Taking a look at the "Getting Here" page on {VenueName}'s website, visitors planning their trip currently have to sort through static bullet points to compare driving, parking, and public transit.
 
-We built EndMile as a lightweight, 1-line trip planner for UK venues. Ticket holders simply type their postcode and instantly get door-to-door transit times, station walks, and car parks directly on your page.
+We built EndMile as an interactive visit planner that embeds directly onto your website with zero technical setup. Visitors simply enter their home postcode and get live train times, walking routes, and official car parks side-by-side.
 
-I mocked up how it looks on {VenueName}'s actual visit page (screenshot attached). Would you be open to trying a live preview?
-
-Best,
-Isaac
-Founder, EndMile
-isaacw@endmilerouting.co.uk
-
-No worries at all if this isn't relevant to your team.
-```
-
-##### `THEATRE_ACCESS_B` (Variant B: Step-Free Transit & Accessible Arrival Clarity)
-**Subject:** `Accessible travel guidance for {VenueName}`  
-**Word Count:** 80 words  
-**Target:** Access Officers, Box Office Managers, Head of Visitor Services.  
-**Strategy:** Addresses accessibility uncertainty by showing step-free rail options and accessible car park locations upfront.
-
-```text
-{Good morning / Good afternoon} {ContactName},
-
-When patrons with accessibility requirements plan a visit to {VenueName}, how easy is it for them to see step-free public transport and accessible parking options on your site?
-
-Generic map links don't clarify accessible station exits or walking distances.
-
-We built EndMile to embed a clean trip planner on your visit page, highlighting verified step-free transit routes and Blue Badge parking in one place.
-
-I attached a quick mockup showing how it sits on your website. Would this be useful for {VenueName}?
+I mocked up how this looks on {VenueName}'s actual visit page (attached). Worth sending over a quick preview link to test?
 
 Best,
 Isaac
@@ -270,22 +245,22 @@ No worries at all if this isn't relevant to your team.
 
 ---
 
-#### Subtype 1B: Music Venues, Gig Spaces & Late-Night Halls
+#### Subtype 1B: Music Venues, Gig Spaces & Late-Night Concert Halls
 
 ##### `GIG_CURFEW_A` (Variant A: Post-Gig Public Transit & Last Train Timing)
 **Subject:** `Getting home from {VenueName}`  
 **Word Count:** 81 words  
 **Target:** Operations Managers, Venue Promoters, General Managers.  
-**Strategy:** Targets out-of-town gig-goers worried about post-11 PM return trains, giving them return transit times directly when checking event details.
+**Strategy:** Targets out-of-town gig-goers worried about post-10:30 PM return trains, giving fans return transit times directly without leaving event pages.
 
 ```text
 {Good morning / Good afternoon} {ContactName},
 
-For evening gigs finishing after 10:30 PM at {VenueName}, do attendees travelling in from surrounding towns often struggle to check return train and bus times in advance?
+For evening shows finishing after 10:30 PM at {VenueName}, do gig-goers travelling in from surrounding towns often struggle to check return train and bus times in advance?
 
-We built EndMile as a simple, 1-line trip planner for UK live venues. It lets ticket buyers check their exact route home—including last rail departures and station walking times—right on your event pages.
+We built EndMile as an interactive travel planner that embeds directly into your event pages. It lets fans check their exact route home—including last rail departures and station walking times—without having to leave your website.
 
-I attached a mockup showing how it looks on your site. Happy to share a live preview if helpful?
+I attached a mockup showing how it looks on your site. Happy to share a 30-second live preview if helpful?
 
 Best,
 Isaac
@@ -297,7 +272,7 @@ No worries at all if this isn't relevant to your team.
 
 ---
 
-#### Subtype 2A: Urban Museums, Galleries & Heritage Properties
+#### Subtype 2A: Urban Museums, Galleries & Historic Properties
 
 ##### `MUSEUM_PLANNER_A` (Variant A: Transit vs Driving Clarity)
 **Subject:** `Travel directions for {VenueName}`  
@@ -326,18 +301,18 @@ No worries at all if this isn't relevant to your team.
 **Subject:** `Car-free visitor routes to {VenueName}`  
 **Word Count:** 79 words  
 **Target:** Commercial Directors, Head of Visitor Services.  
-**Strategy:** Bridges the gap between mainline train stations and local connecting buses or taxis for non-driving visitors.
+**Strategy:** Bridges the gap between mainline train stations and local connecting buses or taxis for non-driving tourists.
 
 ```text
 {Good morning / Good afternoon} {ContactName},
 
-For tourists and visitors without a car, how easily can they work out how to reach {VenueName} via public transport from the nearest train station?
+For tourists and visitors without a car, how easily can they work out how to reach {VenueName} via public transport from the nearest mainline station?
 
-Many visitors assume historic sites are inaccessible without driving unless connecting bus routes or station taxis are clearly laid out.
+Many visitors assume historic sites are inaccessible without driving unless connecting bus routes and station taxis are clearly laid out.
 
-EndMile embeds a 1-line route planner connecting mainline rail arrivals with local onward travel directly on your website.
+EndMile embeds directly onto your visit page with zero technical setup, showing door-to-door transit routes that link mainline rail arrivals with local onward travel.
 
-Attached is a quick mockup of how it looks. Would a preview be of interest?
+Attached is a quick mockup of how it looks on your site. Would a preview link be of interest?
 
 Best,
 Isaac
@@ -349,20 +324,20 @@ No worries at all if this isn't relevant to your team.
 
 ---
 
-#### Subtype 3A: Visitor Attractions, Zoos & Wildlife Parks
+#### Subtype 3A: Visitor Attractions, Zoos & Theme Parks
 
-##### `ATTRACT_FAMILY_A` (Variant A: Pre-Trip Family Journey Planning)
+##### `ATTRACT_FAMILY_A` (Variant A: Family Journey Planning & Motoring vs Rail Price Transparency)
 **Subject:** `Visitor trip planning for {VenueName}`  
-**Word Count:** 84 words  
+**Word Count:** 85 words  
 **Target:** Head of Visitor Operations, General Managers, Marketing Leads.  
-**Strategy:** Simplifies family journey planning by replacing text descriptions with an instant interactive route and parking tool.
+**Strategy:** Directly addresses the family cost equation (fuel + parking tariffs vs family rail fares) so parents don't hesitate or abandon advance bookings.
 
 ```text
 {Good morning / Good afternoon} {ContactName},
 
-Looking at the arrival advice on {VenueName}'s website, families planning a day out currently have to manually cross-reference driving routes, parking advice, and train connections across different tabs.
+Looking at the arrival advice on {VenueName}'s website, families planning a day out currently have to cross-reference driving routes, parking charges, and family train fares across different tabs to work out the fastest and cheapest option.
 
-We built EndMile as an embeddable visit planner. Families simply enter their home town or postcode to see their exact driving time, car park locations, or public transit options in one place.
+We built EndMile as an interactive visit planner that plugs directly into your website. Families simply enter their home postcode to instantly compare driving and parking costs side-by-side with rail and transit fares in one view.
 
 I went ahead and mocked up how it looks on your visit page (attached). Worth seeing a 30-second live preview?
 
@@ -382,16 +357,16 @@ No worries at all if this isn't relevant to your team.
 **Subject:** `Audience travel reporting for {VenueName}`  
 **Word Count:** 86 words  
 **Target:** Sustainability Leads, Operations Directors, Executive Directors (NPOs only).  
-**Strategy:** Focuses purely on replacing low-response post-show email surveys with passive journey query telemetry for Julie's Bicycle reporting.
+**Strategy:** Replaces low-response post-show email surveys with passive journey query telemetry for Julie's Bicycle reporting.
 
 ```text
 {Good morning / Good afternoon} {ContactName},
 
 For {VenueName}'s annual Julie's Bicycle environmental reporting, how does your team currently collect audience travel data?
 
-Audience travel usually represents the vast majority of a cultural venue's footprint, yet most venues rely on post-show surveys with very low response rates.
+Audience travel usually represents over 80% of a cultural venue's footprint, yet most venues have to rely on post-show surveys with 3–4% response rates.
 
-EndMile embeds a 1-line journey planner on your visit page that passively logs travel modal splits and estimated passenger mileage as visitors plan their journey.
+EndMile embeds directly on your visit page, giving audience members live journey directions while passively logging verified travel modal splits and passenger mileage in the background.
 
 I attached a mockup showing how it sits on your site. Would a sample carbon export be of interest?
 
@@ -418,7 +393,37 @@ No worries at all if this isn't relevant to your team.
 
 Could you point me to whoever looks after visitor operations or manages the website at {VenueName}?
 
-I'm an independent UK software developer who built an embeddable visit planner for UK venues, and wanted to share a 30-second preview of how it looks on {VenueName}'s site.
+I'm an independent UK software developer who built an interactive visit planner for UK venues, and wanted to share a 30-second preview of how it looks on {VenueName}'s site.
+
+Best,
+Isaac
+Founder, EndMile
+isaacw@endmilerouting.co.uk
+
+No worries at all if this isn't relevant to your team.
+```
+
+---
+
+### 4.3 Draft & Experimental Templates (Pending Feature Verification)
+
+> [!NOTE]
+> **Status: Low Priority / Dormant.** The template below is held in reserve until accessibility and step-free routing algorithms are verified in the core routing engine (`../endmile-1`). Do not use for active outbound campaigns.
+
+#### `THEATRE_ACCESS_B` (Dormant: Step-Free Transit & Accessible Arrival Clarity)
+**Subject:** `Accessible travel guidance for {VenueName}`  
+**Target:** Access Officers, Box Office Managers, Head of Visitor Services.  
+
+```text
+{Good morning / Good afternoon} {ContactName},
+
+When patrons with accessibility requirements plan a visit to {VenueName}, how easy is it for them to see step-free public transport and accessible parking options on your site?
+
+Generic map links don't clarify accessible station exits or walking distances.
+
+We built EndMile to embed a clean trip planner on your visit page, highlighting verified step-free transit routes and Blue Badge parking in one place.
+
+I attached a quick mockup showing how it sits on your website. Would this be useful for {VenueName}?
 
 Best,
 Isaac

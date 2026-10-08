@@ -27,8 +27,19 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from playwright.sync_api import sync_playwright
 
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-EXCEL_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+EXCEL_PATH = get_master_pipeline_path()
 FALLBACK_EXCEL = Path(r"C:\Users\isaac\Downloads\endmile widget v4.xlsx")
 OUTPUT_DIR = REPO_ROOT / "screenshots" / "venues"
 

@@ -35,9 +35,20 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def get_master_pipeline_path() -> Path:
+    candidates = [
+        Path(r"C:\Users\isaac\OneDrive\Documents\EndMile\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\OneDrive\Desktop\endmile_master_pipeline.xlsx"),
+        Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx"),
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+    return candidates[0]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 CSV_PATH = REPO_ROOT / "data" / "consultancies" / "app_prospects_v1.csv"
-EXCEL_PATH = Path(r"C:\Users\isaac\Documents\endmile\endmile_master_pipeline.xlsx")
+EXCEL_PATH = get_master_pipeline_path()
 TRACKER_PATH = REPO_ROOT / "traction" / "outreach-tracker.md"
 
 def print_scoreboard():
@@ -105,8 +116,12 @@ def print_scoreboard():
         ("App", "INFO_REF_D"),
         ("App", "DIRECT_SCRATCHPAD"),
         ("App", "DIRECT_RECHARGE"),
-        ("Widget", "VENUE_DWELL_TIME"),
-        ("Widget", "VENUE_SCOPE3_GREENBOOK"),
+        ("Widget", "VENUE_VISIT_A"),
+        ("Widget", "GIG_CURFEW_A"),
+        ("Widget", "MUSEUM_PLANNER_A"),
+        ("Widget", "HERITAGE_RURAL_B"),
+        ("Widget", "ATTRACT_FAMILY_A"),
+        ("Widget", "THEATRE_SCOPE3_A"),
         ("Widget", "VENUE_INFO_REFERRAL"),
         ("Widget", "VENUE_FOLLOWUP_PREVIEW")
     ]
