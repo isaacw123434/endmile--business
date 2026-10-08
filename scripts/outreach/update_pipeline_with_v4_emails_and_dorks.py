@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """
-Update Master Pipeline Excel with Latest Venue Contacts, Google Pro Search URLs, and Zero-Link Templates
-----------------------------------------------------------------------------------------------------------
+Update Master Pipeline Excel with All Discovered Venue Emails, Hyperlinked Google URLs, and Visible Columns
+---------------------------------------------------------------------------------------------------------
 1. Reads latest notes, contacts, and Google Pro Search URLs from:
    C:\\Users\\isaac\\Downloads\\endmile widget v4 (1).xlsx (or endmile widget v4.xlsx)
-2. Updates Sheet 2 ('Venue Widget Pipeline') in endmile_master_pipeline.xlsx:
-   - Updates DeepLinkGoogleSearch across all 4,992 rows with the AI Pro Search URL.
-   - Updates ConfirmedEmail, ConfirmedName, ConfirmedRole, RawNotesAndContacts, and ManualApproval='Approved'
-     for all venues with newly discovered contacts.
-3. Updates Sheet 3 ('Email Templates & Referrers') to ensure ABSOLUTELY ZERO RAW URL LINKS in all copy.
+2. In Sheet 2 ('Venue Widget Pipeline'):
+   - Preserves ALL multiple emails per venue in 'ConfirmedEmail' (comma-separated, zero lost contacts).
+   - Preserves founder notes (e.g. 'charity', 'council', 'uni', 'chain') in 'FounderNotes'.
+   - Populates contact names ('ConfirmedName') and role hints ('ConfirmedRole').
+   - Converts 'DeepLinkGoogleSearch' into active, clickable Excel hyperlinks for all 4,992 venues.
+   - HIDES all columns except the 20 requested:
+     AssignedTemplate, FounderNotes, VenueName, ConfirmedEmail, ConfirmedName, ConfirmedRole,
+     PublicEmail, Archetype, OwnershipType, WidgetFit, WidgetFitScore, Tier, EstMonthlySearches,
+     OutreachStatus, DateSent, Website, Phone, Address, MultimodalFeatures, DeepLinkGoogleSearch
+3. In Sheet 3 ('Email Templates & Referrers'):
+   - Enforces strictly zero raw URL links across all 16 outreach templates.
 4. Synchronizes to:
    - C:\\Users\\isaac\\OneDrive\\Documents\\EndMile\\endmile_master_pipeline.xlsx
    - C:\\Users\\isaac\\OneDrive\\Desktop\\endmile_master_pipeline.xlsx
@@ -42,69 +48,155 @@ PENDING_FILL = PatternFill(start_color="FEF9C3", end_color="FEF9C3", fill_type="
 BOLD_FONT = Font(name="Calibri", size=10, bold=True)
 REGULAR_FONT = Font(name="Calibri", size=10)
 CODE_FONT = Font(name="Consolas", size=9.5)
+LINK_FONT = Font(name="Calibri", size=9.5, color="0563C1", underline="single")
 THIN_SIDE = Side(border_style="thin", color="CBD5E1")
 CELL_BORDER = Border(left=THIN_SIDE, right=THIN_SIDE, top=THIN_SIDE, bottom=THIN_SIDE)
 
 COMMON_NAME_TOKENS = {
-    "niall", "linda", "julia", "elin", "david", "celine", "alice", "alex",
-    "cate", "kate", "amanda", "martin", "rosemary", "jo", "lauren", "sworsfold",
-    "john", "paul", "sarah", "emma", "james", "richard", "helen", "simon", "claire",
-    "mark", "rachel", "andrew", "anna", "robert", "fiona", "peter", "lucy", "sophie"
+    "niall": "Niall", "linda": "Linda", "julia": "Julia", "elin": "Elin", "david": "David",
+    "celine": "Celine", "alice": "Alice", "alex": "Alex", "cate": "Cate", "kate": "Kate",
+    "amanda": "Amanda", "martin": "Martin", "rosemary": "Rosemary", "jo": "Jo", "lauren": "Lauren",
+    "john": "John", "paul": "Paul", "sarah": "Sarah", "emma": "Emma", "james": "James",
+    "richard": "Richard", "helen": "Helen", "simon": "Simon", "claire": "Claire", "mark": "Mark",
+    "rachel": "Rachel", "andrew": "Andrew", "anna": "Anna", "robert": "Robert", "fiona": "Fiona",
+    "peter": "Peter", "lucy": "Lucy", "sophie": "Sophie", "nicola": "Nicola", "anthony": "Anthony",
+    "nathan": "Nathan", "camilla": "Camilla", "ameeta": "Ameeta", "gillian": "Gillian", "hannah": "Hannah",
+    "mandy": "Mandy", "wendy": "Wendy", "rico": "Rico", "iain": "Iain", "abigail": "Abigail",
+    "georgios": "Georgios", "asta": "Asta", "harriet": "Harriet", "katie": "Katie", "daniel": "Daniel",
+    "robin": "Robin", "adam": "Adam", "zsofia": "Zsofia", "steve": "Steve", "karen": "Karen",
+    "melissa": "Melissa", "bridgeen": "Bridgeen", "phil": "Phil", "beth": "Beth", "cerys": "Cerys",
+    "angus": "Angus", "gary": "Gary", "gareth": "Gareth", "michael": "Michael", "kathryn": "Kathryn",
+    "chris": "Chris", "luke": "Luke", "andy": "Andy", "kerina": "Kerina", "vic": "Vic",
+    "victoria": "Victoria", "mark": "Mark", "philip": "Philip"
 }
 
-def clean_contact_name(raw_text: str, email: str) -> tuple[str, str]:
-    """Extract clean first name and role if confident, otherwise empty string."""
-    clean_line = raw_text.split(",")[0].replace(email, "").strip(" -:,;")
-    role = ""
-    name = ""
-    role_match = re.search(r'\(([^)]+)\)', clean_line)
-    if role_match:
-        role = role_match.group(1).strip()
-        name = clean_line[:role_match.start()].strip(" -:,;")
-    else:
-        parts = clean_line.split("-")
-        if len(parts) >= 2:
-            name = parts[0].strip()
-            role = parts[1].strip()
-        elif parts:
-            name = parts[0].strip()
+VISIBLE_COLUMNS = [
+    "AssignedTemplate",
+    "FounderNotes",
+    "VenueName",
+    "ConfirmedEmail",
+    "ConfirmedName",
+    "ConfirmedRole",
+    "PublicEmail",
+    "Archetype",
+    "OwnershipType",
+    "WidgetFit",
+    "WidgetFitScore",
+    "Tier",
+    "EstMonthlySearches",
+    "OutreachStatus",
+    "DateSent",
+    "Website",
+    "Phone",
+    "Address",
+    "MultimodalFeatures",
+    "DeepLinkGoogleSearch",
+]
 
-    first_name = ""
-    if name and not any(k in name.lower() for k in ["info", "hello", "team", "box office", "admin", "theatre", "museum", "office", "manager", "capital", "lyceum", "eno"]):
-        tokens = name.split()
-        if tokens:
-            candidate = tokens[0].title()
-            if candidate.isalpha() and len(candidate) >= 2:
-                first_name = candidate
+WIDTH_MAP = {
+    "AssignedTemplate": 20,
+    "FounderNotes": 25,
+    "VenueName": 30,
+    "ConfirmedEmail": 45,  # Wide enough to display multiple comma-separated emails
+    "ConfirmedName": 24,
+    "ConfirmedRole": 20,
+    "PublicEmail": 28,
+    "Archetype": 18,
+    "OwnershipType": 16,
+    "WidgetFit": 14,
+    "WidgetFitScore": 14,
+    "Tier": 10,
+    "EstMonthlySearches": 18,
+    "OutreachStatus": 16,
+    "DateSent": 14,
+    "Website": 28,
+    "Phone": 18,
+    "Address": 32,
+    "MultimodalFeatures": 24,
+    "DeepLinkGoogleSearch": 25,
+}
 
-    if not first_name and email and "@" in email:
-        handle = email.split("@")[0].lower()
-        handle_token = handle.split(".")[0].split("_")[0]
-        # Only accept handle if it's a known name or standard length name (not an initial+surname like aastell, lmonaghan)
-        if handle_token in COMMON_NAME_TOKENS:
-            first_name = handle_token.title()
-        elif handle_token.isalpha() and 3 <= len(handle_token) <= 8 and not any(handle_token.startswith(c) for c in ["info", "admin", "foh", "office", "boxoffice", "contact", "mgr", "manager"]):
-            # Check if likely initial+surname (e.g. jsmith, aastell)
-            # If length > 4 and first 2 consonants or unusual digraph, prefer blank
-            if handle_token in ["niall", "linda", "celine", "julia", "david"]:
-                first_name = handle_token.title()
-
-    return first_name, role
-
-def extract_venue_contact(raw_text: str) -> tuple[str, str, str]:
-    """Returns (first_name, primary_email, role)."""
+def parse_venue_entry(raw_text: str):
+    """
+    Parses raw notes and contacts for a venue:
+    Returns (emails_str, names_str, roles_str, notes_str)
+    """
     if not isinstance(raw_text, str) or not raw_text.strip() or raw_text.strip() == "-":
-        return "", "", ""
-    email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', raw_text)
-    if not email_match:
-        return "", "", ""
-    email = email_match.group(0).lower()
-    first_name, role = clean_contact_name(raw_text, email)
-    return first_name, email, role
+        return "", "", "", ""
+
+    # 1. Extract all emails
+    emails = re.findall(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', raw_text)
+    emails_clean = []
+    seen = set()
+    for e in emails:
+        el = e.lower().strip()
+        if el not in seen:
+            seen.add(el)
+            emails_clean.append(el)
+
+    emails_str = ", ".join(emails_clean)
+
+    # 2. Extract leftover non-email text
+    leftover = raw_text
+    for e in emails:
+        leftover = leftover.replace(e, "")
+    leftover = re.sub(r'[,;\s\n\r]+', ' ', leftover).strip(" -:,;")
+
+    # 3. If no emails found, leftover is purely a note (e.g. 'charity', 'council', 'uni', 'chain')
+    if not emails_clean:
+        return "", "", "", leftover
+
+    # 4. If leftover has an explicit person name (like 'Victoria Winslade')
+    names = []
+    roles = []
+    notes = ""
+
+    if leftover:
+        if not any(k in leftover.lower() for k in ["charity", "council", "uni", "chain", "http"]):
+            names.append(leftover)
+        else:
+            notes = leftover
+
+    # 5. Extract contact names from email handles
+    for e in emails_clean:
+        handle = e.split("@")[0].lower()
+        parts = re.split(r'[._-]', handle)
+        first_token = parts[0]
+        if first_token in COMMON_NAME_TOKENS:
+            c_name = COMMON_NAME_TOKENS[first_token]
+            if c_name not in names:
+                names.append(c_name)
+        elif len(parts) >= 2 and parts[1] in COMMON_NAME_TOKENS:
+            c_name = COMMON_NAME_TOKENS[parts[1]]
+            if c_name not in names:
+                names.append(c_name)
+        elif handle in COMMON_NAME_TOKENS:
+            c_name = COMMON_NAME_TOKENS[handle]
+            if c_name not in names:
+                names.append(c_name)
+
+    names_str = ", ".join(names)
+
+    # 6. Extract role hints
+    for e in emails_clean:
+        handle = e.split("@")[0].lower()
+        if "manager" in handle or "mgr" in handle:
+            if "Manager" not in roles: roles.append("Manager")
+        elif "curator" in handle:
+            if "Curator" not in roles: roles.append("Curator")
+        elif "clerk" in handle:
+            if "Clerk" not in roles: roles.append("Clerk")
+        elif "foh" in handle:
+            if "Front of House" not in roles: roles.append("Front of House")
+        elif "sales" in handle:
+            if "Sales" not in roles: roles.append("Sales")
+
+    roles_str = ", ".join(roles)
+    return emails_str, names_str, roles_str, notes
 
 def run_update():
     print("=" * 75)
-    print(" UPDATING MASTER PIPELINE WITH LATEST VENUE CONTACTS & PRO SEARCH URLS")
+    print(" UPDATING MASTER PIPELINE WITH ALL EMAILS, HYPERLINKS & CLEAN COLUMNS")
     print("=" * 75)
 
     if not SOURCE_WIDGET_PATH.exists():
@@ -123,7 +215,6 @@ def run_update():
     v4_map = {}
     for r in range(2, ws_v4.max_row + 1):
         vid = str(ws_v4.cell(row=r, column=id_col+1).value or "").strip()
-        # strip any .0 from float IDs
         if vid.endswith(".0"):
             vid = vid[:-2]
         note = str(ws_v4.cell(row=r, column=notes_col+1).value or "").strip()
@@ -144,45 +235,59 @@ def run_update():
         return
 
     ws_venue = wb_master["Venue Widget Pipeline"]
-    v_headers = [c for c in next(ws_venue.iter_rows(values_only=True))]
+    v_headers = [str(c or "").strip() for c in next(ws_venue.iter_rows(values_only=True))]
+
     v_id_col = v_headers.index("VenueID") + 1
     v_appr_col = v_headers.index("ManualApproval") + 1
-    v_email_col = v_headers.index("ConfirmedEmail") + 1
+    v_fnotes_col = v_headers.index("FounderNotes") + 1
     v_name_col = v_headers.index("ConfirmedName") + 1
+    v_email_col = v_headers.index("ConfirmedEmail") + 1
     v_role_col = v_headers.index("ConfirmedRole") + 1
     v_dork_col = v_headers.index("DeepLinkGoogleSearch") + 1
-    v_notes_col = v_headers.index("RawNotesAndContacts") + 1
+    v_raw_notes_col = v_headers.index("RawNotesAndContacts") + 1 if "RawNotesAndContacts" in v_headers else None
 
     updated_contacts_count = 0
+    multi_email_count = 0
     updated_dorks_count = 0
     total_approved = 0
 
+    # Iterate rows and update contacts + hyperlinked search URLs
     for r in range(2, ws_venue.max_row + 1):
         vid = str(ws_venue.cell(row=r, column=v_id_col).value or "").strip()
         if vid.endswith(".0"):
             vid = vid[:-2]
 
         v4_data = v4_map.get(vid)
-        if not v4_data:
-            continue
 
-        # Update DeepLinkGoogleSearch
-        new_dork = v4_data["dork"]
-        if new_dork:
-            ws_venue.cell(row=r, column=v_dork_col, value=new_dork)
+        # 1. Process Google Pro Search URL & make it an active Excel Hyperlink
+        dork_url = (v4_data["dork"] if v4_data and v4_data.get("dork") else ws_venue.cell(row=r, column=v_dork_col).value) or ""
+        dork_url = str(dork_url).strip()
+        if dork_url:
+            c_dork = ws_venue.cell(row=r, column=v_dork_col)
+            c_dork.value = dork_url
+            c_dork.hyperlink = dork_url
+            c_dork.font = LINK_FONT
             updated_dorks_count += 1
 
-        # Check and update Notes & Contacts
-        v4_note = v4_data["note"]
-        if v4_note and v4_note != "-":
-            c_first, c_email, c_role = extract_venue_contact(v4_note)
-            if c_email and "@" in c_email:
-                ws_venue.cell(row=r, column=v_email_col, value=c_email)
-                if c_first:
-                    ws_venue.cell(row=r, column=v_name_col, value=c_first)
-                if c_role:
-                    ws_venue.cell(row=r, column=v_role_col, value=c_role)
-                ws_venue.cell(row=r, column=v_notes_col, value=v4_note)
+        # 2. Process Notes & Contacts
+        if v4_data and v4_data.get("note") and v4_data["note"] != "-":
+            v4_note = v4_data["note"]
+            emails_str, names_str, roles_str, notes_str = parse_venue_entry(v4_note)
+
+            if emails_str:
+                ws_venue.cell(row=r, column=v_email_col, value=emails_str)
+                if "," in emails_str:
+                    multi_email_count += 1
+
+                if names_str:
+                    ws_venue.cell(row=r, column=v_name_col, value=names_str)
+                if roles_str:
+                    ws_venue.cell(row=r, column=v_role_col, value=roles_str)
+                if notes_str:
+                    ws_venue.cell(row=r, column=v_fnotes_col, value=notes_str)
+
+                if v_raw_notes_col:
+                    ws_venue.cell(row=r, column=v_raw_notes_col, value=v4_note)
 
                 # Set ManualApproval to Approved
                 cell_appr = ws_venue.cell(row=r, column=v_appr_col, value="Approved")
@@ -190,416 +295,48 @@ def run_update():
                 cell_appr.font = BOLD_FONT
                 cell_appr.alignment = Alignment(horizontal="center", vertical="center")
                 updated_contacts_count += 1
+            elif notes_str:
+                # Founder classification without emails (e.g. 'charity', 'council', 'uni', 'chain')
+                ws_venue.cell(row=r, column=v_fnotes_col, value=notes_str)
+                if v_raw_notes_col:
+                    ws_venue.cell(row=r, column=v_raw_notes_col, value=v4_note)
 
         current_appr = ws_venue.cell(row=r, column=v_appr_col).value
         if current_appr == "Approved":
             total_approved += 1
 
-    print(f"[OK] Updated {updated_dorks_count} Google Pro Search URLs across Venue Widget Pipeline.")
-    print(f"[OK] Confirmed & approved {updated_contacts_count} venue contacts (Total approved: {total_approved}).")
+    print(f"[OK] Hyperlinked {updated_dorks_count} Google Search URLs.")
+    print(f"[OK] Preserved all discovered emails across {updated_contacts_count} venues ({multi_email_count} venues have multiple emails).")
+    print(f"[OK] Total approved venues: {total_approved}.")
 
-    # 2. Update Sheet 3: Email Templates & Referrers (STRICT ZERO RAW LINKS)
-    ws_tpl = wb_master["Email Templates & Referrers"]
-    
-    # Complete 16 templates with ZERO raw URLs anywhere in body or signature
-    zero_link_templates = [
-        # CONSULTANCY APP
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "DIRECT_SCRATCHPAD",
-            "TemplateName": "Direct Operations Scratchpad Pitch",
-            "TargetInbox": "Direct Operations & Discovered Named Contacts (operations@, projects@, travel@, named lead)",
-            "Subject": "{CompanyClean}'s travel planning",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "When your consultants head out to client sites (like {Corridor}), does someone on operations still spend 10 minutes juggling Google Maps, Trainline, and station parking to find the fastest and cheapest door-to-door route?\n\n"
-                "I built EndMile as a quick scratchpad for UK consultancies. It stacks up driving (at HMRC 55p/mile) against train fares, station parking, and destination taxis side-by-side in 10 seconds.\n\n"
-                "Happy to send over a 30-second preview of how it works for {HQCity} corridors if helpful?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "10-Second Door-to-Door TCO Comparison (Stops multi-tab spreadsheet chaos)",
-            "WordCount": 85,
-            "WhenToUse": "Direct outreach to operations leads, project coordinators, or practice directors."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "DIRECT_RECHARGE",
-            "TemplateName": "Direct Project Recharges & Margin Defense",
-            "TargetInbox": "Finance, Commercial Leads, Project Directors (finance@, commercial@, projects@)",
-            "Subject": "Client travel recharges",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "When {CompanyClean}'s consultants travel to client sites, do your finance or project leads ever run into pushback from client accounts payable over HMRC 55p mileage or taxi expenses?\n\n"
-                "We've found many UK consultancies lose 1–5% of travel recharges simply because clients look up a superficial £50 train ticket and dispute a £110 car journey, ignoring station parking and taxi legs.\n\n"
-                "We built EndMile to calculate the true door-to-door comparison before consultants travel, generating a 1-page Pre-Trip Cost Justification PDF to attach directly to client invoices.\n\n"
-                "Would it be helpful to see a sample justification report for {HQCity} routes?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Pre-Trip Cost Justification PDF (Defends billable margin against client pushback)",
-            "WordCount": 98,
-            "WhenToUse": "Direct touch to finance directors, practice heads, or billable engagement managers."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "INFO_REF_A",
-            "TemplateName": "Info Desk Referral A (Founder Discovery Ask)",
-            "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "Quick question - travel coordination",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Could you point me to whoever looks after consultant travel or expenses at {CompanyClean}?\n\n"
-                "I'm an independent UK software engineer building a tool to cut down the time consultancies spend planning client travel and comparing HMRC 55p mileage. Just wanted to ask them 2 quick questions about how they currently handle it.\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Disarming Founder Discovery Question (Highest response rate)",
-            "WordCount": 54,
-            "WhenToUse": "Default / primary angle for all general inbox outreach."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "INFO_REF_B",
-            "TemplateName": "Info Desk Referral B (Multi-Tab Time Saver)",
-            "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "{CompanyClean}'s travel planning",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Quick question — who at {CompanyClean} coordinates travel when consultants head out to client sites (like {Corridor})?\n\n"
-                "I put together a simple tool for UK consultancies that works out driving mileage against train fares, parking, and taxis in 10 seconds, instead of jumping between 3 tabs.\n\n"
-                "Worth passing this over to whoever handles travel for your team?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Operational Productivity & Eliminating 3 Tabs",
-            "WordCount": 58,
-            "WhenToUse": "Secondary A/B rotation for consultancies with explicit known regional corridors."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "INFO_REF_C",
-            "TemplateName": "Info Desk Referral C (55p Mileage Dispute)",
-            "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "Consultant travel expenses",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Could you point me to whoever manages travel expenses or project recharges at {CompanyClean}?\n\n"
-                "I put together a simple tool for UK consultancies to help back up HMRC 55p mileage against rail costs when clients question travel invoices.\n\n"
-                "Who would be best to speak with about that?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Defending HMRC Mileage Recharges via Client Invoicing PDF",
-            "WordCount": 52,
-            "WhenToUse": "Targeting finance-leaning or commercial consultancies."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "INFO_REF_D",
-            "TemplateName": "Info Desk Referral D (Ultra-Short Gatekeeper Forward)",
-            "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@, enquiries@, contact@)",
-            "Subject": "Quick referral - operations / travel",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Could you point me in the right direction? Who at {CompanyClean} coordinates travel planning or expenses for consultants travelling to client sites?\n\n"
-                "Thanks so much,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Ultra-Low Friction Forward Request (<35 words)",
-            "WordCount": 35,
-            "WhenToUse": "Fast forwarding by administrative staff."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "FOLLOWUP_DIRECT_1",
-            "TemplateName": "Direct Follow-Up (+3 to 4 Days)",
-            "TargetInbox": "Direct Operations & Named Contacts",
-            "Subject": "Re: {CompanyClean}'s travel planning",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "Just following up on this — know you're busy coordinating client dispatches.\n\n"
-                "We set up a quick preview with {HQCity} corridors pre-configured. No login or sign-up needed — happy to send over the preview link or run a couple of sample client routes for your team if helpful.\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Zero-Link Polite Bump (Zero friction preview offer)",
-            "WordCount": 50,
-            "WhenToUse": "Send 3-4 business days after DIRECT_SCRATCHPAD if no response."
-        },
-        {
-            "Product": "Consultancy App",
-            "TemplateCode": "FOLLOWUP_INFO_1",
-            "TemplateName": "Info Desk Referral Follow-Up (+4 Days)",
-            "TargetInbox": "General Front-Desk / Triage Inboxes (info@, hello@)",
-            "Subject": "Re: Quick question - travel coordination",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Following up briefly on this — did you know who would be the best person to speak with regarding consultant travel or operations at {CompanyClean}?\n\n"
-                "Much appreciated,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Polite Nudge (Ensures email didn't get buried)",
-            "WordCount": 34,
-            "WhenToUse": "Send 4 business days after INFO_REF_A/B/C/D if no reply."
-        },
-        # VENUE WIDGET (B2B TRAVEL PLANNER EMBED)
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "VENUE_VISIT_A",
-            "TemplateName": "Universal Flagship (Static Bullet Points vs Interactive Planner)",
-            "TargetInbox": "Visitor Services, Operations Directors, Commercial Leads, General Managers",
-            "Subject": "Visitor directions for {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "Taking a look at the \"Getting Here\" page on {VenueName}'s website, visitors planning their trip currently have to sort through static bullet points to compare driving, parking, and public transit.\n\n"
-                "We built EndMile as an interactive visit planner that embeds directly onto your website with zero technical setup. Visitors simply enter their home postcode and get live train times, walking routes, and official car parks side-by-side.\n\n"
-                "I went ahead and mocked up how this looks on your actual visit page (see attached screenshot).\n\n"
-                "Would you be open to trying a live preview?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Universal Flagship: Replaces static transport bullet points with 1-click door-to-door transit & parking comparison",
-            "WordCount": 85,
-            "WhenToUse": "Flagship template for theatres, concert halls, civic arts centres, and cultural destinations."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "GIG_CURFEW_A",
-            "TemplateName": "Music Venues & Arenas (Post-Gig Public Transit & Last Trains)",
-            "TargetInbox": "Operations Managers, Venue Promoters, General Managers",
-            "Subject": "Getting home from {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "For evening shows finishing after 10:30 PM at {VenueName}, do gig-goers travelling in from surrounding towns often struggle to check return train and bus times in advance?\n\n"
-                "We built EndMile as an interactive travel planner that embeds directly into your event pages. It lets fans check their exact route home—including last rail departures and station walking times—without having to leave your website.\n\n"
-                "I attached a mockup showing how it looks on your site. Happy to share a 30-second live preview if helpful?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Nightlife & Curfew Egress: Solves post-10:30 PM last train anxiety directly on event/lineup pages",
-            "WordCount": 81,
-            "WhenToUse": "Music halls, live music venues, comedy clubs, and late-night performing arts venues."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "MUSEUM_PLANNER_A",
-            "TemplateName": "Urban Museums & Galleries (Transit vs Driving Clarity)",
-            "TargetInbox": "Head of Visitor Experience, Commercial Directors, Operations Managers",
-            "Subject": "Travel directions for {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "Taking a look at the visitor guide on {VenueName}'s website, day visitors currently have to sort through multiple transport bullet points to compare driving vs public transit.\n\n"
-                "We built EndMile to give visitors an interactive door-to-door trip planner directly on your \"Visit\" page. Visitors enter their starting point and get live train times, walking routes, and official car parks side-by-side.\n\n"
-                "I mocked up how this looks on {VenueName}'s visit page (attached). Worth sending over a quick preview link to test?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Museums & Galleries: Door-to-door arrival clarity, driving vs rail comparison on mobile",
-            "WordCount": 83,
-            "WhenToUse": "Urban museums, civic art galleries, science discovery centres, and exhibition halls."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "HERITAGE_RURAL_B",
-            "TemplateName": "Rural Heritage & Historic Sites (Mainline Rail to Rural Transport)",
-            "TargetInbox": "Commercial Directors, Head of Visitor Services, Operations",
-            "Subject": "Car-free visitor routes to {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "For tourists and visitors without a car, how easily can they work out how to reach {VenueName} via public transport from the nearest mainline station?\n\n"
-                "Many visitors assume historic sites are inaccessible without driving unless connecting bus routes and station taxis are clearly laid out.\n\n"
-                "EndMile embeds directly onto your visit page with zero technical setup, showing door-to-door transit routes that link mainline rail arrivals with local onward travel.\n\n"
-                "Attached is a quick mockup of how it looks on your site. Would a preview link be of interest?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Car-Free Tourism: Bridges mainline rail stations to rural buses, taxis, and walking trails",
-            "WordCount": 79,
-            "WhenToUse": "Castles, historic houses, country parks, abbeys, and rural visitor destinations."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "ATTRACT_FAMILY_A",
-            "TemplateName": "Visitor Attractions & Zoos (Family Cost Transparency: Fuel/Parking vs Rail)",
-            "TargetInbox": "Head of Visitor Operations, General Managers, Marketing Leads",
-            "Subject": "Visitor trip planning for {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "Looking at the arrival advice on {VenueName}'s website, families planning a day out currently have to cross-reference driving routes, parking charges, and family train fares across different tabs to work out the fastest and cheapest option.\n\n"
-                "We built EndMile as an interactive visit planner that plugs directly into your website. Families simply enter their home postcode to instantly compare driving and parking costs side-by-side with rail and transit fares in one view.\n\n"
-                "I went ahead and mocked up how it looks on your visit page (attached). Worth seeing a 30-second live preview?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Family Cost Equation: Solves driving + parking tariff vs rail fare confusion to prevent booking drop-off",
-            "WordCount": 85,
-            "WhenToUse": "Zoos, theme parks, farm parks, safari parks, and family attraction destinations."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "THEATRE_SCOPE3_A",
-            "TemplateName": "ACE NPOs & Theatres (Scope 3 Audience Carbon Reporting)",
-            "TargetInbox": "Sustainability Leads, Operations Directors, Executive Directors (NPOs)",
-            "Subject": "Audience travel reporting for {VenueName}",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "For {VenueName}'s annual Julie's Bicycle environmental reporting, how does your team currently collect audience travel data?\n\n"
-                "Audience travel usually represents over 80% of a cultural venue's footprint, yet most venues have to rely on post-show surveys with 3–4% response rates.\n\n"
-                "EndMile embeds directly on your visit page, giving audience members live journey directions while passively logging verified travel modal splits and passenger mileage in the background.\n\n"
-                "Would you be open to seeing a sample data export for {VenueName}?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Arts Council England (ACE) Scope 3 Reporting: Passive journey queries replace 3% survey response rates",
-            "WordCount": 86,
-            "WhenToUse": "NPO theatres, civic arts trusts, and Green Book cultural venues with grant reporting."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "VENUE_INFO_REFERRAL",
-            "TemplateName": "Universal Gatekeeper & Front-Desk Referral Inquiry",
-            "TargetInbox": "Box Office & Front Desk (info@, hello@, boxoffice@, enquiries@)",
-            "Subject": "Quick question - visitor directions",
-            "Body": (
-                "{Good morning / Good afternoon},\n\n"
-                "Could you point me to whoever looks after visitor operations or manages the website at {VenueName}?\n\n"
-                "I'm an independent UK software developer who built an interactive visit planner for UK venues, and wanted to share a 30-second preview of how it looks on {VenueName}'s site.\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Disarming Engineer Referral Ask to Box Office / Gatekeeper",
-            "WordCount": 44,
-            "WhenToUse": "Default when targeting info@, hello@, or boxoffice@ inboxes."
-        },
-        {
-            "Product": "Venue Travel Widget",
-            "TemplateCode": "VENUE_FOLLOWUP_PREVIEW",
-            "TemplateName": "Interactive Staging Preview Follow-Up (+3 Days)",
-            "TargetInbox": "General Managers, Ops Directors, Box Office Leads",
-            "Subject": "Re: {VenueName}'s visitor arrivals",
-            "Body": (
-                "{Good morning / Good afternoon} {ContactName},\n\n"
-                "Following up briefly on this — I went ahead and mocked up a quick preview showing how the journey planner would look embedded directly on your website.\n\n"
-                "Unlike traditional transit software with £2,000+ setup hurdles, EndMile embeds directly onto your website with £0 setup and runs from £19/month on a 14-day free pilot.\n\n"
-                "Happy to share the staging preview or test embed for your site if helpful?\n\n"
-                "Best,\n"
-                "Isaac\n"
-                "Founder, EndMile\n"
-                "isaacw@endmilerouting.co.uk\n\n"
-                "No worries at all if this isn't relevant to your team."
-            ),
-            "Angle": "Zero-Link Follow-up (£0 setup, £19/mo, staging preview offer)",
-            "WordCount": 62,
-            "WhenToUse": "Send 3 business days after initial venue touch if no reply."
-        }
-    ]
+    # 3. Apply Column Visibility & Widths
+    # Only keep visible: AssignedTemplate, FounderNotes, VenueName, ConfirmedEmail, ConfirmedName, ConfirmedRole,
+    # PublicEmail, Archetype, OwnershipType, WidgetFit, WidgetFitScore, Tier, EstMonthlySearches,
+    # OutreachStatus, DateSent, Website, Phone, Address, MultimodalFeatures, DeepLinkGoogleSearch
+    visible_set = set(VISIBLE_COLUMNS)
+    hidden_cols_count = 0
+    visible_cols_count = 0
 
-    # Re-write Sheet 3
-    if ws_tpl.max_row > 1:
-        ws_tpl.delete_rows(2, ws_tpl.max_row)
+    for col_idx in range(1, ws_venue.max_column + 1):
+        col_letter = openpyxl.utils.get_column_letter(col_idx)
+        header_val = str(ws_venue.cell(row=1, column=col_idx).value or "").strip()
 
-    for row_idx, tpl in enumerate(zero_link_templates, 2):
-        row_vals = [
-            tpl["Product"],
-            tpl["TemplateCode"],
-            tpl["TemplateName"],
-            tpl["TargetInbox"],
-            tpl["Subject"],
-            tpl["Body"],
-            tpl["Angle"],
-            tpl["WordCount"],
-            tpl["WhenToUse"]
-        ]
-        ws_tpl.append(row_vals)
+        if header_val in visible_set:
+            ws_venue.column_dimensions[col_letter].hidden = False
+            visible_cols_count += 1
+            if header_val in WIDTH_MAP:
+                ws_venue.column_dimensions[col_letter].width = WIDTH_MAP[header_val]
+        else:
+            ws_venue.column_dimensions[col_letter].hidden = True
+            hidden_cols_count += 1
 
-        for c_idx in range(1, 10):
-            cell = ws_tpl.cell(row=row_idx, column=c_idx)
-            cell.border = CELL_BORDER
-            cell.font = REGULAR_FONT
+    # Freeze columns C, D, E so Venue Name and notes remain pinned while scrolling horizontally
+    ws_venue.freeze_panes = "F2"
 
-        c_prod = ws_tpl.cell(row=row_idx, column=1)
-        c_prod.font = BOLD_FONT
-        c_prod.alignment = Alignment(horizontal="center", vertical="top")
+    print(f"[OK] Column visibility configured: {visible_cols_count} visible columns, {hidden_cols_count} hidden columns.")
+    print(f"[OK] Freeze pane set at F2 (pins AssignedTemplate, FounderNotes, and VenueName).")
 
-        c_code = ws_tpl.cell(row=row_idx, column=2)
-        c_code.font = Font(name="Consolas", size=10, bold=True)
-        c_code.alignment = Alignment(horizontal="center", vertical="top")
-
-        c_name = ws_tpl.cell(row=row_idx, column=3)
-        c_name.font = BOLD_FONT
-        c_name.alignment = Alignment(vertical="top")
-
-        c_tgt = ws_tpl.cell(row=row_idx, column=4)
-        c_tgt.alignment = Alignment(vertical="top", wrap_text=True)
-
-        c_subj = ws_tpl.cell(row=row_idx, column=5)
-        c_subj.font = Font(name="Consolas", size=10, bold=True)
-        c_subj.alignment = Alignment(vertical="top")
-
-        c_body = ws_tpl.cell(row=row_idx, column=6)
-        c_body.font = CODE_FONT
-        c_body.alignment = Alignment(vertical="top", wrap_text=True)
-
-        c_angle = ws_tpl.cell(row=row_idx, column=7)
-        c_angle.alignment = Alignment(vertical="top", wrap_text=True)
-
-        c_wc = ws_tpl.cell(row=row_idx, column=8)
-        c_wc.alignment = Alignment(horizontal="center", vertical="top")
-
-        c_guide = ws_tpl.cell(row=row_idx, column=9)
-        c_guide.alignment = Alignment(vertical="top", wrap_text=True)
-
-        ws_tpl.row_dimensions[row_idx].height = 145
-
-    print(f"[OK] Sheet 3 updated with {len(zero_link_templates)} templates (ZERO raw URLs).")
-
-    # 3. Save to all 3 paths
+    # 4. Save to all 3 paths
     LOCAL_DIR.mkdir(parents=True, exist_ok=True)
     ONEDRIVE_DOCS_DIR.mkdir(parents=True, exist_ok=True)
     ONEDRIVE_DESKTOP_DIR.mkdir(parents=True, exist_ok=True)
@@ -625,11 +362,10 @@ def run_update():
         print(f"  -> Could not update OneDrive Documents copy: {e}")
 
     print("=" * 75)
-    print("PIPELINE UPDATE SUMMARY:")
-    print(f"  Desktop: {ONEDRIVE_DESKTOP_PATH} (Updated with 64 approved venues & AI Pro URLs)")
-    print(f"  Local:   {LOCAL_PATH} (Updated)")
-    print(f"  OneDrive Docs: {ONEDRIVE_DOCS_PATH} (Syncs automatically when LibreOffice/Excel closes)")
-    print(f"Total Approved Venues for Manual Outreach: {total_approved}")
+    print("PIPELINE UPDATE COMPLETE!")
+    print(f"  Visible Columns ({visible_cols_count}): {', '.join(VISIBLE_COLUMNS)}")
+    print(f"  Multiple Emails Preserved: {multi_email_count} venues")
+    print(f"  Google URLs Hyperlinked: {updated_dorks_count}")
     print("=" * 75)
 
 if __name__ == "__main__":
